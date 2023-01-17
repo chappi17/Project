@@ -1,0 +1,4 @@
+﻿  Project.cpp
+C:\Class\C++\KHI_Project\Project\Project\Project.cpp(306,16): warning C4244: '=': 'UINT'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Class\C++\KHI_Project\Project\Project\Project.cpp(307,17): warning C4244: '=': 'UINT'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Project.vcxproj -> C:\Class\C++\KHI_Project\Project\Debug\Project.exe
