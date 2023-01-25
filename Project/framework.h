@@ -1,7 +1,5 @@
 ﻿// header.h: 표준 시스템 포함 파일
 // 또는 프로젝트 특정 포함 파일이 들어 있는 포함 파일입니다.
-//
-
 #pragma once
 #pragma once
 
@@ -30,7 +28,78 @@
 #pragma comment(lib,"d3d11.lib")
 #pragma comment(lib,"d3dcompiler.lib")
 
-#include "../DirectXTex/DirectXTex.h"
-
 using namespace std;
 using namespace DirectX;
+
+//Direct X Tex
+#include "../DirectXTex/DirectXTex.h"
+
+#include "Types.h"
+
+// Device
+#include "Framework/Device/Device.h"
+
+// Render
+#include "Framework/Render/VertexLayOut.h"
+#include "Framework/Render/VertexBuffer.h"
+#include "Framework/Render/IndexBuffer.h"
+#include "Framework/Render/Shader.h"
+#include "Framework/Render/VertexShader.h"
+#include "Framework/Render/PixelShader.h"
+#include "Framework/Render/ShaderManager.h"
+#include "Framework/Render/ConstantBuffer.h"
+#include "Framework/Render/GlobalBuffer.h"
+
+// Texture
+#include "Framework/Texture/SRV.h"
+#include "Framework/Texture/SamplerState.h"
+
+// FMOD
+#include "Library/FMOD/inc/fmod.hpp"
+#pragma comment(lib, "Library/FMOD/fmod_vc.lib")
+
+// Utility
+#include "Framework/Utility/Timer.h"
+#include "Framework/Utility/Keyboard.h"
+#include "Framework/Utility/tinyxml2.h"
+#include "Framework/Utility/Audio.h"
+#include "Framework/Utility/BinaryWriter.h"
+#include "Framework/Utility/BinaryReader.h"
+
+// Math
+#include "Framework/Math/MathUtility.h"
+#include "Framework/Math/Vector2.h"
+#include "Framework/Math/Transform.h"
+#include "Framework/Math/Collider.h"
+#include "Framework/Math/RectCollider.h"
+#include "Framework/Math/CircleCollider.h"
+
+// Camera
+#include "Framework/Camera/Camera.h"
+
+// Texture
+#include "Framework/Texture/SRV.h"
+#include "Framework/Texture/SamplerState.h"
+#include "Framework/Texture/BlendState.h"
+#include "Framework/Texture/StateManager.h"
+#include "Framework/Texture/SRVManager.h"
+
+// Animation
+#include "Framework/Animation/Action.h"
+#include "Framework/Utility/MyXML.h"
+
+// BagicObj
+#include "Object/BasicObject/Quad.h"
+#include "Object/BasicObject/Sprite.h"
+#include "Object/BasicObject/Effect.h"
+#include "Object/BasicObject/EffectManager.h"
+
+// UI
+//#include "Object/UI/Button.h"
+
+// Scene
+#include "Scene/Scene.h"
+#include "Scene/SceneManager.h"
+
+// Program
+#include "Program/Program.h"

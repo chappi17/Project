@@ -1,4 +1,10 @@
-﻿  Project.cpp
-C:\Class\C++\KHI_Project\Project\Project\Project.cpp(306,16): warning C4244: '=': 'UINT'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Class\C++\KHI_Project\Project\Project\Project.cpp(307,17): warning C4244: '=': 'UINT'에서 'FLOAT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Project.vcxproj -> C:\Class\C++\KHI_Project\Project\Debug\Project.exe
+﻿  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\Debug\ColliderPixelShader.cso
+  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\Debug\ColliderVertexShader.cso
+  framework.cpp
+C:\Class\C++\KHI_Project\Project\Project\Framework\Texture\SRV.h(9,15): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Class\C++\KHI_Project\Project\Project\Framework\Texture\SRV.h(9,15): error C2143: 구문 오류: ';'이(가) '&' 앞에 없습니다.
+C:\Class\C++\KHI_Project\Project\Project\Framework\Texture\SRV.h(9,27): error C2334: '{' 앞에 예기치 않은 토큰이 있습니다. 명백한 함수 본문을 건너뜁니다.
+C:\Class\C++\KHI_Project\Project\Project\Framework\Texture\SRV.h(12,10): error C3646: '_size': 알 수 없는 재정의 지정자입니다.
+C:\Class\C++\KHI_Project\Project\Project\Framework\Texture\SRV.h(12,15): error C4430: 형식 지정자가 없습니다. int로 가정합니다. 참고: C++에서는 기본 int를 지원하지 않습니다.
+C:\Class\C++\KHI_Project\Project\Project\Object\BasicObject\Quad.h(16,36): error C2039: 'GetSize': 'SRV'의 멤버가 아닙니다.
+C:\Class\C++\KHI_Project\Project\Project\Framework\Texture\SRV.h(2): message : 'SRV' 선언을 참조하십시오.
