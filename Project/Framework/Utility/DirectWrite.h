@@ -70,7 +70,7 @@ public:
 
 	void RenderText(wstring text, RECT rect,
 		float size = 20.0f,
-		wstring fontPath = L"³ª´®½ºÄù¾î¶ó¿îµåOTF",
+		wstring fontPath = L"³ª´®½ºÄù¾î ³×¿À OTF",
 		XMFLOAT4 color = { 1,1,1,1 },
 		DWRITE_FONT_WEIGHT weight = DWRITE_FONT_WEIGHT_NORMAL,
 		DWRITE_FONT_STYLE style = DWRITE_FONT_STYLE_NORMAL,

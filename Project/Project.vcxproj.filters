@@ -144,6 +144,30 @@
     <ClInclude Include="Framework\Animation\Action.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_codec.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_common.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_dsp.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_dsp_effects.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_errors.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\FMOD\inc\fmod_output.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project.cpp">
@@ -286,5 +310,10 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="Library\FMOD\fmod_vc.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Library\FMOD\inc\fmod.cs" />
+    <None Include="Library\FMOD\inc\fmod_dsp.cs" />
+    <None Include="Library\FMOD\inc\fmod_errors.cs" />
   </ItemGroup>
 </Project>

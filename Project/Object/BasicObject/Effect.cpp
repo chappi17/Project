@@ -24,7 +24,7 @@ void Effect::Update()
 
 	_sprite->Update();
 	_action->Update();
-	_sprite->SetSpriteAction(_action->GetCurClip());
+	/*_sprite->SetSpriteAction(_action->GetCurClip());*/
 }
 
 void Effect::Render()

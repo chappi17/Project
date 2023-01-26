@@ -53,8 +53,4 @@ void Sprite::SetSpriteByFrame(Vector2 curFrame)
 	_actionBuffer->_data.startPos.y = _actionBuffer->_data.imageSize.y * (curFrame.y / _maxFrame.y);
 }
 
-void Sprite::SetSpriteAction(const Action::Clip& clip)
-{
-	_actionBuffer->_data.size = clip.size;
-	_actionBuffer->_data.startPos = clip.startPos;
-}
+

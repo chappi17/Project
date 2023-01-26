@@ -3,7 +3,7 @@
 
 Program::Program()
 {
-	srand(static_cast<UINT>(time(nullptr)));
+	
 }
 
 Program::~Program()
@@ -30,12 +30,7 @@ void Program::Render()
 {
 	Device::GetInstance()->Clear();
 
-	// imgui
-	ImGui_ImplDX11_NewFrame();
-	ImGui_ImplWin32_NewFrame();
-	ImGui::NewFrame();
-
-	Camera::GetInstance()->SetProjectionBuffer(WIN_WIDTH, WIN_HEIGHT);
+		Camera::GetInstance()->SetProjectionBuffer(WIN_WIDTH, WIN_HEIGHT);
 	Camera::GetInstance()->SetCameraWorldBuffer();
 
 	SCENE->PreRender();
@@ -50,15 +45,11 @@ void Program::Render()
 	wstring fps = L"FPS : " + to_wstring((int)Timer::GetInstance()->GetFPS());
 	RECT rect = { 0,0,100,100 };
 
-	DirectWrite::GetInstance()->GetDC()->BeginDraw();
-	DirectWrite::GetInstance()->RenderText(fps, rect);
 
 	CAMERA->SetUICameraBuffer();
 	Camera::GetInstance()->PostRender();
 	SCENE->PostRender();
-	ImGui::Render();
-	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
-	DirectWrite::GetInstance()->GetDC()->EndDraw();
+
 	Device::GetInstance()->Present();
 }

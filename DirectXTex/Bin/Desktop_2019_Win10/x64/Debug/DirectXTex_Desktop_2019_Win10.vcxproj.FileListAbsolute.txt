@@ -1,1 +1,2 @@
 C:\Class\C++\KHI\WIn_API_18\DX2D engine\DirectXTex\Bin\Desktop_2019_Win10\x64\Debug\DirectXTex.lib
+C:\Class\C++\KHI_Project\Project\DirectXTex\Bin\Desktop_2019_Win10\x64\Debug\DirectXTex.lib

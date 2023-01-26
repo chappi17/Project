@@ -42,8 +42,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg = {};
 
+    Device::Create(hWnd);
+
     // 생성
-    //DirectWrite::Create();
+
     StateManager::Create();
     Timer::Create();
     Keyboard::Create();
@@ -52,6 +54,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Camera::Create();
     EffectManager::Create();
     Audio::Create();
+    DirectWrite::Create();
     SceneManager::Create();
 
     shared_ptr<Program> program = make_shared<Program>();
@@ -78,6 +81,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     // 삭제
     SceneManager::Delete();
+    DirectWrite::Delete();
     Audio::Delete();
     EffectManager::Delete();
     Camera::Delete();
@@ -86,7 +90,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Keyboard::Delete();
     Timer::Delete();
     StateManager::Delete();
-  //  DirectWrite::Delete();
+ 
 
     Device::Delete();
     return (int)msg.wParam;

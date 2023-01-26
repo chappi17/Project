@@ -31,6 +31,7 @@ public:
 	Microsoft::WRL::ComPtr<ID3D11Device> GetDevice() { return _device; }
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> GetDeviceContext() { return _deviceContext; }
 	Microsoft::WRL::ComPtr<ID3D11RenderTargetView> GetRTV() { return _renderTargetView; }
+	Microsoft::WRL::ComPtr< IDXGISwapChain> SwapChain() { return _swapChain; }
 
 	void Clear();
 	void Present();

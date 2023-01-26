@@ -34,8 +34,6 @@ void Camera::Update()
 
 void Camera::PostRender()
 {
-	ImGui::Text("Camera Info");
-	ImGui::Text("CameraX : %0.1f, CameraY : %0.1f", _moveTransform->GetPos().x, _moveTransform->GetPos().y);
 }
 
 void Camera::ShakeStart(float magnitude, float duration, float reduceDamping)

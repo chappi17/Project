@@ -27,17 +27,39 @@
 
 #pragma comment(lib,"d3d11.lib")
 #pragma comment(lib,"d3dcompiler.lib")
-
-using namespace std;
-using namespace DirectX;
+#pragma comment(lib,"dxguid.lib")
 
 //Direct X Tex
 #include "../DirectXTex/DirectXTex.h"
 
-#include "Types.h"
+// FMOD
+#include "Library/FMOD/inc/fmod.hpp"
+#pragma comment(lib,"fmod_vc.lib")
+
+// DirectWrite
+#include <d2d1_1.h>
+#include <dwrite.h>
+
+#pragma comment(lib,"d2d1.lib")
+#pragma comment(lib,"dwrite.lib")
+
+using namespace std;
+using namespace DirectX;
 
 // Device
 #include "Framework/Device/Device.h"
+
+#include "Types.h"
+
+// Utility
+#include "Framework/Utility/Timer.h"
+#include "Framework/Utility/Keyboard.h"
+#include "Framework/Utility/tinyxml2.h"
+#include "Framework/Utility/Audio.h"
+#include "Framework/Utility/BinaryWriter.h"
+#include "Framework/Utility/BinaryReader.h"
+#include "Framework/Utility/DirectWrite.h"
+
 
 // Render
 #include "Framework/Render/VertexLayOut.h"
@@ -49,22 +71,6 @@ using namespace DirectX;
 #include "Framework/Render/ShaderManager.h"
 #include "Framework/Render/ConstantBuffer.h"
 #include "Framework/Render/GlobalBuffer.h"
-
-// Texture
-#include "Framework/Texture/SRV.h"
-#include "Framework/Texture/SamplerState.h"
-
-// FMOD
-#include "Library/FMOD/inc/fmod.hpp"
-#pragma comment(lib, "Library/FMOD/fmod_vc.lib")
-
-// Utility
-#include "Framework/Utility/Timer.h"
-#include "Framework/Utility/Keyboard.h"
-#include "Framework/Utility/tinyxml2.h"
-#include "Framework/Utility/Audio.h"
-#include "Framework/Utility/BinaryWriter.h"
-#include "Framework/Utility/BinaryReader.h"
 
 // Math
 #include "Framework/Math/MathUtility.h"
@@ -103,3 +109,5 @@ using namespace DirectX;
 
 // Program
 #include "Program/Program.h"
+
+extern Vector2 mousePos;

@@ -2,6 +2,7 @@
 #include "Audio.h"
 
 Audio* Audio::_instance = nullptr;
+
 Audio::Audio()
 {
 	System_Create(&_soundSystem);
@@ -14,7 +15,6 @@ Audio::~Audio()
 	{
 		delete pair.second;
 	}
-
 	_soundSystem->release();
 }
 
@@ -27,7 +27,6 @@ void Audio::Add(string key, string file, bool bgm)
 {
 	if (_soundMap.count(key) > 0)
 		return;
-
 	SoundInfo* info = new SoundInfo();
 
 	if (bgm)
@@ -36,7 +35,6 @@ void Audio::Add(string key, string file, bool bgm)
 		_soundSystem->createStream(file.c_str(), FMOD_DEFAULT, nullptr, IN & info->_sound);
 
 	assert(info->_sound != nullptr);
-
 	_soundMap[key] = info;
 }
 
@@ -44,14 +42,13 @@ void Audio::Play(string key, float volume)
 {
 	if (_soundMap.count(key) == 0)
 		return;
-
 	_soundSystem->playSound(_soundMap[key]->_sound, nullptr, false, &_soundMap[key]->_channel);
 	_soundMap[key]->_channel->setVolume(volume);
 }
 
 void Audio::Stop(string key)
 {
-	if (_soundMap.count(key) == 0)
+	if (_soundMap.count(key) > 0)
 		return;
 
 	_soundMap[key]->_channel->stop();
@@ -59,7 +56,7 @@ void Audio::Stop(string key)
 
 void Audio::Pause(string key)
 {
-	if (_soundMap.count(key) == 0)
+	if (_soundMap.count(key) > 0)
 		return;
 
 	_soundMap[key]->_channel->setPaused(true);
@@ -67,7 +64,7 @@ void Audio::Pause(string key)
 
 void Audio::Resume(string key)
 {
-	if (_soundMap.count(key) == 0)
+	if (_soundMap.count(key) > 0)
 		return;
 
 	_soundMap[key]->_channel->setPaused(false);
@@ -75,7 +72,7 @@ void Audio::Resume(string key)
 
 void Audio::SetVolume(string key, float volume)
 {
-	if (_soundMap.count(key) == 0)
+	if (_soundMap.count(key) > 0)
 		return;
 
 	if (_soundMap[key]->_channel == nullptr)
@@ -92,11 +89,10 @@ void Audio::SetVolume(string key, float volume)
 
 bool Audio::IsPlaySound(string key)
 {
-	if (_soundMap.count(key) == 0)
+	if (_soundMap.count(key) > 0)
 		return false;
-
 	bool isPlay = false;
-	_soundMap[key]->_channel->isPlaying(IN &isPlay);
+	_soundMap[key]->_channel->isPlaying(IN & isPlay);
 
 	return isPlay;
 }
