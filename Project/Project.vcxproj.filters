@@ -168,6 +168,15 @@
     <ClInclude Include="Library\FMOD\inc\fmod_output.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\GameObject\Brotato\Bro_Player.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\GameObject\Brotato\Bro_BackGround.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Brotato\BrotatoScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project.cpp">
@@ -284,6 +293,15 @@
     <ClCompile Include="Framework\Animation\Action.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Object\GameObject\Brotato\Bro_Player.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\GameObject\Brotato\Bro_BackGround.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Brotato\BrotatoScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project.rc">
@@ -295,6 +313,9 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Project.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Brotato\BackGround\Bro_Background.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

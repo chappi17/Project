@@ -1,14 +1,16 @@
 #include "framework.h"
 #include "SceneManager.h"
 
+#include "../Scene/Brotato/BrotatoScene.h"
+
 SceneManager* SceneManager::_instance = nullptr;
 
 SceneManager::SceneManager()
 {
-	//shared_ptr<Scene> cupScene = make_shared<CupHeadScene>();
-	//_sceneTable["CupHead"] = cupScene;
+	shared_ptr<Scene> broScene = make_shared<BrotatoScene>();
+	_sceneTable["BroScene"] = broScene;
 
-	/*_curScene = cupScene;*/
+	_curScene = broScene;
 }
 
 SceneManager::~SceneManager()

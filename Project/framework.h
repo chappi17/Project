@@ -103,6 +103,11 @@ using namespace DirectX;
 // UI
 //#include "Object/UI/Button.h"
 
+// Brotato
+#include "Object/GameObject/Brotato/Bro_BackGround.h"
+#include "Object/GameObject/Brotato/Bro_Player.h"
+
+
 // Scene
 #include "Scene/Scene.h"
 #include "Scene/SceneManager.h"

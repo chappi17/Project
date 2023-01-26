@@ -151,6 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\Brotato\BrotatoScene.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Bro_BackGround.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Bro_Player.h" />
     <ClInclude Include="Framework\Animation\Action.h" />
     <ClInclude Include="Framework\Camera\Camera.h" />
     <ClInclude Include="Framework\Device\Device.h" />
@@ -204,6 +207,9 @@
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\Brotato\BrotatoScene.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Bro_BackGround.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Bro_Player.cpp" />
     <ClCompile Include="Framework\Animation\Action.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />
     <ClCompile Include="Framework\Device\Device.cpp" />
@@ -257,6 +263,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Project.ico" />
+    <Image Include="Resource\Brotato\BackGround\Bro_Background.png" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>

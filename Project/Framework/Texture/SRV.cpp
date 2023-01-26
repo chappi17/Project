@@ -3,7 +3,7 @@
 
 SRV::SRV(wstring file)
 {
-    wstring path = L"Resource/Texture/" + file;
+    wstring path = L"Resource/Brotato/" + file;
     ScratchImage image;
     LoadFromWICFile(path.data(), WIC_FLAGS_NONE, nullptr, image);
 
