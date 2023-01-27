@@ -86,8 +86,8 @@ bool Collider::IsCollision(shared_ptr<Collider> col, bool isObb)
 
 void Collider::CreateData()
 {
-    _vs = make_shared<VertexShader>(L"Collider/ColliderVertexShader");
-    _ps = make_shared<PixelShader>(L"Collider/ColliderPixelShader");
+    _vs = make_shared<VertexShader>(L"ColliderShader/ColliderVertexShader");
+    _ps = make_shared<PixelShader>(L"ColliderShader/ColliderPixelShader");
 
     UINT stride = static_cast<UINT>(sizeof(Vertex_Bagic));
     _vertexBuffer = make_shared<VertexBuffer>(&_vertices[0], stride, _vertices.size());

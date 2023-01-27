@@ -19,11 +19,13 @@ public:
 
 	Vector2& GetScale();
 	Vector2 GetWorldScale();
+
 	// 단순 움직임
 	Vector2& GetPos() { return _pos; }
 	Vector2 GetWorldPos();
 	float& GetAngle();
 	float GetWorldAngle();
+
 
 	void SetParent(shared_ptr<Transform> parent) { _parent = parent; }
 	XMMATRIX* GetMatrix() { return &_srtMatrix; }

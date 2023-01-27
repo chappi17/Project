@@ -12,5 +12,6 @@ public:
 private:
 
 	shared_ptr<Bro_BackGround> _bg;
+	shared_ptr<Bro_Player> _player;
 };
 

@@ -264,6 +264,7 @@
   <ItemGroup>
     <Image Include="Project.ico" />
     <Image Include="Resource\Brotato\BackGround\Bro_Background.png" />
+    <Image Include="Resource\Brotato\Player\Player.png" />
     <Image Include="small.ico" />
   </ItemGroup>
   <ItemGroup>
