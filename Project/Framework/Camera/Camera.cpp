@@ -113,17 +113,17 @@ void Camera::FollowMode()
 {
 	Vector2 targetPos = _target->GetWorldPos() - _offset;
 
-	//if (targetPos.x < _leftBottom.x)
-	//	targetPos.x = _leftBottom.x;
+	if (targetPos.x < _leftBottom.x - 200)
+		targetPos.x = _leftBottom.x - 200;
 
-	//if (targetPos.x > _rightTop.x - WIN_WIDTH)
-	//	targetPos.x = _rightTop.x - WIN_WIDTH;
+	if (targetPos.x > _rightTop.x + 200)
+		targetPos.x = _rightTop.x + 200;
 
-	//if (targetPos.y < _leftBottom.y)
-	//	targetPos.y = _leftBottom.y;
-	// 
-	//if (targetPos.y > _rightTop.y - WIN_HEIGHT)
-	//	targetPos.y = _rightTop.y - WIN_HEIGHT;
+	if (targetPos.y < _leftBottom.y - 400)
+		targetPos.y = _leftBottom.y - 400;
+	 
+	if (targetPos.y > _rightTop.y + 400)
+		targetPos.y = _rightTop.y + 400;
 
 	_transform->GetPos() = LERP(_transform->GetPos(), targetPos * -1, DELTA_TIME * 5.0f);
 }
