@@ -83,9 +83,9 @@ void Device::CreateDoubleBuffer()
 
 void Device::Clear()
 {
-    FLOAT myColorR = 120.0f / 255.0f;
-    FLOAT myColorG = 120.0f / 255.0f;
-    FLOAT myColorB = 120.0f / 255.0f;
+    FLOAT myColorR = 0.1f / 255.0f;
+    FLOAT myColorG = 0.1f / 255.0f;
+    FLOAT myColorB = 0.1f / 255.0f;
 
     FLOAT clearColor[4] = { myColorR, myColorG, myColorB, 1.0f };
 

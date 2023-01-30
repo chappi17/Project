@@ -8,9 +8,13 @@ public:
 	void Update();
 	void Render();
 
-	Vector2 GetSize();
+	Vector2 GetSize() { return _mainBg->GetSize(); }
+	Vector2 GetMainPos() { return _mainBg->GetTransform()->GetWorldPos(); }
+
+	Vector2 Limit();
+
+	
 
 private:
-
 	shared_ptr<Quad>	_mainBg;
 };

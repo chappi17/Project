@@ -30,7 +30,7 @@ void Program::Render()
 {
 	Device::GetInstance()->Clear();
 
-		Camera::GetInstance()->SetProjectionBuffer(WIN_WIDTH, WIN_HEIGHT);
+	Camera::GetInstance()->SetProjectionBuffer(WIN_WIDTH, WIN_HEIGHT);
 	Camera::GetInstance()->SetCameraWorldBuffer();
 
 	SCENE->PreRender();
