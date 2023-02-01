@@ -15,10 +15,12 @@ public:
 
 	void Attack(shared_ptr<Bro_Player> player);
 
+	void LeftRight(shared_ptr<Bro_Player> player);
+
 private:
 	shared_ptr<Collider> _collider;
 	shared_ptr<Transform> _transform;
-	shared_ptr<Quad> _monster;	
+	shared_ptr<Quad> _quad;	
 
 	shared_ptr<LeftRightBuffer> _leftright;
 

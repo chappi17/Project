@@ -19,9 +19,10 @@ BrotatoScene::~BrotatoScene()
 
 void BrotatoScene::Update()
 {
-	_monster->Attack(_player);
 	_player->Update();
 	_monster->Update();
+	_monster->Attack(_player);
+	_monster->LeftRight(_player);
 }
 
 void BrotatoScene::Render()

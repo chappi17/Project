@@ -37,6 +37,7 @@ protected:
 
 	shared_ptr<LeftRightBuffer> _leftRightBuffer;
 
+
 	// 컴포넌트 패턴 -> 유니티의 대표적인 디자인패턴
 	// - 부품처럼 갖다 쓰는 형식
 };

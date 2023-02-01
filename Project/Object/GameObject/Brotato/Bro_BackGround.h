@@ -13,8 +13,6 @@ public:
 
 	Vector2 Limit();
 
-	
-
 private:
 	shared_ptr<Quad>	_mainBg;
 };
