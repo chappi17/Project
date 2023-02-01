@@ -4,7 +4,7 @@
 Bro_Player::Bro_Player()
 {
 	_transform = make_shared<Transform>();
-	_collider = make_shared<CircleCollider>(20);
+	_collider = make_shared<CircleCollider>(25);
 	wstring path = (L"Player/");
 	_player = make_shared<Quad>(path + L"Player.png");
 	_player->GetTransform()->GetScale().x *= 0.25f;

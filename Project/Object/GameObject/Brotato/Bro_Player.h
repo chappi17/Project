@@ -1,4 +1,5 @@
 #pragma once
+class Bro_Monster;
 class Bro_Player
 {
 public:
@@ -23,6 +24,7 @@ private:
 
 	shared_ptr<Quad> _player;
 	float _speed = 250.0f;
+
 
 	shared_ptr<LeftRightBuffer> _leftright;
 
