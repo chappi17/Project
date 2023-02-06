@@ -1,12 +1,13 @@
 
-x64/
-Debug/
-.vs/
-.bin/
-.obj/
+/x64/
+/Debug/
+/.vs/
+/.bin/
+/.obj/
 
-*.vs
-*.obj
-*.exe
-*.bin
-*.pdb
+/.vs
+/.obj
+/.exe
+/.bin
+/.pdb
+x64/Debug/Project.pdb

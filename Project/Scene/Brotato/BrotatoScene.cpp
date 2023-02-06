@@ -8,14 +8,14 @@ BrotatoScene::BrotatoScene()
 	CAMERA->SetTarget(_player->GetTransform());
 	CAMERA->SetOffSet({ CENTER_X,CENTER_Y });
 
-	//for (int i = 0; i < 100; i++)
-	//{
-	//	auto monster = make_shared<Bro_Monster>();
-	//	/*if (i < 30)*/
-	//	
-	//		monster->isActive = true;
-	//		_monsters.push_back(monster);		
-	//}
+	for (int i = 0; i < 100; i++)
+	{
+		auto monster = make_shared<Bro_Monster>();
+		/*if (i < 30)*/
+		
+			monster->isActive = true;
+			_monsters.push_back(monster);		
+	}
 	_bg->Update();
 }
 
