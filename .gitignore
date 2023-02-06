@@ -27,6 +27,7 @@ Debug/
 .vs/
 .bin/
 .obj/
+.vs/Project/v16
 
 *.vs
 *.obj
