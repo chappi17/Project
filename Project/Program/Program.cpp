@@ -45,11 +45,13 @@ void Program::Render()
 	wstring fps = L"FPS : " + to_wstring((int)Timer::GetInstance()->GetFPS());
 	RECT rect = { 0,0,100,100 };
 
+	DirectWrite::GetInstance()->GetDC()->BeginDraw();
+	DirectWrite::GetInstance()->RenderText(fps, rect);
 
 	CAMERA->SetUICameraBuffer();
 	Camera::GetInstance()->PostRender();
 	SCENE->PostRender();
 
-
+	DirectWrite::GetInstance()->GetDC()->EndDraw();
 	Device::GetInstance()->Present();
 }

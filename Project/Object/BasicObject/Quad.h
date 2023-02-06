@@ -18,6 +18,7 @@ public:
 	void SetLeftRight_leftRightBuffer(int leftRight);
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
+	shared_ptr<Collider> GetCollider() { return _collider; }
 
 protected:
 	void CreateVertricesAndIndices();
@@ -32,6 +33,7 @@ protected:
 
 	Vector2 _size = { 1.0f,1.0f };
 	shared_ptr<Transform> _transform;
+	shared_ptr<Collider> _collider;
 
 	shared_ptr<SRV> _srv; 
 

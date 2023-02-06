@@ -168,16 +168,19 @@
     <ClInclude Include="Library\FMOD\inc\fmod_output.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\GameObject\Brotato\Bro_Player.h">
+    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\GameObject\Brotato\Bro_BackGround.h">
+    <ClInclude Include="Object\GameObject\Brotato\UI\Bro_BackGround.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Scene\Brotato\BrotatoScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\GameObject\Brotato\Bro_Monster.h">
+    <ClInclude Include="Object\GameObject\Brotato\Monster\Bro_Monster.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_Gun.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -296,16 +299,19 @@
     <ClCompile Include="Framework\Animation\Action.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\GameObject\Brotato\Bro_Player.cpp">
+    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\GameObject\Brotato\Bro_BackGround.cpp">
+    <ClCompile Include="Object\GameObject\Brotato\UI\Bro_BackGround.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scene\Brotato\BrotatoScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\GameObject\Brotato\Bro_Monster.cpp">
+    <ClCompile Include="Object\GameObject\Brotato\Monster\Bro_Monster.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_Gun.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -325,6 +331,30 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\Brotato\Player\Player.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Brotato\Gun\gun.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Brotato\Gun\SMG.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Brotato\Gun\레이저총.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Brotato\Gun\미니건.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Brotato\Gun\샷건.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Brotato\Gun\의료용 총.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Brotato\Gun\테이저.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Brotato\Gun\화염방사기.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

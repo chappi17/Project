@@ -1,2 +1,12 @@
 
-Project/.vs
+x64/
+Debug/
+.vs/
+.bin/
+.obj/
+
+*.vs
+*.obj
+*.exe
+*.bin
+*.pdb

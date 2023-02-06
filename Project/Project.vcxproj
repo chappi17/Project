@@ -151,10 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Object\GameObject\Brotato\Bro_Monster.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_Gun.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Monster\Bro_Monster.h" />
     <ClInclude Include="Scene\Brotato\BrotatoScene.h" />
-    <ClInclude Include="Object\GameObject\Brotato\Bro_BackGround.h" />
-    <ClInclude Include="Object\GameObject\Brotato\Bro_Player.h" />
+    <ClInclude Include="Object\GameObject\Brotato\UI\Bro_BackGround.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player.h" />
     <ClInclude Include="Framework\Animation\Action.h" />
     <ClInclude Include="Framework\Camera\Camera.h" />
     <ClInclude Include="Framework\Device\Device.h" />
@@ -208,10 +209,11 @@
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Object\GameObject\Brotato\Bro_Monster.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_Gun.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Monster\Bro_Monster.cpp" />
     <ClCompile Include="Scene\Brotato\BrotatoScene.cpp" />
-    <ClCompile Include="Object\GameObject\Brotato\Bro_BackGround.cpp" />
-    <ClCompile Include="Object\GameObject\Brotato\Bro_Player.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\UI\Bro_BackGround.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player.cpp" />
     <ClCompile Include="Framework\Animation\Action.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />
     <ClCompile Include="Framework\Device\Device.cpp" />
@@ -266,6 +268,14 @@
   <ItemGroup>
     <Image Include="Project.ico" />
     <Image Include="Resource\Brotato\BackGround\Bro_Background.png" />
+    <Image Include="Resource\Brotato\Gun\gun.png" />
+    <Image Include="Resource\Brotato\Gun\SMG.png" />
+    <Image Include="Resource\Brotato\Gun\레이저총.png" />
+    <Image Include="Resource\Brotato\Gun\미니건.png" />
+    <Image Include="Resource\Brotato\Gun\샷건.png" />
+    <Image Include="Resource\Brotato\Gun\의료용 총.png" />
+    <Image Include="Resource\Brotato\Gun\테이저.png" />
+    <Image Include="Resource\Brotato\Gun\화염방사기.png" />
     <Image Include="Resource\Brotato\Player\Player.png" />
     <Image Include="small.ico" />
   </ItemGroup>
