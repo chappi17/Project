@@ -1,12 +1,23 @@
-﻿  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\x64\Debug\ActionPixelShader.cso
-  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\x64\Debug\ButtonPixelShader.cso
-  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\x64\Debug\ColliderPixelShader.cso
-  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\x64\Debug\ColliderVertexShader.cso
-  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\x64\Debug\SpritePixelShader.cso
-  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\x64\Debug\TexturePixelShader.cso
-  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\x64\Debug\TextureVertexShader.cso
-FXC : warning X4717: Effects deprecated for D3DCompiler_47
-  
-  compilation object save succeeded; see C:\Class\C++\KHI_Project\Project\x64\Debug\tutorial.cso
-  LINK : C:\Class\C++\KHI_Project\Project\x64\Debug\Project.exe을(를) 찾을 수 없거나 마지막 증분 링크에 의해 빌드되지 않았습니다. 전체 링크를 수행하고 있습니다.
+﻿  Bro_Player_Gun.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(149,77): warning C4244: '인수': '_Ty'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2006): message : 컴파일되는 함수 템플릿 인스턴스화 'void std::_Construct_in_place<_Ty,int>(_Ty &,int &&) noexcept(false)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=CircleCollider
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2725): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<int>(int &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=CircleCollider
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(2726): message : 컴파일되는 함수 템플릿 인스턴스화 'std::_Ref_count_obj2<_Ty>::_Ref_count_obj2<int>(int &&)'에 대한 참조를 확인하세요.
+          with
+          [
+              _Ty=CircleCollider
+          ]
+C:\Class\C++\KHI_Project\Project\Project\Object\GameObject\Brotato\Player\Bro_Player_Gun.cpp(9): message : 컴파일되는 함수 템플릿 인스턴스화 'std::shared_ptr<CircleCollider> std::make_shared<CircleCollider,int>(int &&)'에 대한 참조를 확인하세요.
   Project.vcxproj -> C:\Class\C++\KHI_Project\Project\x64\Debug\Project.exe

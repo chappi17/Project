@@ -357,6 +357,9 @@
     <Image Include="Resource\Brotato\Gun\화염방사기.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Brotato\Effect\Bullet.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\tutorial.hlsl" />

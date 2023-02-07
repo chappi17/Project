@@ -16,11 +16,14 @@ public:
 	void Idle();
 	void Moving();
 
+	void Fire();
+
 	bool isActive = true;
 
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
 	shared_ptr<Collider> GetCollider() { return _collider; }
+	shared_ptr<Bro_Player_Gun> GetGun() { return _gun; }
 
 	void SetLimit(Vector2 bg) { _bg = bg; }
 
@@ -28,8 +31,12 @@ private:
 	shared_ptr<Collider> _collider;
 	shared_ptr<Transform> _transform;
 	shared_ptr<Bro_Player_Gun> _gun;
+	shared_ptr<Transform> _firePos;
 
-	shared_ptr<Quad> _player;
+	
+	
+
+	shared_ptr<Quad> _quad;
 	float _speed = 250.0f;
 
 

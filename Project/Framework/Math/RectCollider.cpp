@@ -180,6 +180,11 @@ bool RectCollider::IsCollision_OBB(shared_ptr<RectCollider> other)
 	return true;
 }
 
+bool RectCollider::Block(shared_ptr<CircleCollider> other)
+{
+	return false;
+}
+
 
 Vector2 RectCollider::LeftTop()
 {

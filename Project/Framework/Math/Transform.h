@@ -1,5 +1,5 @@
 #pragma once
-
+class Collider;
 class MatrixBuffer;
 
 class Transform
@@ -28,6 +28,7 @@ public:
 
 
 	void SetParent(shared_ptr<Transform> parent) { _parent = parent; }
+
 	XMMATRIX* GetMatrix() { return &_srtMatrix; }
 
 private:

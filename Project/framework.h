@@ -106,6 +106,7 @@ using namespace DirectX;
 // Brotato
 #include "Object/GameObject/Brotato/UI/Bro_BackGround.h"
 #include "Object/GameObject/Brotato/Player/Bro_Player_Gun.h"
+//#include "Object/GameObject/Brotato/Player/Bro_Player_Bullet.h"
 #include "Object/GameObject/Brotato/Player/Bro_Player.h"
 #include "Object/GameObject/Brotato/Monster/Bro_Monster.h"
 

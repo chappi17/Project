@@ -11,7 +11,7 @@ BrotatoScene::BrotatoScene()
 	for (int i = 0; i < 100; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
-		/*if (i < 30)*/
+		if (i < 30)
 		
 			monster->isActive = true;
 			_monsters.push_back(monster);		
@@ -26,6 +26,7 @@ BrotatoScene::~BrotatoScene()
 void BrotatoScene::Update()
 {
 	_player->Update();
+	_player->GetGun()->Target(_monsters);
 
 	for (auto monster : _monsters)
 	{		

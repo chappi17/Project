@@ -4,8 +4,8 @@
 
 Bro_Monster::Bro_Monster()
 {
-	CreateMonsters();	
-	_quad->GetTransform()->SetParent(_transform);
+	CreateMonsters();
+	_quad->GetTransform()->SetParent(_collider->GetTransform());
 	_collider->GetTransform()->SetParent(_transform);
 }
 
@@ -14,9 +14,7 @@ Bro_Monster::~Bro_Monster()
 }
 
 void Bro_Monster::Update()
-{	
-	
-
+{
 	Idle();
 	if (!isActive) return;
 
@@ -75,7 +73,7 @@ void Bro_Monster::CreateMonsters()
 		_quad->GetTransform()->GetScale().y *= 0.1f;
 
 		_transform = make_shared<Transform>();
-		_collider = make_shared<CircleCollider>(30);		
+		_collider = make_shared<CircleCollider>(15);		
 	
 		float RespawnX = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
 		float RespawnY = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);

@@ -1,4 +1,5 @@
 #pragma once
+class Bro_Monster;
 class Bro_Player_Gun
 {
 public:
@@ -11,10 +12,15 @@ public:
 	void Update();
 	void Render();
 
-private:
+	void Target(vector<shared_ptr<Bro_Monster>>& monsters);
 
+	bool IsCollision(shared_ptr<Collider> _col);
+
+private:
 	shared_ptr<Collider> _collider;
 	shared_ptr<Transform> _transform;
 	shared_ptr<Quad> _quad;
+
+	shared_ptr<Collider> _radious;
 };
 
