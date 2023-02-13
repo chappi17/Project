@@ -16,6 +16,8 @@ public:
 	//void Attack(vector<shared_ptr<Bro_Monster>>& monsters);
 
 	void SetDirection(Vector2 dir);
+
+	void SetActive(bool isActive);
 	
 
 	bool isActive = false;

@@ -133,6 +133,7 @@ void Bro_Player::ResetBullet()
 	{
 		_bullet->GetTransform()->SetPos((_firePos->GetWorldPos()));
 		_quad->GetTransform()->GetAngle() = 0;
+
 	
 		_bullet->Update();
 	}	

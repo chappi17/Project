@@ -62,4 +62,14 @@ void Bro_Player_Bullet::SetDirection(Vector2 dir)
     _direction = dir;
 }
 
+void Bro_Player_Bullet::SetActive(bool isActive)
+{
+    isActive = false;
+    _collider->_isActive = isActive;
+
+    _transform->SetSRT();
+    _collider->GetTransform()->SetSRT();
+    _quad->GetTransform()->SetSRT();
+}
+
 
