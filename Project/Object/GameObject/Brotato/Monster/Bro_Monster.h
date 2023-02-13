@@ -24,6 +24,7 @@ public:
 
 	shared_ptr<Collider> GetCollider() { return _collider; }
 	shared_ptr<Transform> GetTransform() { return _transform; }
+	shared_ptr<Quad> GetQuad() { return _quad; }
 
 	void SetActive(bool isActive);
 	bool IsActive() { return _isActive; }
@@ -39,6 +40,7 @@ private:
 	vector<shared_ptr<Quad>> _quads;
 
 	shared_ptr<LeftRightBuffer> _leftright;
+
 
 	Vector2 _direction = { 0,0 };
 	float _speed = 100.0f;

@@ -25,16 +25,17 @@ void Program::Update()
 
 	Camera::GetInstance()->Update();
 
-	// 20 초 지나면 상점전환
-	if (Timer::GetInstance()->GetRunTime() >= 20)
-	{
 
-	}
 }
 
 void Program::Render()
 {
 	Device::GetInstance()->Clear();
+
+	// imgui
+	ImGui_ImplDX11_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
 
 	Camera::GetInstance()->SetProjectionBuffer(WIN_WIDTH, WIN_HEIGHT);
 	Camera::GetInstance()->SetCameraWorldBuffer();
@@ -56,13 +57,14 @@ void Program::Render()
 
 	DirectWrite::GetInstance()->GetDC()->BeginDraw();
 	DirectWrite::GetInstance()->RenderText(fps, rect);
-	DirectWrite::GetInstance()->RenderText(time, rect2);
-
-
+	DirectWrite::GetInstance()->RenderText(time, rect2);	
 
 	CAMERA->SetUICameraBuffer();
 	Camera::GetInstance()->PostRender();
 	SCENE->PostRender();
+
+	ImGui::Render();
+	ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
 	DirectWrite::GetInstance()->GetDC()->EndDraw();
 	Device::GetInstance()->Present();

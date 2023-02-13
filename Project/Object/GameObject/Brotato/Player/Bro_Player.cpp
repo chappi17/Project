@@ -12,14 +12,26 @@ Bro_Player::Bro_Player()
 	_transform->GetPos() = { CENTER_X, CENTER_Y };
 
 	wstring path = (L"Player/");
-	_quad = make_shared<Quad>(path + L"Player.png");
 	_gun = make_shared<Bro_Player_Gun>();
-	_gun->GetTransform()->GetPos().y = -20;
+	_railgun = make_shared<Bro_Player_RailGun>();
+	_smg = make_shared<Bro_Player_SMG>();
+	
 
+	_gun->GetTransform()->GetPos().x = +40;
+	_smg->GetTransform()->GetPos().x = -40;
+	_railgun->GetTransform()->GetPos().y = +40;
+	
+	//_railgun->SetActive(true);
+	//_smg->SetActive(true);
+
+	_quad = make_shared<Quad>(path + L"Player.png");
 	_quad->GetTransform()->GetScale().x *= 0.25f;
 	_quad->GetTransform()->GetScale().y *= 0.25f;
 
 	_gun->GetTransform()->SetParent(_transform);
+	_railgun->GetTransform()->SetParent(_transform);
+	_smg->GetTransform()->SetParent(_transform);
+
 	_collider->GetTransform()->SetParent(_transform);
 	_quad->GetTransform()->SetParent(_transform);
 	_radious->GetTransform()->SetParent(_transform);
@@ -40,7 +52,12 @@ void Bro_Player::Update()
 	Idle();
 	_transform->Update();
 	_quad->Update();
+
 	_gun->Update();
+	_railgun->Update();
+	_smg->Update();
+
+
 	_collider->Update();
 	_radious->Update();
 	_firePos->Update();
@@ -54,7 +71,11 @@ void Bro_Player::Render()
 		return;
 
 	_quad->Render();
+
 	_gun->Render();
+	_railgun->Render();
+	_smg->Render();
+
 	_collider->Render();
 	_radious->Render();
 	_bullet->Render();
@@ -164,6 +185,10 @@ void Bro_Player::Shot()
 
 		GetGun()->GetQuad()->GetTransform()->SetAngle(angle);
 		GetGun()->GetCollider()->GetTransform()->SetAngle(angle);
+		GetRailGun()->GetQuad()->GetTransform()->SetAngle(angle);
+		GetRailGun()->GetCollider()->GetTransform()->SetAngle(angle);
+		GetSMG()->GetQuad()->GetTransform()->SetAngle(angle);
+		GetSMG()->GetCollider()->GetTransform()->SetAngle(angle);
 
 		_bullet->SetActive(true);
 		_bullet->SetDirection(direction.Normal());

@@ -52,7 +52,22 @@ void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 
 	if (_collider->IsCollision(player->GetCollider()))
 	{
-		player->SetActive(false);
+		if (!player->_damageDelay)
+		{
+			--player->GetHp();
+			player->_damageDelay = true;
+			if (Timer::GetInstance()->GetElasedTime() < 2.0f)
+			{
+				player->_damageDelay = false;
+			}
+		}		
+		
+		if (player->GetHp() < 0)
+		{
+			player->SetActive(false);
+			player->Update();
+		}
+		
 	}
 }
 

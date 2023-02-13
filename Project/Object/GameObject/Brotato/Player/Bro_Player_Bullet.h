@@ -21,9 +21,6 @@ public:
 
 private:
 	bool _isActive = false;
-	double		_lastTime = 0.0;
-	double		_curTime = 0.0;
-	double		_delay = 1.5;
 
 	shared_ptr<Transform>	_transform;
 	shared_ptr<Quad>		_quad;

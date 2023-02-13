@@ -20,9 +20,14 @@ public:
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
 	shared_ptr<Collider> GetCollider() { return _collider; }
+
 	shared_ptr<Bro_Player_Gun> GetGun() { return _gun; }
+	shared_ptr<Bro_Player_RailGun> GetRailGun() { return _railgun; }
+	shared_ptr<Bro_Player_SMG> GetSMG() { return _smg; }
+
 	shared_ptr<Bro_Player_Bullet> GetBullet() { return _bullet; }
 	shared_ptr<Collider> GetRadius() { return _radious; }
+	UINT& GetHp() { return _Hp; }
 
 
 	void SetLimit(Vector2 bg) { _bg = bg; }
@@ -34,15 +39,19 @@ public:
 	void Shot();
 	void SetActive(bool isActive);
 	bool IsActive() { return _isActive; }
-
-	UINT Hp = 12;
+	bool _damageDelay = false;
 
 private:
 
 	bool _isActive = true;
 	shared_ptr<Collider> _collider;
 	shared_ptr<Transform> _transform;
+
 	shared_ptr<Bro_Player_Gun> _gun;
+	shared_ptr<Bro_Player_RailGun>	_railgun;
+	shared_ptr<Bro_Player_SMG> _smg;
+
+
 	shared_ptr<Transform> _firePos;
 	shared_ptr<class Bro_Player_Bullet > _bullet;
 	shared_ptr<Bro_Monster> _target;
@@ -57,9 +66,10 @@ private:
 	float _delay = 1.0f;
 
 	shared_ptr<LeftRightBuffer> _leftright;
-
 	Vector2 _limitMove;
-
 	Vector2 _bg;
+
+
+	UINT _Hp = 12;
 };
 

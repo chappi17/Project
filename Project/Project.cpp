@@ -43,6 +43,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg = {};
 
     Device::Create(hWnd);
+	// ImGuI
+	ImGui::CreateContext();
+	ImGui::StyleColorsDark();
+	ImGui_ImplWin32_Init(hWnd);
+	ImGui_ImplDX11_Init(DEVICE.Get(), DC.Get());
+    
 
     // 생성
 
@@ -89,8 +95,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     SRVManager::Delete();
     Keyboard::Delete();
     Timer::Delete();
-    StateManager::Delete();
- 
+    StateManager::Delete();  
+
+    //ImGUI
+    ImGui_ImplDX11_Shutdown();
+    ImGui_ImplWin32_Shutdown();
+    ImGui::DestroyContext();
 
     Device::Delete();
     return (int)msg.wParam;
@@ -147,11 +157,15 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
         return FALSE;
     }
 
+    SetMenu(hWnd, NULL);
     ShowWindow(hWnd, nCmdShow);
     UpdateWindow(hWnd);
 
     return TRUE;
 }
+
+extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+
 
 //
 //  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
@@ -165,6 +179,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam))
+		return true;
+
     switch (message)
     {
     case WM_COMMAND:

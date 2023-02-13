@@ -23,28 +23,21 @@ Bro_Player_Gun::~Bro_Player_Gun()
 
 void Bro_Player_Gun::Update()
 {
-
 	_transform->Update();
 	_collider->Update();
 	_quad->Update();
-
-
-	//for (auto bullet : _bullets)
-	//{
-	//	bullet->Update();
-	//}
 }
 
 void Bro_Player_Gun::Render()
 {
 	_collider->Render();
 	_quad->Render();
+}
 
-
-	//for (auto bullet : _bullets)
-	//{
-	//	bullet->Render();
-	//}
+void Bro_Player_Gun::SetActive(bool isActive)
+{
+	_isActive = isActive;
+	_collider->_isActive = isActive;
 }
 
 

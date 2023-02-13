@@ -32,6 +32,11 @@
 //Direct X Tex
 #include "../DirectXTex/DirectXTex.h"
 
+//ImGUI
+#include "../ImGUI/imgui.h"
+#include "../ImGUI/imgui_impl_win32.h"
+#include "../ImGUI/imgui_impl_dx11.h"
+
 // FMOD
 #include "Library/FMOD/inc/fmod.hpp"
 #pragma comment(lib,"fmod_vc.lib")
@@ -106,6 +111,8 @@ using namespace DirectX;
 // Brotato
 #include "Object/GameObject/Brotato/UI/Bro_BackGround.h"
 #include "Object/GameObject/Brotato/Player/Bro_Player_Gun.h"
+#include "Object/GameObject/Brotato/Player/Bro_Player_SMG.h"
+#include "Object/GameObject/Brotato/Player/Bro_Player_RailGun.h"
 
 #include "Object/GameObject/Brotato/Player/Bro_Player_Bullet.h"
 
