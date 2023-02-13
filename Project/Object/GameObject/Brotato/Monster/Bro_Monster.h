@@ -25,12 +25,16 @@ public:
 	shared_ptr<Collider> GetCollider() { return _collider; }
 	shared_ptr<Transform> GetTransform() { return _transform; }
 
-	bool isActive = false;
+	void SetActive(bool isActive);
+	bool IsActive() { return _isActive; }
+
+	UINT DMG = 1;
 
 private:
+	bool _isActive = false;
 	shared_ptr<Collider> _collider;
 	shared_ptr<Transform> _transform;
-	shared_ptr<Quad> _quad;	
+	shared_ptr<Quad> _quad;
 
 	vector<shared_ptr<Quad>> _quads;
 

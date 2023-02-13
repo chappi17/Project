@@ -19,10 +19,10 @@ public:
 	virtual bool IsCollision(shared_ptr<CircleCollider> circle) override;
 	virtual bool IsCollision(shared_ptr<RectCollider> other) override;
 
+	virtual bool Block(shared_ptr<CircleCollider> other) override;
+
 	virtual bool IsCollision_OBB(shared_ptr<CircleCollider> circle) override;
 	virtual bool IsCollision_OBB(shared_ptr<RectCollider> other) override;
-
-	virtual bool Block(shared_ptr<CircleCollider> other) override;
 
 	Vector2 LeftTop();
 	Vector2 RightBottom();

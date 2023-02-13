@@ -13,14 +13,15 @@ public:
 	void Update();
 	void Render();
 
+	UINT DMG = 1;
 private:
 	shared_ptr<Collider> _collider;
 	shared_ptr<Transform> _transform;
 	shared_ptr<Quad> _quad;
-	
-	
+
+
 	//vector<shared_ptr<class Bro_Player_Bullet>> _bullets;
 
-	
+
 };
 

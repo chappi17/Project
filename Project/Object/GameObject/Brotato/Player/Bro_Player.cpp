@@ -2,19 +2,19 @@
 #include "Bro_Player.h"
 
 Bro_Player::Bro_Player()
-{	
-	_transform = make_shared<Transform>();	
+{
+	_transform = make_shared<Transform>();
 	_collider = make_shared<CircleCollider>(25);
 	_radious = make_shared<CircleCollider>(300);
 	_bullet = make_shared<Bro_Player_Bullet>();
 	_firePos = make_shared<Transform>();
 
-	_transform->GetPos() = { CENTER_X, CENTER_Y};
+	_transform->GetPos() = { CENTER_X, CENTER_Y };
 
 	wstring path = (L"Player/");
 	_quad = make_shared<Quad>(path + L"Player.png");
 	_gun = make_shared<Bro_Player_Gun>();
-	_gun->GetTransform()->GetPos().y = -20;	
+	_gun->GetTransform()->GetPos().y = -20;
 
 	_quad->GetTransform()->GetScale().x *= 0.25f;
 	_quad->GetTransform()->GetScale().y *= 0.25f;
@@ -33,9 +33,9 @@ Bro_Player::~Bro_Player()
 
 void Bro_Player::Update()
 {
-	if (isActive == false)
+	if (_isActive == false)
 		return;
-	
+
 	Input();
 	Idle();
 	_transform->Update();
@@ -44,33 +44,25 @@ void Bro_Player::Update()
 	_collider->Update();
 	_radious->Update();
 	_firePos->Update();
-
-	if (_bullet->isActive == false)
-		return;
 	_bullet->Update();
 
 }
 
 void Bro_Player::Render()
 {
-	if (isActive == false)
+	if (_isActive == false)
 		return;
 
 	_quad->Render();
 	_gun->Render();
 	_collider->Render();
 	_radious->Render();
-
-	if (_bullet->isActive == false)
-		return;
-	
 	_bullet->Render();
-
 }
 
 void Bro_Player::Input()
 {
-	if (KEY_PRESS('A') && (_transform->GetPos().x >-100))
+	if (KEY_PRESS('A') && (_transform->GetPos().x > -100))
 	{
 		_transform->GetPos().x -= DELTA_TIME * _speed;
 		_quad->SetLeftRight_leftRightBuffer(1);
@@ -126,34 +118,17 @@ void Bro_Player::Moving()
 	}
 }
 
-
-void Bro_Player::ResetBullet()
-{
-	if (_bullet->isActive == false)
-	{
-		_bullet->GetTransform()->SetPos((_firePos->GetWorldPos()));
-		_quad->GetTransform()->GetAngle() = 0;
-
-	
-		_bullet->Update();
-	}	
-}
-
 void Bro_Player::Attack(vector<shared_ptr<Bro_Monster>>& monsters)
 {
-	if (_bullet->isActive == false)
+	if (_bullet->IsActive() == false)
 		return;
 
 	for (const auto& monster : monsters)
 	{
 		if (_bullet->GetCollider()->IsCollision(monster->GetCollider()))
 		{
-			_bullet->isActive = false;
-			_bullet->GetCollider()->_isActive = false;
-
-			monster->isActive = false;
-			monster->GetCollider()->_isActive = false;
-			ResetBullet();
+			_bullet->SetActive(false);
+			monster->SetActive(false);
 		}
 	}
 }
@@ -162,24 +137,49 @@ void Bro_Player::Target(vector<shared_ptr<Bro_Monster>>& monsters)
 {
 	for (auto& monster : monsters)
 	{
-		Vector2 direction = monster->GetCollider()->GetTransform()->GetWorldPos() - _quad->GetTransform()->GetWorldPos();
-		float angle = direction.Angle();
-		float distance = direction.Length();
-
 		if (_radious->IsCollision(monster->GetCollider()))
 		{
-			GetGun()->GetQuad()->GetTransform()->SetAngle(angle);
-			GetGun()->GetCollider()->GetTransform()->SetAngle(angle);
-
-			if (_bullet->isActive == false);
-			{
-				_bullet->isActive = true;
-				_bullet->SetDirection(direction.Normal());
-				_bullet->GetTransform()->SetPos((_firePos->GetWorldPos()));
-				_bullet->GetQuad()->GetTransform()->SetAngle(angle);
-				
-			}
+			_target = monster;
+			break;
+		}
+		else
+		{
+			_target = nullptr;
 		}
 	}
+	if (_target == nullptr)
+	{
+		_bullet->SetActive(false);
+	}
+}
+
+void Bro_Player::Shot()
+{
+	if (_target == nullptr) return;
+
+	if (_bullet->IsActive() == false)
+	{
+		Vector2 direction = _target->GetCollider()->GetTransform()->GetWorldPos() - _quad->GetTransform()->GetWorldPos();
+		float angle = direction.Angle();
+
+		GetGun()->GetQuad()->GetTransform()->SetAngle(angle);
+		GetGun()->GetCollider()->GetTransform()->SetAngle(angle);
+
+		_bullet->SetActive(true);
+		_bullet->SetDirection(direction.Normal());
+		_bullet->GetTransform()->SetPos((_firePos->GetWorldPos()));
+		_bullet->GetQuad()->GetTransform()->SetAngle(angle);
+	}
+
+	if (!_bullet->GetCollider()->IsCollision(_radious))
+	{
+		_bullet->SetActive(false);
+	}
+}
+
+void Bro_Player::SetActive(bool isActive)
+{
+	_isActive = isActive;
+	_collider->_isActive = isActive;
 }
 

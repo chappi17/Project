@@ -77,6 +77,11 @@ bool RectCollider::IsCollision(shared_ptr<RectCollider> other)
 	return false;
 }
 
+bool RectCollider::Block(shared_ptr<CircleCollider> other)
+{
+	return false;
+}
+
 bool RectCollider::IsCollision_OBB(shared_ptr<CircleCollider> circle)
 {
 	OBB_Info rect1 = GetObb();
@@ -178,11 +183,6 @@ bool RectCollider::IsCollision_OBB(shared_ptr<RectCollider> other)
 	}
 
 	return true;
-}
-
-bool RectCollider::Block(shared_ptr<CircleCollider> other)
-{
-	return false;
 }
 
 

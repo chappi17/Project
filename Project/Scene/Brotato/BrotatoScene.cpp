@@ -9,17 +9,17 @@ BrotatoScene::BrotatoScene()
 	CAMERA->SetTarget(_player->GetTransform());
 	CAMERA->SetOffSet({ CENTER_X,CENTER_Y });
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
 		{
-		//	srand((unsigned int)time(NULL));
+			//	srand((unsigned int)time(NULL));
 			float RespawnX = monster->GetTransform()->GetPos().x = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
 			float RespawnY = monster->GetTransform()->GetPos().y = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);
 
 			monster->GetTransform()->GetPos() = Vector2{ RespawnX,RespawnY };
 			monster->Update();
-			monster->isActive = true;
+			monster->SetActive(true);
 			_monsters.push_back(monster);
 		}
 	}
@@ -35,10 +35,11 @@ void BrotatoScene::Update()
 	_player->Update();
 
 	for (auto monster : _monsters)
-	{			
+	{
 		monster->Attack(_player);
 
 		_player->Target(_monsters);
+		_player->Shot();
 		_player->Attack(_monsters);
 		monster->Update();
 
@@ -48,7 +49,7 @@ void BrotatoScene::Update()
 			{
 				auto collider1 = dynamic_pointer_cast<CircleCollider>(monster->GetCollider());
 				auto collider2 = dynamic_pointer_cast<CircleCollider>(monster2->GetCollider());
-				
+
 				if (collider1 && collider2)
 				{
 					collider1->Block(collider2);

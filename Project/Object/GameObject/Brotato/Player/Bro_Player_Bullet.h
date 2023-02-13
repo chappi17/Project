@@ -16,13 +16,11 @@ public:
 	//void Attack(vector<shared_ptr<Bro_Monster>>& monsters);
 
 	void SetDirection(Vector2 dir);
-
 	void SetActive(bool isActive);
-	
-
-	bool isActive = false;
+	bool IsActive() { return _isActive; }
 
 private:
+	bool _isActive = false;
 	double		_lastTime = 0.0;
 	double		_curTime = 0.0;
 	double		_delay = 1.5;

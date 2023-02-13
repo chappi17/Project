@@ -16,7 +16,6 @@ public:
 	void Idle();
 	void Moving();
 
-	bool isActive = true;
 
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
@@ -24,29 +23,30 @@ public:
 	shared_ptr<Bro_Player_Gun> GetGun() { return _gun; }
 	shared_ptr<Bro_Player_Bullet> GetBullet() { return _bullet; }
 	shared_ptr<Collider> GetRadius() { return _radious; }
-	
+
 
 	void SetLimit(Vector2 bg) { _bg = bg; }
-
-
-	void ResetBullet();
 
 	void Attack(vector<shared_ptr<Bro_Monster>>& monsters);
 
 	void Target(vector<shared_ptr<Bro_Monster>>& monsters);
 
+	void Shot();
+	void SetActive(bool isActive);
+	bool IsActive() { return _isActive; }
 
-
-	
+	UINT Hp = 12;
 
 private:
+
+	bool _isActive = true;
 	shared_ptr<Collider> _collider;
 	shared_ptr<Transform> _transform;
 	shared_ptr<Bro_Player_Gun> _gun;
 	shared_ptr<Transform> _firePos;
-
 	shared_ptr<class Bro_Player_Bullet > _bullet;
-//	vector< shared_ptr<class Bro_Player_Bullet>> _bullets;
+	shared_ptr<Bro_Monster> _target;
+	//	vector< shared_ptr<class Bro_Player_Bullet>> _bullets;
 
 	shared_ptr<Collider> _radious;
 

@@ -16,19 +16,19 @@ Bro_Monster::~Bro_Monster()
 
 void Bro_Monster::Update()
 {
-	if (isActive == false)
+	if (_isActive == false)
 		return;
 
 	Idle();
 	_quad->Update();
 	_transform->Update();
-	_transform->GetPos() += _direction * _speed * DELTA_TIME;	
+	_transform->GetPos() += _direction * _speed * DELTA_TIME;
 	_collider->Update();
 }
 
 void Bro_Monster::Render()
 {
-	if (isActive == false)
+	if (_isActive == false)
 		return;
 
 	_quad->Render();
@@ -47,12 +47,12 @@ void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 	float distance = direction.Length();
 	if (distance > 0.5f)
 	{
-		_direction = direction.Normal();		
+		_direction = direction.Normal();
 	}
 
 	if (_collider->IsCollision(player->GetCollider()))
 	{
-		player->isActive = false;
+		player->SetActive(false);
 	}
 }
 
@@ -71,17 +71,17 @@ void Bro_Monster::LeftRight(shared_ptr<Bro_Player> player)
 
 void Bro_Monster::CreateMonsters()
 {
-		wstring path = (L"Monster/");
-		_quad = make_shared<Quad>(path + L"Monster1.png");
-		_quad->GetTransform()->GetScale().x *= 0.1f;
-		_quad->GetTransform()->GetScale().y *= 0.1f;
+	wstring path = (L"Monster/");
+	_quad = make_shared<Quad>(path + L"Monster1.png");
+	_quad->GetTransform()->GetScale().x *= 0.1f;
+	_quad->GetTransform()->GetScale().y *= 0.1f;
 }
 
 
 void Bro_Monster::Idle()
 {
 	float offset = rand() % 360;
-	float stretchAmount = 0.05f * sin(2.0f * (DELTA_TIME ) * 0.5f);
+	float stretchAmount = 0.05f * sin(2.0f * (DELTA_TIME) * 0.5f);
 	_quad->GetTransform()->GetScale().y -= stretchAmount;
 
 	if (_quad->GetTransform()->GetScale().y < 0.07f)
@@ -92,6 +92,12 @@ void Bro_Monster::Idle()
 
 void Bro_Monster::Init()
 {
+}
+
+void Bro_Monster::SetActive(bool isActive)
+{
+	_isActive = isActive;
+	_collider->_isActive = isActive;
 }
 
 
