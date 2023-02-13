@@ -1,10 +1,11 @@
 #include "framework.h"
 #include "Bro_Monster.h"
 
-
 Bro_Monster::Bro_Monster()
 {
 	CreateMonsters();
+	_transform = make_shared<Transform>();
+	_collider = make_shared<CircleCollider>(25);
 	_quad->GetTransform()->SetParent(_collider->GetTransform());
 	_collider->GetTransform()->SetParent(_transform);
 }
@@ -15,9 +16,10 @@ Bro_Monster::~Bro_Monster()
 
 void Bro_Monster::Update()
 {
-	Idle();
-	if (!isActive) return;
+	if (isActive == false)
+		return;
 
+	Idle();
 	_quad->Update();
 	_transform->Update();
 	_transform->GetPos() += _direction * _speed * DELTA_TIME;	
@@ -26,7 +28,9 @@ void Bro_Monster::Update()
 
 void Bro_Monster::Render()
 {
-	if (!isActive) return;
+	if (isActive == false)
+		return;
+
 	_quad->Render();
 	_collider->Render();
 }
@@ -71,19 +75,8 @@ void Bro_Monster::CreateMonsters()
 		_quad = make_shared<Quad>(path + L"Monster1.png");
 		_quad->GetTransform()->GetScale().x *= 0.1f;
 		_quad->GetTransform()->GetScale().y *= 0.1f;
-
-		_transform = make_shared<Transform>();
-		_collider = make_shared<CircleCollider>(15);		
-	
-		float RespawnX = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
-		float RespawnY = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);
-		_transform->GetPos() = {RespawnX,RespawnY};
 }
 
-void Bro_Monster::Respawn()
-{
-	isActive = true;
-}
 
 void Bro_Monster::Idle()
 {
@@ -97,12 +90,9 @@ void Bro_Monster::Idle()
 	}
 }
 
-bool Bro_Monster::IsCollision(shared_ptr<Collider> _col)
+void Bro_Monster::Init()
 {
-	if (isActive == false)
-		return false;
-
-	return _collider->IsCollision(_col);
 }
+
 
 

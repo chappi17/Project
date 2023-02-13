@@ -17,13 +17,13 @@ public:
 	void LeftRight(shared_ptr<Bro_Player> player);
 
 	void CreateMonsters();
-	void Respawn();
 
 	void Idle();
+	void Init();
 
-	bool IsCollision(shared_ptr<Collider> _col);
 
 	shared_ptr<Collider> GetCollider() { return _collider; }
+	shared_ptr<Transform> GetTransform() { return _transform; }
 
 	bool isActive = false;
 

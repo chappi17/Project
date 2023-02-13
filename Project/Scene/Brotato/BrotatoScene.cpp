@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "BrotatoScene.h"
+#include "time.h"
 
 BrotatoScene::BrotatoScene()
 {
@@ -8,13 +9,19 @@ BrotatoScene::BrotatoScene()
 	CAMERA->SetTarget(_player->GetTransform());
 	CAMERA->SetOffSet({ CENTER_X,CENTER_Y });
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
-		if (i < 30)
-		
+		{
+		//	srand((unsigned int)time(NULL));
+			float RespawnX = monster->GetTransform()->GetPos().x = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
+			float RespawnY = monster->GetTransform()->GetPos().y = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);
+
+			monster->GetTransform()->GetPos() = Vector2{ RespawnX,RespawnY };
+			monster->Update();
 			monster->isActive = true;
-			_monsters.push_back(monster);		
+			_monsters.push_back(monster);
+		}
 	}
 	_bg->Update();
 }
@@ -26,12 +33,14 @@ BrotatoScene::~BrotatoScene()
 void BrotatoScene::Update()
 {
 	_player->Update();
-	_player->GetGun()->Target(_monsters);
 
 	for (auto monster : _monsters)
-	{		
-		monster->Update();
+	{			
 		monster->Attack(_player);
+
+		_player->Target(_monsters);
+		_player->Attack(_monsters);
+		monster->Update();
 
 		for (auto monster2 : _monsters)
 		{
@@ -46,7 +55,6 @@ void BrotatoScene::Update()
 				}
 			}
 		}
-
 		monster->LeftRight(_player);
 	}
 }
@@ -55,6 +63,7 @@ void BrotatoScene::Render()
 {
 	_bg->Render();
 	_player->Render();
+
 	for (auto monster : _monsters)
 	{
 		monster->Render();

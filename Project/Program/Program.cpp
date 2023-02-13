@@ -24,6 +24,12 @@ void Program::Update()
 	EFFECT->Update();
 
 	Camera::GetInstance()->Update();
+
+	// 20 초 지나면 상점전환
+	if (Timer::GetInstance()->GetRunTime() >= 20)
+	{
+
+	}
 }
 
 void Program::Render()
@@ -44,9 +50,15 @@ void Program::Render()
 
 	wstring fps = L"FPS : " + to_wstring((int)Timer::GetInstance()->GetFPS());
 	RECT rect = { 0,0,100,100 };
+	RECT rect2 = { 100,0,200,200 };
+
+	wstring time = L"TIME : " + to_wstring((int)Timer::GetInstance()->GetRunTime());
 
 	DirectWrite::GetInstance()->GetDC()->BeginDraw();
 	DirectWrite::GetInstance()->RenderText(fps, rect);
+	DirectWrite::GetInstance()->RenderText(time, rect2);
+
+
 
 	CAMERA->SetUICameraBuffer();
 	Camera::GetInstance()->PostRender();

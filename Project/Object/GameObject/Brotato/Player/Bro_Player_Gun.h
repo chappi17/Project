@@ -8,19 +8,19 @@ public:
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
 	shared_ptr<Quad> GetQuad() { return _quad; }
+	shared_ptr<Collider> GetCollider() { return _collider; }
 
 	void Update();
 	void Render();
-
-	void Target(vector<shared_ptr<Bro_Monster>>& monsters);
-
-	bool IsCollision(shared_ptr<Collider> _col);
 
 private:
 	shared_ptr<Collider> _collider;
 	shared_ptr<Transform> _transform;
 	shared_ptr<Quad> _quad;
+	
+	
+	//vector<shared_ptr<class Bro_Player_Bullet>> _bullets;
 
-	shared_ptr<Collider> _radious;
+	
 };
 
