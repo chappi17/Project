@@ -180,16 +180,31 @@
     <ClInclude Include="Object\GameObject\Brotato\Monster\Bro_Monster.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_Gun.h">
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Gun.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_Bullet.h">
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_SMG.h">
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_SMG.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_RailGun.h">
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_RailGun.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\GameObject\Brotato\UI\Bro_Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Brotato\Brotato_Store.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_player_Bullet_Rail.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet_SMG.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\GameObject\Brotato\UI\Button.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -320,16 +335,31 @@
     <ClCompile Include="Object\GameObject\Brotato\Monster\Bro_Monster.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_Gun.cpp">
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Gun.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_Bullet.cpp">
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_SMG.cpp">
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_SMG.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_RailGun.cpp">
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_RailGun.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\GameObject\Brotato\UI\Bro_Resource.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Brotato\Brotato_Store.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_player_Bullet_Rail.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet_SMG.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\GameObject\Brotato\UI\Button.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

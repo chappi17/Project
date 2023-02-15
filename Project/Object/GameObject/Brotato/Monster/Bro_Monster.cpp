@@ -18,7 +18,6 @@ void Bro_Monster::Update()
 {
 	if (_isActive == false)
 		return;
-
 	Idle();
 	_quad->Update();
 	_transform->Update();
@@ -61,13 +60,11 @@ void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 				player->_damageDelay = false;
 			}
 		}		
-		
 		if (player->GetHp() < 0)
 		{
 			player->SetActive(false);
 			player->Update();
 		}
-		
 	}
 }
 
@@ -109,11 +106,20 @@ void Bro_Monster::Init()
 {
 }
 
+void Bro_Monster::Die()
+{
+	SetActive(false);
+	//Resource();
+}
+
 void Bro_Monster::SetActive(bool isActive)
 {
 	_isActive = isActive;
 	_collider->_isActive = isActive;
 }
 
-
-
+void Bro_Monster::Resource()
+{
+	_resource->SetActive(true);
+	_resource->GetQuad()->GetTransform()->GetPos() = this->GetTransform()->GetWorldPos();
+}

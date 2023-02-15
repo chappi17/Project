@@ -20,6 +20,7 @@ public:
 
 	void Idle();
 	void Init();
+	void Die();
 
 
 	shared_ptr<Collider> GetCollider() { return _collider; }
@@ -28,6 +29,8 @@ public:
 
 	void SetActive(bool isActive);
 	bool IsActive() { return _isActive; }
+	void SetEndEvent(CallBack function) { _endEvnet = function; }
+	void Resource();
 
 	UINT DMG = 1;
 
@@ -41,9 +44,13 @@ private:
 
 	shared_ptr<LeftRightBuffer> _leftright;
 
+	shared_ptr<Bro_Resource> _resource;
+
 
 	Vector2 _direction = { 0,0 };
 	float _speed = 100.0f;
+
+	CallBack _endEvnet = nullptr;
 
 };
 

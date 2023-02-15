@@ -33,10 +33,18 @@ public:
 	void SetLimit(Vector2 bg) { _bg = bg; }
 
 	void Attack(vector<shared_ptr<Bro_Monster>>& monsters);
+	void Attack_R(vector<shared_ptr<Bro_Monster>>& monsters);
+	void Attack_SMG(vector<shared_ptr<Bro_Monster>>& monsters);
 
 	void Target(vector<shared_ptr<Bro_Monster>>& monsters);
+	void Target_R(vector<shared_ptr<Bro_Monster>>& monsters);
+	void Target_SMG(vector<shared_ptr<Bro_Monster>>& monsters);
 
 	void Shot();
+	void Shot_R();
+	void Shot_SMG();
+
+
 	void SetActive(bool isActive);
 	bool IsActive() { return _isActive; }
 	bool _damageDelay = false;
@@ -51,19 +59,27 @@ private:
 	shared_ptr<Bro_Player_RailGun>	_railgun;
 	shared_ptr<Bro_Player_SMG> _smg;
 
-
 	shared_ptr<Transform> _firePos;
+	shared_ptr<Transform> _firePos_R;
+	shared_ptr<Transform> _firePos_SMG;
+
 	shared_ptr<class Bro_Player_Bullet > _bullet;
+	shared_ptr<class Bro_player_Bullet_Rail> _railbullet;
+	shared_ptr<class Bro_Player_Bullet_SMG> _smgbullet;
+
+
 	shared_ptr<Bro_Monster> _target;
 	//	vector< shared_ptr<class Bro_Player_Bullet>> _bullets;
 
 	shared_ptr<Collider> _radious;
+	shared_ptr<Collider> _radious_R;
+	shared_ptr<Collider> _radious_SMG;
 
 	shared_ptr<Quad> _quad;
 	float _speed = 250.0f;
 
-	float _check = 0.0f;
-	float _delay = 1.0f;
+	const float _fireDelay = 2.5f;
+	float _fireCheck = 0.0f;
 
 	shared_ptr<LeftRightBuffer> _leftright;
 	Vector2 _limitMove;

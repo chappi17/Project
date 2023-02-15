@@ -1,9 +1,9 @@
 #pragma once
-class Bro_Player_Bullet
+class Bro_player_Bullet_Rail
 {
 public:
-	Bro_Player_Bullet();
-	~Bro_Player_Bullet();
+	Bro_player_Bullet_Rail();
+	~Bro_player_Bullet_Rail();
 
 	void Update();
 	void Render();
@@ -27,10 +27,12 @@ private:
 	shared_ptr <Collider>	_collider;
 	shared_ptr<class Bro_Monster> _monster;
 
+	const float _fireDelay = 2.5f;
+	float _fireCheck = 0.0f;
 
 	Vector2 _direction = { 0,0 };
 	Vector2 _firedirection = { 0,0 };
 
-	float		_speed = 500.0f;
+	float		_speed = 600.0f;
 };
 

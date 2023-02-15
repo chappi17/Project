@@ -35,6 +35,15 @@ void BrotatoScene::Update()
 		_player->Target(_monsters);
 		_player->Shot();
 		_player->Attack(_monsters);
+
+		_player->Target_R(_monsters);
+		_player->Shot_R();
+		_player->Attack_R(_monsters);
+
+		_player->Target_SMG(_monsters);
+		_player->Shot_SMG();
+		_player->Attack_SMG(_monsters);
+
 		monster->Update();
 
 		for (auto monster2 : _monsters)
@@ -56,7 +65,7 @@ void BrotatoScene::Update()
 	// 20 초 지나면 상점전환
 	if (Timer::GetInstance()->GetRunTime() >= 20)
 	{
-
+		ChangeScene();
 	}
 }
 
@@ -101,4 +110,9 @@ void BrotatoScene::Reset()
 	_player->GetTransform()->SetPos(Vector2{ CENTER_X,CENTER_Y });
 	_player->SetActive(true);
 	CreateMonsters();
+}
+
+void BrotatoScene::ChangeScene()
+{
+	SCENE->ChangeScene("Brotato_Store");
 }

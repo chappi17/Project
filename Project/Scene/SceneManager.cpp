@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 
 #include "../Scene/Brotato/BrotatoScene.h"
+#include "../Scene/Brotato/Brotato_Store.h"
 
 SceneManager* SceneManager::_instance = nullptr;
 
@@ -10,7 +11,10 @@ SceneManager::SceneManager()
 	shared_ptr<Scene> broScene = make_shared<BrotatoScene>();
 	_sceneTable["BroScene"] = broScene;
 
-	_curScene = broScene;
+	shared_ptr<Scene> brostoreScene = make_shared<Brotato_Store>();
+	_sceneTable["Brotato_Store"] = brostoreScene;
+
+	_curScene = brostoreScene;
 }
 
 SceneManager::~SceneManager()

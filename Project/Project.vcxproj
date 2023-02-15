@@ -151,10 +151,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_RailGun.h" />
-    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_SMG.h" />
-    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_Bullet.h" />
-    <ClInclude Include="Object\GameObject\Brotato\Player\Bro_Player_Gun.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_player_Bullet_Rail.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet_SMG.h" />
+    <ClInclude Include="Object\GameObject\Brotato\UI\Button.h" />
+    <ClInclude Include="Scene\Brotato\Brotato_Store.h" />
+    <ClInclude Include="Object\GameObject\Brotato\UI\Bro_Resource.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_RailGun.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_SMG.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet.h" />
+    <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Gun.h" />
     <ClInclude Include="Object\GameObject\Brotato\Monster\Bro_Monster.h" />
     <ClInclude Include="Scene\Brotato\BrotatoScene.h" />
     <ClInclude Include="Object\GameObject\Brotato\UI\Bro_BackGround.h" />
@@ -212,10 +217,15 @@
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_RailGun.cpp" />
-    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_SMG.cpp" />
-    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_Bullet.cpp" />
-    <ClCompile Include="Object\GameObject\Brotato\Player\Bro_Player_Gun.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_player_Bullet_Rail.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet_SMG.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\UI\Button.cpp" />
+    <ClCompile Include="Scene\Brotato\Brotato_Store.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\UI\Bro_Resource.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_RailGun.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_SMG.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Gun.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\Monster\Bro_Monster.cpp" />
     <ClCompile Include="Scene\Brotato\BrotatoScene.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\UI\Bro_BackGround.cpp" />

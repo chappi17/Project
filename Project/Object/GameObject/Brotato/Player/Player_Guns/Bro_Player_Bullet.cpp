@@ -21,7 +21,6 @@ Bro_Player_Bullet::~Bro_Player_Bullet()
 
 void Bro_Player_Bullet::Update()
 {
-
 	if (_isActive == false)
 		return;
 

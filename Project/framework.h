@@ -20,6 +20,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <wrl/client.h>
+#include <functional>
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -106,15 +107,18 @@ using namespace DirectX;
 #include "Object/BasicObject/EffectManager.h"
 
 // UI
-//#include "Object/UI/Button.h"
+#include "Object/GameObject/Brotato/UI/Button.h"
 
-// Brotato
+// Bro_Potato
 #include "Object/GameObject/Brotato/UI/Bro_BackGround.h"
-#include "Object/GameObject/Brotato/Player/Bro_Player_Gun.h"
-#include "Object/GameObject/Brotato/Player/Bro_Player_SMG.h"
-#include "Object/GameObject/Brotato/Player/Bro_Player_RailGun.h"
+#include "Object/GameObject/Brotato/UI/Bro_Resource.h"
+#include "Object/GameObject/Brotato/Player/Player_Guns/Bro_Player_Gun.h"
+#include "Object/GameObject/Brotato/Player/Player_Guns/Bro_Player_RailGun.h"
+#include "Object/GameObject/Brotato/Player/Player_Guns/Bro_Player_SMG.h"
 
-#include "Object/GameObject/Brotato/Player/Bro_Player_Bullet.h"
+#include "Object/GameObject/Brotato/Player/Player_Guns/Bro_Player_Bullet.h"
+#include "Object/GameObject/Brotato/Player/Player_Guns/Bro_player_Bullet_Rail.h"
+#include "Object/GameObject/Brotato/Player/Player_Guns/Bro_Player_Bullet_SMG.h"
 
 
 #include "Object/GameObject/Brotato/Player/Bro_Player.h"
@@ -129,3 +133,5 @@ using namespace DirectX;
 #include "Program/Program.h"
 
 extern Vector2 mousePos;
+
+using CallBack = std::function<void()>;
