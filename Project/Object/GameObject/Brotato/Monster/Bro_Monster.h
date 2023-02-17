@@ -26,13 +26,14 @@ public:
 	shared_ptr<Collider> GetCollider() { return _collider; }
 	shared_ptr<Transform> GetTransform() { return _transform; }
 	shared_ptr<Quad> GetQuad() { return _quad; }
+	UINT& GetHp() { return _Hp; }
+
+
 
 	void SetActive(bool isActive);
 	bool IsActive() { return _isActive; }
 	void SetEndEvent(CallBack function) { _endEvnet = function; }
 	void Resource();
-
-	UINT DMG = 1;
 
 private:
 	bool _isActive = false;
@@ -46,11 +47,11 @@ private:
 
 	shared_ptr<Bro_Resource> _resource;
 
-
 	Vector2 _direction = { 0,0 };
 	float _speed = 100.0f;
 
 	CallBack _endEvnet = nullptr;
 
+	UINT _Hp = 15;
 };
 

@@ -48,9 +48,15 @@ Bro_Player::Bro_Player()
 
 	_firePos->SetParent(_gun->GetTransform());
 	_firePos_R->SetParent(_railgun->GetTransform());
-	_firePos_SMG->SetParent(_smg->GetTransform());
+	_firePos_SMG->SetParent(_smg->GetTransform());	
 
 	_bullet->Update();
+
+	SOUND->Add("Shot", "Resource/Brotato/Sound/Gun.wav");
+	SOUND->Add("Shot_R", "Resource/Brotato/Sound/RailGun.wav");
+	SOUND->Add("Shot_SMG", "Resource/Brotato/Sound/SMG.wav");
+
+	
 }
 
 Bro_Player::~Bro_Player()
@@ -62,6 +68,10 @@ void Bro_Player::Update()
 	if (_isActive == false)
 		return;
 
+	_fireCheck += DELTA_TIME;
+	_fireCheck_R += DELTA_TIME;
+	_fireCheck_S += DELTA_TIME;
+	
 	Input();
 	Idle();
 	_transform->Update();
@@ -85,6 +95,8 @@ void Bro_Player::Update()
 	_railbullet->Update();
 	_smgbullet->Update();
 
+	EFFECT->Update();
+
 }
 
 void Bro_Player::Render()
@@ -106,6 +118,8 @@ void Bro_Player::Render()
 	_bullet->Render();
 	_railbullet->Render();
 	_smgbullet->Render();
+
+	EFFECT->Render();
 }
 
 void Bro_Player::Input()
@@ -176,7 +190,14 @@ void Bro_Player::Attack(vector<shared_ptr<Bro_Monster>>& monsters)
 		if (_bullet->GetCollider()->IsCollision(monster->GetCollider()))
 		{
 			_bullet->SetActive(false);
-			monster->Die();
+			monster->GetHp() -= _gun->DMG;
+			if (monster->GetHp() < 0)
+			{
+				monster->Die();
+				monster->Update();
+			}
+			monster->Update();
+			return;
 		}
 	}
 }
@@ -190,7 +211,6 @@ void Bro_Player::Attack_R(vector<shared_ptr<Bro_Monster>>& monsters)
 	{
 		if (_railbullet->GetCollider()->IsCollision(monster->GetCollider()))
 		{
-			
 			monster->Die();
 		}
 	}
@@ -227,7 +247,11 @@ void Bro_Player::Target(vector<shared_ptr<Bro_Monster>>& monsters)
 	}
 	if (_target == nullptr)
 	{
-		_bullet->SetActive(false);
+		if (!_bullet->GetCollider()->IsCollision(_radious))
+		{
+			_bullet->SetActive(false);
+			return;
+		}
 	}
 }
 
@@ -247,8 +271,13 @@ void Bro_Player::Target_R(vector<shared_ptr<Bro_Monster>>& monsters)
 	}
 	if (_target == nullptr)
 	{
-		_railbullet->SetActive(false);
+		if (!_railbullet->GetCollider()->IsCollision(_radious))
+		{
+			_railbullet->SetActive(false);
+			return;
+		}
 	}
+
 }
 
 void Bro_Player::Target_SMG(vector<shared_ptr<Bro_Monster>>& monsters)
@@ -267,96 +296,103 @@ void Bro_Player::Target_SMG(vector<shared_ptr<Bro_Monster>>& monsters)
 	}
 	if (_target == nullptr)
 	{
-		_smgbullet->SetActive(false);
+		if (!_smgbullet->GetCollider()->IsCollision(_radious_SMG))
+		{
+			_bullet->SetActive(false);
+			return;
+		}
 	}
 }
 
 void Bro_Player::Shot()
 {
-	if (_target == nullptr) return;
-
-	_fireCheck += DELTA_TIME;
 	if (_fireCheck > _fireDelay)
 	{
-		_fireCheck = 0;
+		_fireCheck = 0.0f;
 	}
 	else
-	{
 		return;
-	}
+
+	if (_target == nullptr) return;
 
 	if (_bullet->IsActive() == false)
-	{
-		Vector2 direction = _target->GetCollider()->GetTransform()->GetWorldPos() - _quad->GetTransform()->GetWorldPos();
+	{	
+		Vector2 direction = _target->GetCollider()->GetTransform()->GetWorldPos() - _firePos->GetWorldPos();
 		float angle = direction.Angle();
 
+		SOUND->Play("Shot");
+		_bullet->SetActive(true);
 		GetGun()->GetQuad()->GetTransform()->SetAngle(angle);
 		GetGun()->GetCollider()->GetTransform()->SetAngle(angle);
 
-		_bullet->SetActive(true);
+	
 		_bullet->SetDirection(direction.Normal());
 		_bullet->GetTransform()->SetPos((_firePos->GetWorldPos()));
 		_bullet->GetQuad()->GetTransform()->SetAngle(angle);
+		return;
 	}
 
 	if (!_bullet->GetCollider()->IsCollision(_radious))
 	{
 		_bullet->SetActive(false);
+		return;
 	}
 }
 
 void Bro_Player::Shot_R()
 {
-	if (_target == nullptr) return;
 
-	_fireCheck += DELTA_TIME;
-	if (_fireCheck > _fireDelay)
+	if (_fireCheck_R > _fireDelay_R)
 	{
-		_fireCheck = 0;
+		_fireCheck_R = 0.0f;
 	}
 	else
-	{
 		return;
-	}
+
+	if (_target == nullptr) return;
+
 
 	if (_railbullet->IsActive() == false)
 	{
-		Vector2 direction = _target->GetCollider()->GetTransform()->GetWorldPos() - _quad->GetTransform()->GetWorldPos();
+		Vector2 direction = _target->GetCollider()->GetTransform()->GetWorldPos() - _firePos_R->GetWorldPos();
 		float angle = direction.Angle();
+
+		SOUND->Play("Shot_R");
+		_railbullet->SetActive(true);
 
 		GetRailGun()->GetQuad()->GetTransform()->SetAngle(angle);
 		GetRailGun()->GetCollider()->GetTransform()->SetAngle(angle);
 
-
-		_railbullet->SetActive(true);
 		_railbullet->SetDirection(direction.Normal());
 		_railbullet->GetTransform()->SetPos((_firePos_R->GetWorldPos()));
 		_railbullet->GetQuad()->GetTransform()->SetAngle(angle);
+		return;
 	}
 
 	if (!_railbullet->GetCollider()->IsCollision(_radious_R))
 	{
 		_railbullet->SetActive(false);
+		return;
 	}
 }
 
 void Bro_Player::Shot_SMG()
-{
-	if (_target == nullptr) return;
+{	
 
-	_fireCheck += DELTA_TIME;
-	if (_fireCheck > _fireDelay)
+	if (_fireCheck_S > _fireDelay_S)
 	{
-		_fireCheck = 0;
+		_fireCheck_S = 0.0f;
 	}
 	else
-	{
 		return;
-	}
+
+	if (_target == nullptr) return;
+
 
 	if (_smgbullet->IsActive() == false)
 	{
-		Vector2 direction = _target->GetCollider()->GetTransform()->GetWorldPos() - _quad->GetTransform()->GetWorldPos();
+		SOUND->Play("Shot_SMG");
+		Vector2 direction = _target->GetCollider()->GetTransform()->GetWorldPos() - _firePos_SMG->GetWorldPos();
 		float angle = direction.Angle();
 
 		GetSMG()->GetQuad()->GetTransform()->SetAngle(angle);
@@ -366,11 +402,13 @@ void Bro_Player::Shot_SMG()
 		_smgbullet->SetDirection(direction.Normal());
 		_smgbullet->GetTransform()->SetPos((_firePos_SMG->GetWorldPos()));
 		_smgbullet->GetQuad()->GetTransform()->SetAngle(angle);
+		return;
 	}
 
 	if (!_smgbullet->GetCollider()->IsCollision(_radious_SMG))
 	{
 		_smgbullet->SetActive(false);
+		return;
 	}
 }
 

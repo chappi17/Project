@@ -14,7 +14,7 @@ SceneManager::SceneManager()
 	shared_ptr<Scene> brostoreScene = make_shared<Brotato_Store>();
 	_sceneTable["Brotato_Store"] = brostoreScene;
 
-	_curScene = brostoreScene;
+	_curScene = broScene;
 }
 
 SceneManager::~SceneManager()
@@ -49,3 +49,17 @@ void SceneManager::ChangeScene(string name)
 {
 	_curScene = _sceneTable[name];
 }
+
+void SceneManager::SetUnlock_R(bool isUnlock)
+{
+	Unlock_R = isUnlock;
+}
+
+void SceneManager::SetUnlock_S(bool isUnlock)
+{
+	Unlock_S = isUnlock;
+}
+
+
+
+

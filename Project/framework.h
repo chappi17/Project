@@ -107,11 +107,14 @@ using namespace DirectX;
 #include "Object/BasicObject/EffectManager.h"
 
 // UI
-#include "Object/GameObject/Brotato/UI/Button.h"
+#include "Framework/Utility/Button.h"
 
 // Bro_Potato
 #include "Object/GameObject/Brotato/UI/Bro_BackGround.h"
 #include "Object/GameObject/Brotato/UI/Bro_Resource.h"
+#include "Object/GameObject/Brotato/UI/Bro_icon.h"
+#include "Object/GameObject/Brotato/UI/WeaponManger.h"
+
 #include "Object/GameObject/Brotato/Player/Player_Guns/Bro_Player_Gun.h"
 #include "Object/GameObject/Brotato/Player/Player_Guns/Bro_Player_RailGun.h"
 #include "Object/GameObject/Brotato/Player/Player_Guns/Bro_Player_SMG.h"
@@ -124,9 +127,12 @@ using namespace DirectX;
 #include "Object/GameObject/Brotato/Player/Bro_Player.h"
 #include "Object/GameObject/Brotato/Monster/Bro_Monster.h"
 
+#include "Object/GameObject/Brotato/UI/Store_menu.h"
 
 // Scene
 #include "Scene/Scene.h"
+#include "Scene/Brotato/BrotatoScene.h"
+#include "Scene/Brotato/Brotato_Store.h"
 #include "Scene/SceneManager.h"
 
 // Program

@@ -151,9 +151,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\GameObject\Brotato\UI\Bro_icon.h" />
     <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_player_Bullet_Rail.h" />
     <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet_SMG.h" />
-    <ClInclude Include="Object\GameObject\Brotato\UI\Button.h" />
+    <ClInclude Include="Framework\Utility\Button.h" />
     <ClInclude Include="Scene\Brotato\Brotato_Store.h" />
     <ClInclude Include="Object\GameObject\Brotato\UI\Bro_Resource.h" />
     <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_RailGun.h" />
@@ -213,13 +214,16 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
+    <ClInclude Include="Object\GameObject\Brotato\UI\Store_menu.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Types.h" />
+    <ClInclude Include="Object\GameObject\Brotato\UI\WeaponManger.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\GameObject\Brotato\UI\Bro_icon.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_player_Bullet_Rail.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_Bullet_SMG.cpp" />
-    <ClCompile Include="Object\GameObject\Brotato\UI\Button.cpp" />
+    <ClCompile Include="Framework\Utility\Button.cpp" />
     <ClCompile Include="Scene\Brotato\Brotato_Store.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\UI\Bro_Resource.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_Player_RailGun.cpp" />
@@ -277,6 +281,8 @@
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\UI\Store_menu.cpp" />
+    <ClCompile Include="Object\GameObject\Brotato\UI\WeaponManger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project.rc" />

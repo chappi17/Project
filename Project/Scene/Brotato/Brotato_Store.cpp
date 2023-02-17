@@ -3,10 +3,17 @@
 
 Brotato_Store::Brotato_Store()
 {
+	_menu = make_shared<Store_menu>();
 
-	_button = make_shared<Button>(L"UI/button.png");
-	_button->SetPostion(Vector2(CENTER_X, CENTER_Y));
-	_button->SetScale(Vector2(0.7f,0.6f));
+	_button_Next_Wave = make_shared<Button>(L"UI/button.png");
+	_button_Next_Wave->SetPostion(Vector2(CENTER_X + 450, CENTER_Y - 300));
+	_button_Next_Wave->SetScale(Vector2(2.0f, 0.8f));
+
+	_button_Next_Wave->SetEvent(std::bind(&Brotato_Store::ChangeScene_Game, this));
+
+	SOUND->Add("Click", "Resource/Brotato/Sound/Click.wav");
+
+
 }
 
 Brotato_Store::~Brotato_Store()
@@ -15,28 +22,48 @@ Brotato_Store::~Brotato_Store()
 
 void Brotato_Store::Update()
 {
-	_button->Update();
+	_menu->Update();
+	_button_Next_Wave->Update();
+
+	wstring Next_Round = L"다음 게임 : ";
+	RECT rect = { -100,0,100,100 };
+	RECT rect2 = { 100,0,200,200 };
+
+	DirectWrite::GetInstance()->GetDC()->BeginDraw();
+	DirectWrite::GetInstance()->RenderText(Next_Round, rect);
+
 }
 
 void Brotato_Store::Render()
 {
+	_menu->Render();
+	_button_Next_Wave->PostRender();
 }
 
 void Brotato_Store::PostRender()
 {
-	ImGui::Button("Save", ImVec2(50, 50));
-	ImGui::Button("Load", ImVec2(50, 50));
+	//ImGui::Button("Save", ImVec2(50, 50));
+	//ImGui::Button("Load", ImVec2(50, 50));
 
-	_button->PostRender();
-}
+	//ImGui::SliderFloat2("ItemX", &_quad->GetTransform()->GetPos().x, 0.0f, WIN_WIDTH);
+	//ImGui::SliderFloat2("ItemY", &_quad->GetTransform()->GetPos().y, 0.0f, WIN_HEIGHT);
 
-void Brotato_Store::Save()
-{
-	BinaryWriter writer = BinaryWriter(L"Resource/Brotato/Save/text.txt");
 
 }
 
-void Brotato_Store::Load()
+void Brotato_Store::Save_Slot()
 {
-	BinaryReader reader = BinaryReader(L"Resource/Brotato/Save/text.txt");
+
+
+}
+
+void Brotato_Store::Load_Slot()
+{
+
+}
+
+void Brotato_Store::ChangeScene_Game()
+{
+	SCENE->ChangeScene("BroScene");
+	SOUND->Play("Click");
 }

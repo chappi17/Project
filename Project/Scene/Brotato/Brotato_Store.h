@@ -1,4 +1,5 @@
 #pragma once
+class BrotatoScene;
 class Brotato_Store : public Scene 
 {
 public:
@@ -10,11 +11,20 @@ public:
 	virtual void Render() override;
 	virtual void PostRender() override;
 
-	void Save();
-	void Load();
+	void Save_Slot();
+	void Load_Slot();
+
+	void ChangeScene_Game();
+	
+	void SetEvent(CallBack callback) { _callback = callback;}
 
 private:
-	shared_ptr<Button> _button;
 
+	shared_ptr<Button> _button_Next_Wave;
+
+	shared_ptr<BrotatoScene> _camera;
+
+	shared_ptr<Store_menu> _menu;
+	CallBack _callback;
 };
 

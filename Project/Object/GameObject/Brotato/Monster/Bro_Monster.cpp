@@ -8,6 +8,7 @@ Bro_Monster::Bro_Monster()
 	_collider = make_shared<CircleCollider>(25);
 	_quad->GetTransform()->SetParent(_collider->GetTransform());
 	_collider->GetTransform()->SetParent(_transform);
+	
 }
 
 Bro_Monster::~Bro_Monster()
@@ -54,13 +55,14 @@ void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 		if (!player->_damageDelay)
 		{
 			--player->GetHp();
+			CAMERA->ShakeStart(3.0f, 0.3f);
 			player->_damageDelay = true;
 			if (Timer::GetInstance()->GetElasedTime() < 2.0f)
 			{
 				player->_damageDelay = false;
 			}
 		}		
-		if (player->GetHp() < 0)
+		if (player->GetHp() <= 0)
 		{
 			player->SetActive(false);
 			player->Update();

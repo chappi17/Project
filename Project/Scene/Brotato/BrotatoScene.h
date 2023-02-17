@@ -1,4 +1,5 @@
 #pragma once
+class Store_menu;
 class BrotatoScene : public Scene
 {
 public:
@@ -14,7 +15,13 @@ public:
 
 	void ChangeScene();
 
+	void Init();
+
+	shared_ptr<Bro_Player> GetPlayer() { return _player; }
+
 private:
+	shared_ptr<Transform> _camera;
+
 	shared_ptr<Bro_BackGround>			_bg;
 	shared_ptr<Bro_Player>				_player;
 	vector<shared_ptr<Bro_Monster>>		_monsters;

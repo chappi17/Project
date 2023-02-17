@@ -33,10 +33,21 @@ public:
 
 	void ChangeScene(string name);
 
+	void SetUnlock_R(bool isUnlock);
+	bool Unlock_Rail() { return Unlock_R; }
+
+	void SetUnlock_S(bool isUnlock);
+	bool Unlock_SMG() { return Unlock_S; }
+
+
 private:
+
+
 	static SceneManager* _instance;
 
 	unordered_map<string, shared_ptr<Scene>> _sceneTable;
 	weak_ptr<Scene> _curScene;
+	bool Unlock_R = false;
+	bool Unlock_S = false;
 };
 

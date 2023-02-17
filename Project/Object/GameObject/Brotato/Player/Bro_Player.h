@@ -78,14 +78,18 @@ private:
 	shared_ptr<Quad> _quad;
 	float _speed = 250.0f;
 
-	const float _fireDelay = 2.5f;
-	float _fireCheck = 0.0f;
-
 	shared_ptr<LeftRightBuffer> _leftright;
 	Vector2 _limitMove;
 	Vector2 _bg;
 
-
 	UINT _Hp = 12;
+
+	const float _fireDelay = 1.0f;
+	const float _fireDelay_R = 1.5f;
+	const float _fireDelay_S = 0.1f;
+	
+	float _fireCheck = 0.0f;
+	float _fireCheck_R = 0.0f;
+	float _fireCheck_S = 0.0f;
 };
 
