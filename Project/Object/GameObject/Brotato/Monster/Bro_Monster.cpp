@@ -8,7 +8,6 @@ Bro_Monster::Bro_Monster()
 	_collider = make_shared<CircleCollider>(25);
 	_quad->GetTransform()->SetParent(_collider->GetTransform());
 	_collider->GetTransform()->SetParent(_transform);
-	
 }
 
 Bro_Monster::~Bro_Monster()
@@ -24,6 +23,7 @@ void Bro_Monster::Update()
 	_transform->Update();
 	_transform->GetPos() += _direction * _speed * DELTA_TIME;
 	_collider->Update();
+	OffSet();
 }
 
 void Bro_Monster::Render()
@@ -43,25 +43,30 @@ void Bro_Monster::SetDirection(Vector2 dir)
 
 void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 {
+
 	Vector2 direction = player->GetTransform()->GetWorldPos() - _transform->GetWorldPos();
 	float distance = direction.Length();
 	if (distance > 0.5f)
 	{
 		_direction = direction.Normal();
 	}
-	if (_collider->IsCollision(player->GetCollider()))
-	{	
 
-			player->GetHp() - DMG;
-			CAMERA->ShakeStart(3.0f, 0.3f);
-
-		if (player->GetHp() <= 0)
+	if (_damagedelay == false)
+	{
+		if (_collider->IsCollision(player->GetCollider()))
 		{
-			player->SetActive(false);
-			player->Update();
+			player->GetHp() -= DMG;
+			CAMERA->ShakeStart(3.0f, 0.3f);
+			_damagedelay = true;
 		}
-		
 	}
+	else
+			_delaytime += DELTA_TIME;
+		if (_delaytime  > 1.0f)
+		{
+			_damagedelay = false;
+			_delaytime = 0.0f;
+		}
 }
 
 void Bro_Monster::LeftRight(shared_ptr<Bro_Player> player)
@@ -106,6 +111,10 @@ void Bro_Monster::Die()
 {
 	SetActive(false);
 	//Resource();
+}
+
+void Bro_Monster::OffSet()
+{
 }
 
 void Bro_Monster::SetActive(bool isActive)

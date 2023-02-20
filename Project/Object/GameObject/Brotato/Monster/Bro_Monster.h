@@ -21,6 +21,7 @@ public:
 	void Idle();
 	void Init();
 	void Die();
+	void OffSet();
 
 
 	shared_ptr<Collider> GetCollider() { return _collider; }
@@ -50,13 +51,12 @@ private:
 	Vector2 _direction = { 0,0 };
 	float _speed = 100.0f;
 
+	bool _damagedelay = false;
+	float _delaytime = 0.0f;
+
 	CallBack _endEvnet = nullptr;
 
-	float _check = 0.0f;
-	float _delay = 1.0f;
-
-
 	float _Hp = 15.0f;
-	UINT DMG = 1;
+	float DMG = 1.0f;
 };
 

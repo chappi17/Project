@@ -5,15 +5,13 @@ Brotato_Store::Brotato_Store()
 {
 	_menu = make_shared<Store_menu>();
 
-	_button_Next_Wave = make_shared<Button>(L"UI/button.png");
-	_button_Next_Wave->SetPostion(Vector2(CENTER_X + 450, CENTER_Y - 300));
-	_button_Next_Wave->SetScale(Vector2(2.0f, 0.8f));
+	_button_Next_Wave = make_shared<Button>(L"UI/Next_Stage.png");
+	_button_Next_Wave->SetPostion(Vector2(CENTER_X + 470, CENTER_Y - 300));
+	_button_Next_Wave->SetScale(Vector2(1.7f, 1.0f));
 
 	_button_Next_Wave->SetEvent(std::bind(&Brotato_Store::ChangeScene_Game, this));
 
 	SOUND->Add("Click", "Resource/Brotato/Sound/Click.wav");
-
-
 }
 
 Brotato_Store::~Brotato_Store()

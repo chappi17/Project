@@ -27,7 +27,7 @@ public:
 
 	shared_ptr<Bro_Player_Bullet> GetBullet() { return _bullet; }
 	shared_ptr<Collider> GetRadius() { return _radious; }
-	UINT& GetHp() { return _Hp; }
+	float& GetHp() { return _Hp; }
 
 
 	void SetLimit(Vector2 bg) { _bg = bg; }
@@ -82,7 +82,7 @@ private:
 	Vector2 _limitMove;
 	Vector2 _bg;
 
-	UINT _Hp = 1200;
+	float _Hp = 12.0f;
 
 	const float _fireDelay = 1.0f;
 	const float _fireDelay_R = 1.5f;

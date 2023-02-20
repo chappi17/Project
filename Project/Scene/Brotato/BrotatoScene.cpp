@@ -41,6 +41,10 @@ void BrotatoScene::Update()
 	for (auto monster : _monsters)
 	{
 		monster->Attack(_player);
+		if (_player->GetHp() <= 0)
+		{
+			_player->SetActive(false);
+		}
 
 		_player->Attack(_monsters);
 		_player->Target(_monsters);
@@ -73,6 +77,10 @@ void BrotatoScene::Update()
 				if (collider1 && collider2)
 				{
 					collider1->Block(collider2);
+					if (_player->GetHp() <= 0)
+					{
+						_player->SetActive(false);
+					}
 				}
 			}
 		}
@@ -115,7 +123,7 @@ void BrotatoScene::CreateMonsters()
 {
 	srand((unsigned int)time(NULL));
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 20; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
 		{
