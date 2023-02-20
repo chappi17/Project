@@ -49,24 +49,18 @@ void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 	{
 		_direction = direction.Normal();
 	}
-
 	if (_collider->IsCollision(player->GetCollider()))
-	{
-		if (!player->_damageDelay)
-		{
-			--player->GetHp();
+	{	
+
+			player->GetHp() - DMG;
 			CAMERA->ShakeStart(3.0f, 0.3f);
-			player->_damageDelay = true;
-			if (Timer::GetInstance()->GetElasedTime() < 2.0f)
-			{
-				player->_damageDelay = false;
-			}
-		}		
+
 		if (player->GetHp() <= 0)
 		{
 			player->SetActive(false);
 			player->Update();
 		}
+		
 	}
 }
 

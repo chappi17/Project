@@ -26,7 +26,7 @@ public:
 	shared_ptr<Collider> GetCollider() { return _collider; }
 	shared_ptr<Transform> GetTransform() { return _transform; }
 	shared_ptr<Quad> GetQuad() { return _quad; }
-	UINT& GetHp() { return _Hp; }
+	float& GetHp() { return _Hp; }
 
 
 
@@ -52,6 +52,11 @@ private:
 
 	CallBack _endEvnet = nullptr;
 
-	UINT _Hp = 15;
+	float _check = 0.0f;
+	float _delay = 1.0f;
+
+
+	float _Hp = 15.0f;
+	UINT DMG = 1;
 };
 

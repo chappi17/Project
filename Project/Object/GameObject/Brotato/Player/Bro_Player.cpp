@@ -190,14 +190,16 @@ void Bro_Player::Attack(vector<shared_ptr<Bro_Monster>>& monsters)
 		if (_bullet->GetCollider()->IsCollision(monster->GetCollider()))
 		{
 			_bullet->SetActive(false);
+			_bullet->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
 			monster->GetHp() -= _gun->DMG;
 			if (monster->GetHp() < 0)
 			{
+				monster->GetHp() = 0;
 				monster->Die();
 				monster->Update();
 			}
 			monster->Update();
-			return;
+			break;
 		}
 	}
 }
@@ -324,7 +326,6 @@ void Bro_Player::Shot()
 		_bullet->SetActive(true);
 		GetGun()->GetQuad()->GetTransform()->SetAngle(angle);
 		GetGun()->GetCollider()->GetTransform()->SetAngle(angle);
-
 	
 		_bullet->SetDirection(direction.Normal());
 		_bullet->GetTransform()->SetPos((_firePos->GetWorldPos()));

@@ -40,11 +40,11 @@ void BrotatoScene::Update()
 
 	for (auto monster : _monsters)
 	{
-	//	monster->Attack(_player);
+		monster->Attack(_player);
 
+		_player->Attack(_monsters);
 		_player->Target(_monsters);
 		_player->Shot();
-		_player->Attack(_monsters);
 
 
 		if (_player->GetRailGun()->IsActive() == true)
@@ -108,6 +108,7 @@ void BrotatoScene::PostRender()
 	int playerHP = _player->GetHp();
 
 	ImGui::SliderInt("playerHp", &playerHP, 0, 10);
+	
 }
 
 void BrotatoScene::CreateMonsters()
