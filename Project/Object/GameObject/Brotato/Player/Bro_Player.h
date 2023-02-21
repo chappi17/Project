@@ -13,8 +13,10 @@ public:
 
 	void SetLeft() { _leftright->_data.leftRight = 1; }
 	void SetRight() { _leftright->_data.leftRight = 0; }
+
 	void Idle();
 	void Moving();
+	void Dead();
 
 
 

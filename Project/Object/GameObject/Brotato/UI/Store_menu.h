@@ -12,6 +12,7 @@ public:
 
 	void SetEvent(CallBack callback) { _callback = callback; }
 
+	void Unlock_Gun();
 	void Unlock_rail();
 	void Unlock_smg();
 

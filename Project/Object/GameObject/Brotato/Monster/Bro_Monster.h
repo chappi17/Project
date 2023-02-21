@@ -20,6 +20,9 @@ public:
 
 	void Idle();
 	void Init();
+	void Dead();
+
+
 	void Die();
 	void OffSet();
 

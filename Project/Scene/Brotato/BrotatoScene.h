@@ -14,7 +14,7 @@ public:
 	void Reset();
 
 	void ChangeScene();
-	void Map_Offset();
+	void End_Stage();
 
 	void Init();
 	
@@ -31,6 +31,8 @@ private:
 	vector<shared_ptr<Bro_Monster>>		_monsters;
 
 	float _spawnTimer = 0;
+
+	bool Stage0 = true;
 
 	double TimeSet = 0.0f;
 	double TimeSet_res = 0.0f;

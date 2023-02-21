@@ -50,6 +50,11 @@ void SceneManager::ChangeScene(string name)
 	_curScene = _sceneTable[name];
 }
 
+void SceneManager::SetUnlock_G(bool isUnlock)
+{
+	Unlock_G = isUnlock;
+}
+
 void SceneManager::SetUnlock_R(bool isUnlock)
 {
 	Unlock_R = isUnlock;
@@ -59,7 +64,3 @@ void SceneManager::SetUnlock_S(bool isUnlock)
 {
 	Unlock_S = isUnlock;
 }
-
-
-
-

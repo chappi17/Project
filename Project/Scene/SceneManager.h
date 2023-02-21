@@ -33,6 +33,9 @@ public:
 
 	void ChangeScene(string name);
 
+	void SetUnlock_G(bool isUnlock);
+	bool Unlock_Gun() { return Unlock_G; }
+
 	void SetUnlock_R(bool isUnlock);
 	bool Unlock_Rail() { return Unlock_R; }
 
@@ -49,5 +52,6 @@ private:
 	weak_ptr<Scene> _curScene;
 	bool Unlock_R = false;
 	bool Unlock_S = false;
+	bool Unlock_G = false;
 };
 

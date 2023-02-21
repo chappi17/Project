@@ -14,6 +14,7 @@ BrotatoScene::BrotatoScene()
 
 	CreateMonsters();
 
+	_player->GetGun()->SetActive(false);
 	_player->GetRailGun()->SetActive(false);
 	_player->GetSMG()->SetActive(false);
 	_bg->Update();
@@ -25,6 +26,11 @@ BrotatoScene::~BrotatoScene()
 
 void BrotatoScene::Update()
 {
+	if (SCENE->Unlock_Gun() == true)
+	{
+		_player->GetGun()->SetActive(true);
+	}
+
 	if (SCENE->Unlock_Rail() == true)
 	{
 		_player->GetRailGun()->SetActive(true);
@@ -49,13 +55,16 @@ void BrotatoScene::Update()
 
 		if (_player->GetHp() <= 0)
 		{
+			_player->Dead();
 			_player->SetActive(false);
 		}
-		_player->Attack(_monsters);
-		_player->Target(_monsters);
-		_player->Shot();
 
-
+		if (_player->GetGun()->IsActive() == true)
+		{
+			_player->Attack(_monsters);
+			_player->Target(_monsters);
+			_player->Shot();
+		}
 
 		if (_player->GetRailGun()->IsActive() == true)
 		{
@@ -96,11 +105,17 @@ void BrotatoScene::Update()
 		_player->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
 		ChangeScene();
 	}
+	if (Stage0 == true)
+	{
+		ChangeScene();
+		Stage0 = false;
+	}
 
 	// 20 초 지나면 상점전환
 	TimeSet += DELTA_TIME;
 	TimeSet_res += DELTA_TIME;
 	
+
 
 	if (TimeSet >= 20)
 	{
@@ -113,11 +128,11 @@ void BrotatoScene::Update()
 void BrotatoScene::Render()
 {
 	_bg->Render();
-	_player->Render();
 	for (auto monster : _monsters)
 	{
 		monster->Render();
 	}
+	_player->Render();
 }
 
 void BrotatoScene::PostRender()
@@ -172,6 +187,15 @@ void BrotatoScene::ChangeScene()
 {
 	SCENE->ChangeScene("Brotato_Store");
 	Reset();
+}
+
+void BrotatoScene::End_Stage()
+{
+	_player->Dead();
+	for (auto monster : _monsters)
+	{
+		monster->Dead();
+	}
 }
 
 void BrotatoScene::Init()

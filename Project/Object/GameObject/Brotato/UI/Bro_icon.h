@@ -13,6 +13,7 @@ public:
 
 	shared_ptr<Quad> Getrailgun() { return _railgun_icon; }
 	shared_ptr<Quad> Getsmg() { return _smg_icon; }
+	shared_ptr<Quad> GetGun() { return _gun_icon; }
 
 	void SetActive(bool isActive);
 	bool IsActive() { return _isActive; }

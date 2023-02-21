@@ -176,6 +176,18 @@ void Bro_Player::Moving()
 	}
 }
 
+void Bro_Player::Dead()
+{
+	float stretchAmount = 0.05f * sin(2.0f * DELTA_TIME * 0.5f);
+	_quad->GetTransform()->GetScale().y -= stretchAmount;
+//	_quad->GetTransform()->GetPos() = _quad->GetTransform()->GetWorldPos();
+
+	if (_quad->GetTransform()->GetScale().y < 0.3f)
+	{
+		_quad->GetTransform()->GetScale().y = 0.1f;
+	}
+}
+
 void Bro_Player::Attack(vector<shared_ptr<Bro_Monster>>& monsters)
 {
 	if (_bullet->IsActive() == false)
@@ -389,6 +401,7 @@ void Bro_Player::Shot_R()
 	if (!_railbullet->GetCollider()->IsCollision(_radious_R))
 	{
 		_railbullet->SetActive(false);
+		_railbullet->GetTransform()->SetPos((_firePos_R->GetWorldPos()));
 		return;
 	}
 }

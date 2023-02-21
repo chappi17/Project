@@ -34,9 +34,9 @@ Store_menu::Store_menu()
 
 	SOUND->Add("Click", "Resource/Brotato/Sound/Click.wav");
 
+
+	_button_G->SetEvent(std::bind(&Store_menu::Unlock_Gun, this));
 	_button_R->SetEvent(std::bind(&Store_menu::Unlock_rail, this));
-
-
 	_button_SMG->SetEvent(std::bind(&Store_menu::Unlock_smg, this));
 }
 
@@ -73,6 +73,13 @@ void Store_menu::Render()
 void Store_menu::PostRender()
 {
 
+}
+
+void Store_menu::Unlock_Gun()
+{
+	_icon->GetGun()->GetTransform()->GetPos() = { CENTER_X - 480 ,CENTER_Y - 300 };
+	SCENE->SetUnlock_G(true);
+	SOUND->Play("Click");
 }
 
 void Store_menu::Unlock_rail()

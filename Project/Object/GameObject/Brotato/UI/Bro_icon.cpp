@@ -9,7 +9,8 @@ Bro_icon::Bro_icon()
 
 	wstring path2 = (L"Item_gun/");
 	_gun_icon = make_shared<Quad>(path2 + L"item_gun.png");
-	_gun_icon->GetTransform()->GetPos() = { CENTER_X - 480 ,CENTER_Y - 300 }; 
+	_gun_icon->GetTransform()->GetPos().x = -3000;
+
 	_gun_icon->GetTransform()->GetScale().x *= 0.07f;
 	_gun_icon->GetTransform()->GetScale().y *= 0.07f;
 

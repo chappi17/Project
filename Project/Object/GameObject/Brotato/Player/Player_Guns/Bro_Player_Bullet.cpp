@@ -21,7 +21,7 @@ Bro_Player_Bullet::~Bro_Player_Bullet()
 
 void Bro_Player_Bullet::Update()
 {
-	if (_isActive == false)
+	if (IsActive() == false)
 		return;
 
 	_transform->GetPos() += _direction * _speed * DELTA_TIME;
@@ -32,7 +32,7 @@ void Bro_Player_Bullet::Update()
 
 void Bro_Player_Bullet::Render()
 {
-	if (_isActive == false)
+	if (IsActive() == false)
 		return;
 
 	_quad->Render();

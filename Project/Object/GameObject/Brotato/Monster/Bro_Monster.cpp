@@ -120,6 +120,18 @@ void Bro_Monster::Init()
 
 }
 
+void Bro_Monster::Dead()
+{
+	float stretchAmount = 0.05f * sin(2.0f * DELTA_TIME * 0.5f);
+	_quad->GetTransform()->GetScale().y -= stretchAmount;
+
+	if (_quad->GetTransform()->GetScale().y < 0.03f)
+	{
+		_quad->GetTransform()->GetScale().y = 0.0f;
+	}
+
+}
+
 void Bro_Monster::Die()
 {
 	SetActive(false);
