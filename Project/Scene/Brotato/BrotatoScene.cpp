@@ -34,21 +34,27 @@ void BrotatoScene::Update()
 	{
 		_player->GetSMG()->SetActive(true);
 	}
-
 	_player->Update();
 
+	if (TimeSet_res >= 5)
+	{
+		CreateMonsters();
+		TimeSet_res = 0;
+	}
 
 	for (auto monster : _monsters)
 	{
+		monster->Update();
 		monster->Attack(_player);
+
 		if (_player->GetHp() <= 0)
 		{
 			_player->SetActive(false);
 		}
-
 		_player->Attack(_monsters);
 		_player->Target(_monsters);
 		_player->Shot();
+
 
 
 		if (_player->GetRailGun()->IsActive() == true)
@@ -65,8 +71,6 @@ void BrotatoScene::Update()
 			_player->Attack_SMG(_monsters);
 		}
 
-		monster->Update();
-
 		for (auto monster2 : _monsters)
 		{
 			if (monster->GetCollider() != monster2->GetCollider() && monster->GetCollider()->IsCollision(monster2->GetCollider()))
@@ -74,10 +78,10 @@ void BrotatoScene::Update()
 				auto collider1 = dynamic_pointer_cast<CircleCollider>(monster->GetCollider());
 				auto collider2 = dynamic_pointer_cast<CircleCollider>(monster2->GetCollider());
 
-				if (collider1 && collider2)
+			if (collider1 && collider2)
 				{
 					collider1->Block(collider2);
-					if (_player->GetHp() <= 0)
+				if (_player->GetHp() <= 0)
 					{
 						_player->SetActive(false);
 					}
@@ -94,10 +98,15 @@ void BrotatoScene::Update()
 	}
 
 	// 20 초 지나면 상점전환
-	if (Timer::GetInstance()->GetElasedTime() >= 20)
+	TimeSet += DELTA_TIME;
+	TimeSet_res += DELTA_TIME;
+	
+
+	if (TimeSet >= 20)
 	{
 		_player->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
 		ChangeScene();
+		TimeSet = 0;
 	}
 }
 
@@ -115,6 +124,16 @@ void BrotatoScene::PostRender()
 {
 	int playerHP = _player->GetHp();
 
+	wstring fps = L"FPS : " + to_wstring((int)Timer::GetInstance()->GetFPS());
+	RECT rect = { 0,0,100,100 };
+	RECT rect2 = { 100,0,200,200 };
+
+	wstring time = L"TIME : " + to_wstring((int)TimeSet);
+
+	DirectWrite::GetInstance()->GetDC()->BeginDraw();
+	DirectWrite::GetInstance()->RenderText(fps, rect);
+	DirectWrite::GetInstance()->RenderText(time, rect2);
+
 	ImGui::SliderInt("playerHp", &playerHP, 0, 10);
 	
 }
@@ -123,7 +142,7 @@ void BrotatoScene::CreateMonsters()
 {
 	srand((unsigned int)time(NULL));
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
 		{
@@ -136,19 +155,16 @@ void BrotatoScene::CreateMonsters()
 			_monsters.push_back(monster);
 		}
 	}
-	
 }
 
 void BrotatoScene::Reset()
 {
 	_player->GetHp() = 12;
+	TimeSet = 0;
 	_player->GetTransform()->SetPos(Vector2{ CENTER_X,CENTER_Y });
 	_player->SetActive(true);
 
-	//for (auto monster : _monsters)
-	//{
-	//	monster->SetActive(false);
-	//}
+	_monsters.clear();
 	CreateMonsters();
 }
 

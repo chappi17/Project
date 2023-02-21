@@ -185,9 +185,9 @@ void Bro_Player::Attack(vector<shared_ptr<Bro_Monster>>& monsters)
 	{
 		if (_bullet->GetCollider()->IsCollision(monster->GetCollider()))
 		{
-			_bullet->SetActive(false);
 			_bullet->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
 			monster->GetHp() -= _gun->DMG;
+			_bullet->SetActive(false);
 			if (monster->GetHp() < 0)
 			{
 				monster->GetHp() = 0;
@@ -209,9 +209,8 @@ void Bro_Player::Attack_R(vector<shared_ptr<Bro_Monster>>& monsters)
 	{
 		if (_railbullet->GetCollider()->IsCollision(monster->GetCollider()))
 		{
-			_railbullet->SetActive(false);
-			_railbullet->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
 			monster->GetHp() -= _railgun->DMG;
+
 			if (monster->GetHp() < 0)
 			{
 				monster->GetHp() = 0;
@@ -221,6 +220,11 @@ void Bro_Player::Attack_R(vector<shared_ptr<Bro_Monster>>& monsters)
 			monster->Update();
 			break;
 		}
+	}
+	if (!_railbullet->GetCollider()->IsCollision(_radious))
+	{
+		_railbullet->SetActive(false);
+		return;
 	}
 }
 
@@ -294,7 +298,6 @@ void Bro_Player::Target_R(vector<shared_ptr<Bro_Monster>>& monsters)
 			return;
 		}
 	}
-
 }
 
 void Bro_Player::Target_SMG(vector<shared_ptr<Bro_Monster>>& monsters)

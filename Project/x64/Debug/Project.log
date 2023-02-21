@@ -1,8 +1,8 @@
 ﻿  Bro_Monster.cpp
 C:\Class\C++\KHI_Project\Project\Project\Object\GameObject\Brotato\Monster\Bro_Monster.cpp(24,48): warning C4244: '인수': 'double'에서 'const float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Class\C++\KHI_Project\Project\Project\Object\GameObject\Brotato\Monster\Bro_Monster.cpp(64,28): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Class\C++\KHI_Project\Project\Project\Object\GameObject\Brotato\Monster\Bro_Monster.cpp(96,15): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Class\C++\KHI_Project\Project\Project\Object\GameObject\Brotato\Monster\Bro_Monster.cpp(97,22): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Class\C++\KHI_Project\Project\Project\Object\GameObject\Brotato\Monster\Bro_Monster.cpp(76,28): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Class\C++\KHI_Project\Project\Project\Object\GameObject\Brotato\Monster\Bro_Monster.cpp(109,15): warning C4244: '초기화 중': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Class\C++\KHI_Project\Project\Project\Object\GameObject\Brotato\Monster\Bro_Monster.cpp(110,22): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(149,77): warning C4244: '인수': '_Ty'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
           with
           [

@@ -15,7 +15,7 @@ public:
 	void SetActive(bool isActive);
 	bool IsActive() { return _isActive; }
 
-	UINT DMG = 40;
+	float DMG = 40.0f;
 private:
 	bool _isActive = true;
 	shared_ptr<Collider> _collider;

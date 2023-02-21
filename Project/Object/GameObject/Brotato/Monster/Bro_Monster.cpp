@@ -51,6 +51,17 @@ void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 		_direction = direction.Normal();
 	}
 
+	// Get the map bounds
+	float mapLeft = -100.0f;
+	float mapRight = static_cast<float>(WIN_WIDTH) + 100.0f;
+	float mapTop = -260.0f;
+	float mapBottom = static_cast<float>(WIN_HEIGHT) + 260.0f;
+
+	// 이동 제한
+	_transform->GetPos().x < 1380 || _transform->GetPos().x > -100 ||
+		_transform->GetPos().y < 980 || _transform->GetPos().y > -260;
+
+
 	if (_damagedelay == false)
 	{
 		if (_collider->IsCollision(player->GetCollider()))
@@ -67,6 +78,7 @@ void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 			_damagedelay = false;
 			_delaytime = 0.0f;
 		}
+
 }
 
 void Bro_Monster::LeftRight(shared_ptr<Bro_Player> player)
@@ -105,6 +117,7 @@ void Bro_Monster::Idle()
 
 void Bro_Monster::Init()
 {
+
 }
 
 void Bro_Monster::Die()

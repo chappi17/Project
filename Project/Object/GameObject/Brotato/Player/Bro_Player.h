@@ -85,7 +85,7 @@ private:
 	float _Hp = 12.0f;
 
 	const float _fireDelay = 1.0f;
-	const float _fireDelay_R = 1.5f;
+	const float _fireDelay_R = 1.2f;
 	const float _fireDelay_S = 0.1f;
 	
 	float _fireCheck = 0.0f;

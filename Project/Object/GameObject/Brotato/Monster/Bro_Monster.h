@@ -24,6 +24,7 @@ public:
 	void OffSet();
 
 
+
 	shared_ptr<Collider> GetCollider() { return _collider; }
 	shared_ptr<Transform> GetTransform() { return _transform; }
 	shared_ptr<Quad> GetQuad() { return _quad; }

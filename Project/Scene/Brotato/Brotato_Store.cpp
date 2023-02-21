@@ -22,14 +22,6 @@ void Brotato_Store::Update()
 {
 	_menu->Update();
 	_button_Next_Wave->Update();
-
-	wstring Next_Round = L"다음 게임 : ";
-	RECT rect = { -100,0,100,100 };
-	RECT rect2 = { 100,0,200,200 };
-
-	DirectWrite::GetInstance()->GetDC()->BeginDraw();
-	DirectWrite::GetInstance()->RenderText(Next_Round, rect);
-
 }
 
 void Brotato_Store::Render()

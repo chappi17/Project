@@ -14,8 +14,12 @@ public:
 	void Reset();
 
 	void ChangeScene();
+	void Map_Offset();
 
 	void Init();
+	
+	int _currentMonster = 0;
+
 
 	shared_ptr<Bro_Player> GetPlayer() { return _player; }
 
@@ -26,7 +30,10 @@ private:
 	shared_ptr<Bro_Player>				_player;
 	vector<shared_ptr<Bro_Monster>>		_monsters;
 
+	float _spawnTimer = 0;
+
 	double TimeSet = 0.0f;
+	double TimeSet_res = 0.0f;
 
 //	shared_ptr<Bro_Monster> _monster;
 
