@@ -84,6 +84,8 @@ private:
 	Vector2 _limitMove;
 	Vector2 _bg;
 
+	
+
 	float _Hp = 12.0f;
 
 	const float _fireDelay = 1.0f;

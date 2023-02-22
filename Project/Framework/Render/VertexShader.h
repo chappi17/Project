@@ -14,5 +14,7 @@ public:
 private:
 	Microsoft::WRL::ComPtr<ID3D11InputLayout> _inputLayout;
 	Microsoft::WRL::ComPtr<ID3D11VertexShader> _vertexShader;
+
+	Microsoft::WRL::ComPtr<ID3D11ShaderReflection> _reflection;
 };
 

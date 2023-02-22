@@ -216,6 +216,9 @@
     <ClInclude Include="Object\GameObject\Brotato\UI\WeaponManger.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\Brotato\Instancing_Test.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project.cpp">
@@ -380,6 +383,9 @@
     <ClCompile Include="Object\GameObject\Brotato\UI\WeaponManger.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\Brotato\Instancing_Test.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project.rc">
@@ -436,6 +442,8 @@
     <FxCompile Include="Shaders\SpritePixelShader.hlsl" />
     <FxCompile Include="Shaders\ColliderShader\ColliderPixelShader.hlsl" />
     <FxCompile Include="Shaders\ColliderShader\ColliderVertexShader.hlsl" />
+    <FxCompile Include="Shaders\InstanceVertexShader.hlsl" />
+    <FxCompile Include="Shaders\InstancePixelShader.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Library\FMOD\fmod_vc.lib" />

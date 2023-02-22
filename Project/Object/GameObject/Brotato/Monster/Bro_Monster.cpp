@@ -33,6 +33,7 @@ void Bro_Monster::Render()
 
 	_quad->Render();
 	_collider->Render();
+	
 }
 
 void Bro_Monster::SetDirection(Vector2 dir)
@@ -148,8 +149,3 @@ void Bro_Monster::SetActive(bool isActive)
 	_collider->_isActive = isActive;
 }
 
-void Bro_Monster::Resource()
-{
-	_resource->SetActive(true);
-	_resource->GetQuad()->GetTransform()->GetPos() = this->GetTransform()->GetWorldPos();
-}

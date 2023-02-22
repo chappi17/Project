@@ -19,6 +19,12 @@
       <FullPath>C:\Class\C++\KHI_Project\Project\x64\Debug\ColliderVertexShader.cso</FullPath>
     </ContentFile>
     <ContentFile>
+      <FullPath>C:\Class\C++\KHI_Project\Project\x64\Debug\InstancePixelShader.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Class\C++\KHI_Project\Project\x64\Debug\InstanceVertexShader.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
       <FullPath>C:\Class\C++\KHI_Project\Project\x64\Debug\SpritePixelShader.cso</FullPath>
     </ContentFile>
     <ContentFile>

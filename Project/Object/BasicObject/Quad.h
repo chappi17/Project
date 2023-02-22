@@ -8,6 +8,7 @@ public:
 
 	virtual void Update();
 	virtual void Render();
+	void SetRender();
 
 	void SetVertexShader(shared_ptr<VertexShader> vs) { _vs = vs; }
 	void SetPixelShader(shared_ptr<PixelShader> ps) { _ps = ps; }

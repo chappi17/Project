@@ -11,6 +11,9 @@ BrotatoScene::BrotatoScene()
 	_player = make_shared<Bro_Player>();
 	CAMERA->SetTarget(_player->GetTransform());
 	CAMERA->SetOffSet({ CENTER_X,CENTER_Y });
+	_resource = make_shared<Bro_Resource>();
+	_resource->SetActive(true);
+	
 
 	CreateMonsters();
 
@@ -26,6 +29,7 @@ BrotatoScene::~BrotatoScene()
 
 void BrotatoScene::Update()
 {
+
 	if (SCENE->Unlock_Gun() == true)
 	{
 		_player->GetGun()->SetActive(true);
@@ -52,6 +56,7 @@ void BrotatoScene::Update()
 	{
 		monster->Update();
 		monster->Attack(_player);
+		_resource;
 
 		if (_player->GetHp() <= 0)
 		{
@@ -114,7 +119,6 @@ void BrotatoScene::Update()
 	// 20 초 지나면 상점전환
 	TimeSet += DELTA_TIME;
 	TimeSet_res += DELTA_TIME;
-	
 
 
 	if (TimeSet >= 20)
@@ -133,31 +137,29 @@ void BrotatoScene::Render()
 		monster->Render();
 	}
 	_player->Render();
+	_resource->Render();
 }
 
 void BrotatoScene::PostRender()
 {
 	int playerHP = _player->GetHp();
 
-	wstring fps = L"FPS : " + to_wstring((int)Timer::GetInstance()->GetFPS());
-	RECT rect = { 0,0,100,100 };
+
 	RECT rect2 = { 100,0,200,200 };
 
 	wstring time = L"TIME : " + to_wstring((int)TimeSet);
 
 	DirectWrite::GetInstance()->GetDC()->BeginDraw();
-	DirectWrite::GetInstance()->RenderText(fps, rect);
 	DirectWrite::GetInstance()->RenderText(time, rect2);
 
 	ImGui::SliderInt("playerHp", &playerHP, 0, 10);
-	
 }
 
 void BrotatoScene::CreateMonsters()
 {
 	srand((unsigned int)time(NULL));
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
 		{
