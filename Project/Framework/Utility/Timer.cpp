@@ -1,5 +1,7 @@
 #include "framework.h"
 #include "Timer.h"
+#include <thread>
+#include <chrono>
 
 Timer* Timer::_instance = nullptr;
 Timer::Timer()

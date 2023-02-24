@@ -11,8 +11,7 @@ BrotatoScene::BrotatoScene()
 	_player = make_shared<Bro_Player>();
 	CAMERA->SetTarget(_player->GetTransform());
 	CAMERA->SetOffSet({ CENTER_X,CENTER_Y });
-	_resource = make_shared<Bro_Resource>();
-	_resource->SetActive(true);
+
 	
 	CreateMonsters();
 
@@ -20,6 +19,7 @@ BrotatoScene::BrotatoScene()
 	_player->GetRailGun()->SetActive(false);
 	_player->GetSMG()->SetActive(false);
 	_bg->Update();
+
 }
 
 BrotatoScene::~BrotatoScene()
@@ -59,6 +59,7 @@ void BrotatoScene::Update()
 
 		if (_player->GetHp() <= 0)
 		{
+			_player->Attack(_monsters);
 			_player->Dead();
 			_player->SetActive(false);
 		}
@@ -109,10 +110,11 @@ void BrotatoScene::Update()
 		_player->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
 		ChangeScene();
 	}
-	if (Stage0 == true)
+
+	if (stage0 == false)
 	{
 		ChangeScene();
-		Stage0 = false;
+		stage0 = true;
 	}
 
 	// 20 초 지나면 상점전환
@@ -136,13 +138,14 @@ void BrotatoScene::Render()
 		monster->Render();
 	}
 	_player->Render();
-	_resource->Render();
+
 }
 
 void BrotatoScene::PostRender()
 {
 	int playerHP = _player->GetHp();
-
+	int Score = SceneManager::GetInstance()->GetPoints();
+	
 	wstring time = L"TIME : " + to_wstring((int)TimeSet);
 	RECT rect2 = { 100,100,100,100 };
 	RECT rect = { 0,0,100,100 };
@@ -151,6 +154,7 @@ void BrotatoScene::PostRender()
 	DirectWrite::GetInstance()->RenderText(time,rect);
 
 	ImGui::SliderInt("playerHp", &playerHP, 0, 10);
+	ImGui::SliderInt("Points: ", &Score, 0, 50000);
 }
 
 void BrotatoScene::CreateMonsters()

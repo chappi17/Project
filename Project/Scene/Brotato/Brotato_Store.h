@@ -1,5 +1,6 @@
 #pragma once
 class BrotatoScene;
+class GameData;
 class Brotato_Store : public Scene 
 {
 public:
@@ -23,6 +24,7 @@ private:
 	shared_ptr<Button> _button_Next_Wave;
 
 	shared_ptr<BrotatoScene> _camera;
+	shared_ptr<Bro_Player> _player;
 
 	shared_ptr<Store_menu> _menu;
 	CallBack _callback;

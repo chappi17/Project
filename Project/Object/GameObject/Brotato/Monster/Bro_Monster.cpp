@@ -8,6 +8,7 @@ Bro_Monster::Bro_Monster()
 	_collider = make_shared<CircleCollider>(25);
 	_quad->GetTransform()->SetParent(_collider->GetTransform());
 	_collider->GetTransform()->SetParent(_transform);
+	_resource = make_shared<Bro_Resource>();
 }
 
 Bro_Monster::~Bro_Monster()
@@ -33,7 +34,7 @@ void Bro_Monster::Render()
 
 	_quad->Render();
 	_collider->Render();
-	
+	_resource->Render();
 }
 
 void Bro_Monster::SetDirection(Vector2 dir)
@@ -73,7 +74,7 @@ void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 		}
 	}
 	else
-			_delaytime += DELTA_TIME;
+		_delaytime += DELTA_TIME;
 		if (_delaytime  > 1.0f)
 		{
 			_damagedelay = false;
@@ -106,6 +107,9 @@ void Bro_Monster::CreateMonsters()
 
 void Bro_Monster::Idle()
 {
+	if (_isActive == false)
+		return;
+
 	float offset = rand() % 360;
 	float stretchAmount = 0.05f * sin(2.0f * (DELTA_TIME) * 0.5f);
 	_quad->GetTransform()->GetScale().y -= stretchAmount;
@@ -122,21 +126,13 @@ void Bro_Monster::Init()
 }
 
 void Bro_Monster::Dead()
-{
-	float stretchAmount = 0.05f * sin(2.0f * DELTA_TIME * 0.5f);
-	_quad->GetTransform()->GetScale().y -= stretchAmount;
-
-	if (_quad->GetTransform()->GetScale().y < 0.03f)
-	{
-		_quad->GetTransform()->GetScale().y = 0.0f;
-	}
-
+{	
 }
 
 void Bro_Monster::Die()
 {
+	Dead();
 	SetActive(false);
-	//Resource();
 }
 
 void Bro_Monster::OffSet()
@@ -148,4 +144,3 @@ void Bro_Monster::SetActive(bool isActive)
 	_isActive = isActive;
 	_collider->_isActive = isActive;
 }
-

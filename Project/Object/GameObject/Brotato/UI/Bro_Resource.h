@@ -2,6 +2,7 @@
 class Bro_Resource
 {
 public:
+
 	struct InstanceData
 	{
 		XMMATRIX matrix;
@@ -18,11 +19,11 @@ public:
 
 	shared_ptr<Quad> GetQuad() {return _quad;}
 	shared_ptr<Transform> GetTransform() { return _transform; }
+	vector<InstanceData> GetDatas() {return  _instanceDataes; }
 
 private:
 	bool _isActive = true;
 	shared_ptr<Quad> _quad;
-
 	vector<InstanceData> _instanceDataes;  // 생성 위치 모조리 찍어서 그림자 분신술 하는거
 	shared_ptr<VertexBuffer> _instanceBuffer;
 

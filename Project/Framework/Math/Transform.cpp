@@ -58,6 +58,8 @@ Vector2 Transform::GetWorldScale()
 	return _scale;
 }
 
+
+
 Vector2 Transform::GetWorldPos()
 {
 	if (_parent != nullptr)

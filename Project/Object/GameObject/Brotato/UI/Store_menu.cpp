@@ -77,6 +77,15 @@ void Store_menu::PostRender()
 
 void Store_menu::Unlock_Gun()
 {
+	if (SCENE->GetPoints() == 0)
+	{	
+		_icon->GetGun()->GetTransform()->GetPos() = { CENTER_X - 480 ,CENTER_Y - 300 };
+		SCENE->SetUnlock_G(true);
+		SOUND->Play("Click");
+		return;
+	}
+
+	SCENE->AddPoints(-500);
 	_icon->GetGun()->GetTransform()->GetPos() = { CENTER_X - 480 ,CENTER_Y - 300 };
 	SCENE->SetUnlock_G(true);
 	SOUND->Play("Click");
@@ -84,6 +93,16 @@ void Store_menu::Unlock_Gun()
 
 void Store_menu::Unlock_rail()
 {
+	if (SCENE->GetPoints() == 0)
+	{
+		_icon->Getrailgun()->GetTransform()->GetPos() = { CENTER_X - 340 ,CENTER_Y - 300 };
+		SCENE->SetUnlock_R(true);
+		SOUND->Play("Click");
+		return;
+	}
+
+	SCENE->AddPoints(-1000);
+
 	_icon->Getrailgun()->GetTransform()->GetPos() = { CENTER_X - 340 ,CENTER_Y - 300 };
 	SCENE->SetUnlock_R(true);
 	SOUND->Play("Click");
@@ -91,6 +110,17 @@ void Store_menu::Unlock_rail()
 
 void Store_menu::Unlock_smg()
 {
+	if (SCENE->GetPoints() == 0)
+	{
+
+		_icon->Getsmg()->GetTransform()->GetPos() = { CENTER_X - 410 ,CENTER_Y - 300 };
+		SCENE->SetUnlock_S(true);
+		SOUND->Play("Click");
+		return;
+	}
+
+	SCENE->AddPoints(-800);
+
 	_icon->Getsmg()->GetTransform()->GetPos() = { CENTER_X - 410 ,CENTER_Y - 300 };
 	SCENE->SetUnlock_S(true);
 	SOUND->Play("Click");

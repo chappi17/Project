@@ -28,6 +28,8 @@ public:
 
 	void Update();
 	void SetLockFPS(double value) { _lockFPS = value; }
+	void SetTimer(float seconds);
+
 
 	int GetFPS() { return _frameRate; }
 	double GetElasedTime() { return _timeElased; }

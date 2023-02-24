@@ -10,9 +10,6 @@ Instancing_Test::Instancing_Test()
 
 	_instanceDataes.resize(1);
 
-	_resource = make_shared<Bro_Resource>();
-	_resource->GetQuad()->GetTransform()->GetPos() = { CENTER_X,CENTER_Y+100 };
-	_resource->GetTransform()->SetSRT();
 
 	for (auto& data : _instanceDataes)
 	{
@@ -32,7 +29,7 @@ Instancing_Test::~Instancing_Test()
 
 void Instancing_Test::Update()
 {
-	_resource->GetQuad()->Update();
+
 }
 
 void Instancing_Test::Render()

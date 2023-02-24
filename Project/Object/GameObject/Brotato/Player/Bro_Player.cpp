@@ -56,6 +56,8 @@ Bro_Player::Bro_Player()
 	SOUND->Add("Shot_R", "Resource/Brotato/Sound/RailGun.wav");
 	SOUND->Add("Shot_SMG", "Resource/Brotato/Sound/SMG.wav");
 	SOUND->Add("Hit_Sound", "Resource/Brotato/Sound/Hit_Sound.wav");
+
+
 }
 
 Bro_Player::~Bro_Player()
@@ -211,10 +213,12 @@ void Bro_Player::Attack(vector<shared_ptr<Bro_Monster>>& monsters)
 			_bullet->GetTransform()->GetPos() = _quad->GetTransform()->GetWorldPos();
 			_bullet->Update();
 			monster->GetHp() -= _gun->DMG;
+
 			if (monster->GetHp() < 0)
 			{
 				monster->GetHp() = 0;
 				monster->Die();
+				SceneManager::GetInstance()->AddPoints(100);
 			}
 			monster->Update();
 			break;
@@ -244,6 +248,7 @@ void Bro_Player::Attack_R(vector<shared_ptr<Bro_Monster>>& monsters)
 			{
 				monster->GetHp() = 0;
 				monster->Die();
+				SceneManager::GetInstance()->AddPoints(100);
 				monster->Update();
 			}
 			monster->Update();
@@ -271,6 +276,7 @@ void Bro_Player::Attack_SMG(vector<shared_ptr<Bro_Monster>>& monsters)
 			{
 				monster->GetHp() = 0;
 				monster->Die();
+				SceneManager::GetInstance()->AddPoints(100);
 				monster->Update();
 			}
 			monster->Update();

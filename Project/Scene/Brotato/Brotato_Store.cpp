@@ -1,5 +1,8 @@
 #include "framework.h"
 #include "Brotato_Store.h"
+#include "Scene/Brotato/BrotatoScene.h"
+#include "Object/GameObject/Brotato/Player/Bro_Player.h"
+class GameData;
 
 Brotato_Store::Brotato_Store()
 {
@@ -32,13 +35,8 @@ void Brotato_Store::Render()
 
 void Brotato_Store::PostRender()
 {
-	//ImGui::Button("Save", ImVec2(50, 50));
-	//ImGui::Button("Load", ImVec2(50, 50));
-
-	//ImGui::SliderFloat2("ItemX", &_quad->GetTransform()->GetPos().x, 0.0f, WIN_WIDTH);
-	//ImGui::SliderFloat2("ItemY", &_quad->GetTransform()->GetPos().y, 0.0f, WIN_HEIGHT);
-
-
+	int score = SceneManager::GetInstance()->GetPoints();
+	ImGui::SliderInt("Points:", &score, 0, 50000);
 }
 
 void Brotato_Store::Save_Slot()

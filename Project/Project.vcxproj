@@ -218,7 +218,6 @@
     <ClInclude Include="Object\GameObject\Brotato\UI\Store_menu.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Types.h" />
-    <ClInclude Include="Object\GameObject\Brotato\UI\WeaponManger.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene\Brotato\Instancing_Test.cpp" />
@@ -284,7 +283,6 @@
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\SceneManager.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\UI\Store_menu.cpp" />
-    <ClCompile Include="Object\GameObject\Brotato\UI\WeaponManger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project.rc" />

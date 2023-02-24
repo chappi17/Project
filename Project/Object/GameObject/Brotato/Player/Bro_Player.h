@@ -51,7 +51,6 @@ public:
 	void Shot_R();
 	void Shot_SMG();
 
-
 	void SetActive(bool isActive);
 	bool IsActive() { return _isActive; }
 	bool _damageDelay = false;
@@ -92,9 +91,7 @@ private:
 
 	shared_ptr<LeftRightBuffer> _leftright;
 	Vector2 _limitMove;
-	Vector2 _bg;
-
-	
+	Vector2 _bg;	
 
 	float _Hp = 12.0f;
 

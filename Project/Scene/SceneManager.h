@@ -42,16 +42,21 @@ public:
 	void SetUnlock_S(bool isUnlock);
 	bool Unlock_SMG() { return Unlock_S; }
 
-
+	int GetPoints() const { return _points; }
+	int SetPoints(int points) { return _points = points; }
+	void AddPoints(int points) { _points += points; }
+	
 private:
-
-
 	static SceneManager* _instance;
 
 	unordered_map<string, shared_ptr<Scene>> _sceneTable;
 	weak_ptr<Scene> _curScene;
+
 	bool Unlock_R = false;
 	bool Unlock_S = false;
 	bool Unlock_G = false;
+
+	
+	int _points = 0;
 };
 
