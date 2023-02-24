@@ -12,7 +12,7 @@ Bro_Player_Bullet::Bro_Player_Bullet()
 
 	_quad->GetTransform()->SetParent(_transform);
 	_collider->GetTransform()->SetParent(_transform);
-	_transform->GetPos() = { CENTER_X,CENTER_Y };
+
 }
 
 Bro_Player_Bullet::~Bro_Player_Bullet()

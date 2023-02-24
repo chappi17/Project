@@ -27,9 +27,6 @@ private:
 	shared_ptr <Collider>	_collider;
 	shared_ptr<class Bro_Monster> _monster;
 
-	const float _fireDelay = 2.5f;
-	float _fireCheck = 0.0f;
-
 	Vector2 _direction = { 0,0 };
 	Vector2 _firedirection = { 0,0 };
 

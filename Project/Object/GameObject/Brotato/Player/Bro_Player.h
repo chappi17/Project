@@ -3,6 +3,12 @@ class Bro_Monster;
 class Bro_Player
 {
 public:
+
+	struct InstanceData
+	{
+		XMMATRIX matrix;
+	};
+
 	Bro_Player();
 	~Bro_Player();
 
@@ -10,7 +16,6 @@ public:
 	void Render();
 
 	void Input();
-
 	void SetLeft() { _leftright->_data.leftRight = 1; }
 	void SetRight() { _leftright->_data.leftRight = 0; }
 
@@ -78,6 +83,11 @@ private:
 	shared_ptr<Collider> _radious_SMG;
 
 	shared_ptr<Quad> _quad;
+	shared_ptr<Quad> _quad_resource;
+
+	vector<InstanceData> _instanceDataes;  // 생성 위치 모조리 찍어서 그림자 분신술 하는거
+	shared_ptr<VertexBuffer> _instanceBuffer;
+
 	float _speed = 250.0f;
 
 	shared_ptr<LeftRightBuffer> _leftright;
@@ -90,7 +100,7 @@ private:
 
 	const float _fireDelay = 1.0f;
 	const float _fireDelay_R = 1.2f;
-	const float _fireDelay_S = 0.1f;
+	const float _fireDelay_S = 0.3f;
 	
 	float _fireCheck = 0.0f;
 	float _fireCheck_R = 0.0f;

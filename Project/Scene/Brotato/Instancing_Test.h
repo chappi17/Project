@@ -21,4 +21,6 @@ private:
 	shared_ptr<VertexBuffer> _instanceBuffer;
 
 	shared_ptr<Transform> _transform;
+
+	shared_ptr<Bro_Resource> _resource;
 };

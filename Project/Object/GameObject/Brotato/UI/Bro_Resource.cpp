@@ -8,7 +8,7 @@ Bro_Resource::Bro_Resource()
 	_quad->SetVertexShader(ADD_VS(L"InstanceVertexShader"));
 	_quad->SetPixelShader(ADD_PS(L"InstancePixelShader"));
 
-	_instanceDataes.resize(10);
+	_instanceDataes.resize(1);
 
 	for (auto& data : _instanceDataes)
 	{
@@ -16,10 +16,15 @@ Bro_Resource::Bro_Resource()
 		transform.GetPos() = { CENTER_X,CENTER_Y };
 		transform.SetSRT();
 
-		data.matrix = XMMatrixTranspose(*transform.GetMatrix());
+		data.matrix = XMMatrixTranspose(*transform.GetMatrix());		
 	}
 
-	_instanceBuffer = make_shared<VertexBuffer>(_instanceDataes.data(), sizeof(InstanceData), 10, 0, true);
+	_transform = make_shared<Transform>();
+	_transform->GetPos() = { CENTER_X,CENTER_Y };
+	_transform->SetSRT();
+	_instanceDataes[0].matrix = XMMatrixTranspose(*_transform->GetMatrix());
+
+	_instanceBuffer = make_shared<VertexBuffer>(_instanceDataes.data(), sizeof(InstanceData), 5, 0, true);
 }
 
 Bro_Resource::~Bro_Resource()

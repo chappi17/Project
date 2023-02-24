@@ -52,11 +52,11 @@ void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 		_direction = direction.Normal();
 	}
 
-	// Get the map bounds
-	float mapLeft = -100.0f;
-	float mapRight = static_cast<float>(WIN_WIDTH) + 100.0f;
-	float mapTop = -260.0f;
-	float mapBottom = static_cast<float>(WIN_HEIGHT) + 260.0f;
+	//// 맵 크기
+	//float mapLeft = -100.0f;
+	//float mapRight = static_cast<float>(WIN_WIDTH) + 100.0f;
+	//float mapTop = -260.0f;
+	//float mapBottom = static_cast<float>(WIN_HEIGHT) + 260.0f;
 
 	// 이동 제한
 	_transform->GetPos().x < 1380 || _transform->GetPos().x > -100 ||

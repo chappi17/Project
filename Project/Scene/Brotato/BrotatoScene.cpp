@@ -14,7 +14,6 @@ BrotatoScene::BrotatoScene()
 	_resource = make_shared<Bro_Resource>();
 	_resource->SetActive(true);
 	
-
 	CreateMonsters();
 
 	_player->GetGun()->SetActive(false);
@@ -56,7 +55,7 @@ void BrotatoScene::Update()
 	{
 		monster->Update();
 		monster->Attack(_player);
-		_resource;
+		
 
 		if (_player->GetHp() <= 0)
 		{
@@ -73,16 +72,16 @@ void BrotatoScene::Update()
 
 		if (_player->GetRailGun()->IsActive() == true)
 		{
+			_player->Attack_R(_monsters);
 			_player->Target_R(_monsters);
 			_player->Shot_R();
-			_player->Attack_R(_monsters);
 		}
 
 		if (_player->GetSMG()->IsActive() == true)
 		{
+			_player->Attack_SMG(_monsters);
 			_player->Target_SMG(_monsters);
 			_player->Shot_SMG();
-			_player->Attack_SMG(_monsters);
 		}
 
 		for (auto monster2 : _monsters)
@@ -144,13 +143,12 @@ void BrotatoScene::PostRender()
 {
 	int playerHP = _player->GetHp();
 
-
-	RECT rect2 = { 100,0,200,200 };
-
 	wstring time = L"TIME : " + to_wstring((int)TimeSet);
+	RECT rect2 = { 100,100,100,100 };
+	RECT rect = { 0,0,100,100 };
 
 	DirectWrite::GetInstance()->GetDC()->BeginDraw();
-	DirectWrite::GetInstance()->RenderText(time, rect2);
+	DirectWrite::GetInstance()->RenderText(time,rect);
 
 	ImGui::SliderInt("playerHp", &playerHP, 0, 10);
 }
@@ -159,7 +157,7 @@ void BrotatoScene::CreateMonsters()
 {
 	srand((unsigned int)time(NULL));
 
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
 		{

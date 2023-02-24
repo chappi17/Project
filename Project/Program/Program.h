@@ -9,5 +9,6 @@ public:
 	void Render();
 
 private:
+	double TimeSet = 0.0f;
 };
 

@@ -3,20 +3,16 @@
 
 Instancing_Test::Instancing_Test()
 {
-	//for (int i = 0; i < 100; i++)
-	//{
-	//	wstring path = (L"Effect/");
-	//	shared_ptr<Quad> quads = make_shared<Quad>(path + L"resource.png");
-	//	quads->GetTransform()->GetPos() = { MathUtility::RandomFloat(0,WIN_WIDTH) ,MathUtility::RandomFloat(0,WIN_HEIGHT) };
-	//	_quads.push_back(quads);
-	//}
-
 	wstring path = (L"Effect/");
 	_quad = make_shared<Quad>(path + L"resource.png");
 	_quad->SetVertexShader(ADD_VS(L"InstanceVertexShader"));
 	_quad->SetPixelShader(ADD_PS(L"InstancePixelShader"));
 
 	_instanceDataes.resize(1);
+
+	_resource = make_shared<Bro_Resource>();
+	_resource->GetQuad()->GetTransform()->GetPos() = { CENTER_X,CENTER_Y+100 };
+	_resource->GetTransform()->SetSRT();
 
 	for (auto& data : _instanceDataes)
 	{
@@ -26,7 +22,8 @@ Instancing_Test::Instancing_Test()
 
 		data.matrix = XMMatrixTranspose(*transform.GetMatrix());
 	}
-	_instanceBuffer = make_shared<VertexBuffer>(_instanceDataes.data(), sizeof(InstanceData), 1,0,true);
+
+	_instanceBuffer = make_shared<VertexBuffer>(_instanceDataes.data(), sizeof(InstanceData), 1, 0, true);
 }
 
 Instancing_Test::~Instancing_Test()
@@ -35,7 +32,7 @@ Instancing_Test::~Instancing_Test()
 
 void Instancing_Test::Update()
 {
-
+	_resource->GetQuad()->Update();
 }
 
 void Instancing_Test::Render()
@@ -44,4 +41,7 @@ void Instancing_Test::Render()
 	_quad->SetRender();
 
 	DC->DrawIndexedInstanced(6, 100, 0, 0, 0);
+
+	_resource->Render();
+
 }

@@ -12,7 +12,6 @@ Bro_Player_Bullet_SMG::Bro_Player_Bullet_SMG()
 
 	_quad->GetTransform()->SetParent(_transform);
 	_collider->GetTransform()->SetParent(_transform);
-	_transform->GetPos() = { CENTER_X,CENTER_Y };
 }
 
 Bro_Player_Bullet_SMG::~Bro_Player_Bullet_SMG()
@@ -21,7 +20,7 @@ Bro_Player_Bullet_SMG::~Bro_Player_Bullet_SMG()
 
 void Bro_Player_Bullet_SMG::Update()
 {
-	if (_isActive == false)
+	if (IsActive() == false)
 		return;
 
 	_transform->GetPos() += _direction * _speed * DELTA_TIME;
@@ -32,7 +31,7 @@ void Bro_Player_Bullet_SMG::Update()
 
 void Bro_Player_Bullet_SMG::Render()
 {
-	if (_isActive == false)
+	if (IsActive() == false)
 		return;
 
 	_quad->Render();

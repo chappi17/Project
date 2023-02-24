@@ -3,7 +3,7 @@
 
 Program::Program()
 {
-	//Timer::GetInstance()->SetLockFPS(144);
+	Timer::GetInstance()->SetLockFPS(144);
 }
 
 Program::~Program()
