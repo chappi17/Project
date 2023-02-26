@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\Brotato\First_Scene.h" />
     <ClInclude Include="Scene\Brotato\Instancing_Test.h" />
     <ClInclude Include="Object\GameObject\Brotato\UI\Bro_icon.h" />
     <ClInclude Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_player_Bullet_Rail.h" />
@@ -220,6 +221,7 @@
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\Brotato\First_Scene.cpp" />
     <ClCompile Include="Scene\Brotato\Instancing_Test.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\UI\Bro_icon.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\Player\Player_Guns\Bro_player_Bullet_Rail.cpp" />
@@ -291,6 +293,7 @@
     <Image Include="Project.ico" />
     <Image Include="Resource\Brotato\BackGround\Bro_Background.png" />
     <Image Include="Resource\Brotato\Effect\Bullet.png" />
+    <Image Include="Resource\Brotato\Effect\First_Scene.jpg" />
     <Image Include="Resource\Brotato\Gun\gun.png" />
     <Image Include="Resource\Brotato\Gun\SMG.png" />
     <Image Include="Resource\Brotato\Gun\레이저총.png" />

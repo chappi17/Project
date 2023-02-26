@@ -1,6 +1,5 @@
 #pragma once
 class BrotatoScene;
-class GameData;
 class Brotato_Store : public Scene 
 {
 public:

@@ -95,10 +95,6 @@ void BrotatoScene::Update()
 			if (collider1 && collider2)
 				{
 					collider1->Block(collider2);
-				if (_player->GetHp() <= 0)
-					{
-						_player->SetActive(false);
-					}
 				}
 			}
 		}
@@ -110,17 +106,11 @@ void BrotatoScene::Update()
 		_player->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
 		ChangeScene();
 	}
-
-	if (stage0 == false)
-	{
-		ChangeScene();
-		stage0 = true;
-	}
+	
 
 	// 20 초 지나면 상점전환
 	TimeSet += DELTA_TIME;
 	TimeSet_res += DELTA_TIME;
-
 
 	if (TimeSet >= 20)
 	{
@@ -161,7 +151,30 @@ void BrotatoScene::CreateMonsters()
 {
 	srand((unsigned int)time(NULL));
 
+	std::vector<float> respawnXPositions;
+	std::vector<float> respawnYPositions;
+
 	for (int i = 0; i < 5; i++)
+	{
+		float respawnX = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
+		float respawnY = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);
+
+		respawnXPositions.push_back(respawnX);
+		respawnYPositions.push_back(respawnY);
+	}
+
+	for (int i = 0; i < 5; i++)
+	{
+		auto monster = make_shared<Bro_Monster>();
+
+		monster->GetTransform()->GetPos() = Vector2{ respawnXPositions[i], respawnYPositions[i] };
+		monster->Update();
+		monster->SetActive(true);
+
+		_monsters.push_back(monster);
+	}
+
+	/*for (int i = 0; i < 5; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
 		{
@@ -174,6 +187,7 @@ void BrotatoScene::CreateMonsters()
 			_monsters.push_back(monster);
 		}
 	}
+	*/
 }
 
 void BrotatoScene::Reset()
@@ -191,6 +205,11 @@ void BrotatoScene::ChangeScene()
 {
 	SCENE->ChangeScene("Brotato_Store");
 	Reset();
+}
+
+void BrotatoScene::FirstScene()
+{
+	SCENE->ChangeScene("First_Scene");
 }
 
 void BrotatoScene::End_Stage()

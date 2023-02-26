@@ -2,7 +2,6 @@
 #include "Brotato_Store.h"
 #include "Scene/Brotato/BrotatoScene.h"
 #include "Object/GameObject/Brotato/Player/Bro_Player.h"
-class GameData;
 
 Brotato_Store::Brotato_Store()
 {

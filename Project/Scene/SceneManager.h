@@ -55,7 +55,6 @@ private:
 	bool Unlock_R = false;
 	bool Unlock_S = false;
 	bool Unlock_G = false;
-
 	
 	int _points = 0;
 };

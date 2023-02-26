@@ -4,6 +4,7 @@
 #include "../Scene/Brotato/BrotatoScene.h"
 #include "../Scene/Brotato/Brotato_Store.h"
 #include "../Scene/Brotato/Instancing_Test.h"
+#include "../Scene/Brotato/First_Scene.h"
 
 SceneManager* SceneManager::_instance = nullptr;
 
@@ -18,7 +19,10 @@ SceneManager::SceneManager()
 	shared_ptr<Scene> Instancing = make_shared<Instancing_Test>();
 	_sceneTable["Instancing"] = Instancing;
 
-	_curScene = broScene;
+	shared_ptr<Scene> First = make_shared<First_Scene>();
+	_sceneTable["First"] = First;
+
+	_curScene = First;
 }
 
 SceneManager::~SceneManager()

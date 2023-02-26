@@ -14,6 +14,7 @@ public:
 	void Reset();
 
 	void ChangeScene();
+	void FirstScene();
 	void End_Stage();
 
 	void Init();

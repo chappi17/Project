@@ -131,6 +131,7 @@ using namespace DirectX;
 
 // Scene
 #include "Scene/Scene.h"
+#include "Scene/Brotato/First_Scene.h"
 #include "Scene/Brotato/BrotatoScene.h"
 #include "Scene/Brotato/Brotato_Store.h"
 #include "Scene/Brotato/Instancing_Test.h"
