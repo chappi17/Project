@@ -6,19 +6,20 @@ Store_menu::Store_menu()
 {
 	wstring path1 = (L"UI/");
 	_quad_G = make_shared<Quad>(path1 + L"store_menu_G.png");
-	_quad_G->GetTransform()->GetPos() = { CENTER_X- 480,CENTER_Y +50};
+	_quad_G->GetTransform()->GetPos() = { CENTER_X - 480,CENTER_Y + 50 };
 	_quad_G->GetTransform()->GetScale() * 0.5f;
 
 	wstring path2 = (L"UI/");
 	_quad_R = make_shared<Quad>(path2 + L"store_menu_R.png");
-	_quad_R->GetTransform()->GetPos() = { CENTER_X - 155,CENTER_Y +50};
+	_quad_R->GetTransform()->GetPos() = { CENTER_X - 155,CENTER_Y + 50 };
 
 	wstring path3 = (L"UI/");
 	_quad_SMG = make_shared<Quad>(path3 + L"store_menu_SMG.png");
-	_quad_SMG->GetTransform()->GetPos() = { CENTER_X + 175,CENTER_Y+50 };
+	_quad_SMG->GetTransform()->GetPos() = { CENTER_X + 175,CENTER_Y + 50 };
 
 
 	_button_G = make_shared<Button>(L"UI/button_hover.png");
+
 	_button_G->SetPostion(Vector2(CENTER_X - 480, CENTER_Y - 100));
 	_button_G->SetScale(Vector2(0.9f, 0.8f));
 
@@ -84,8 +85,15 @@ void Store_menu::Unlock_Gun()
 		SOUND->Play("Click");
 		return;
 	}
-
+	if (SCENE->GetPoints() >= 500)
+	{
 	SCENE->AddPoints(-500);
+	}
+	else
+	{
+		return;
+	}
+
 	_icon->GetGun()->GetTransform()->GetPos() = { CENTER_X - 480 ,CENTER_Y - 300 };
 	SCENE->SetUnlock_G(true);
 	SOUND->Play("Click");
@@ -100,9 +108,14 @@ void Store_menu::Unlock_rail()
 		SOUND->Play("Click");
 		return;
 	}
-
-	SCENE->AddPoints(-1000);
-
+	if (SCENE->GetPoints() >= 1000)
+	{
+		SCENE->AddPoints(-1000);
+	}
+	else
+	{
+		return;
+	}
 	_icon->Getrailgun()->GetTransform()->GetPos() = { CENTER_X - 340 ,CENTER_Y - 300 };
 	SCENE->SetUnlock_R(true);
 	SOUND->Play("Click");
@@ -119,7 +132,14 @@ void Store_menu::Unlock_smg()
 		return;
 	}
 
+	if (SCENE->GetPoints() >= 800)
+	{
 	SCENE->AddPoints(-800);
+	}
+	else
+	{
+		return;
+	}
 
 	_icon->Getsmg()->GetTransform()->GetPos() = { CENTER_X - 410 ,CENTER_Y - 300 };
 	SCENE->SetUnlock_S(true);

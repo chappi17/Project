@@ -8,7 +8,7 @@ Bro_Monster::Bro_Monster()
 	_collider = make_shared<CircleCollider>(25);
 	_quad->GetTransform()->SetParent(_collider->GetTransform());
 	_collider->GetTransform()->SetParent(_transform);
-	_resource = make_shared<Bro_Resource>();
+
 }
 
 Bro_Monster::~Bro_Monster()
@@ -17,14 +17,17 @@ Bro_Monster::~Bro_Monster()
 
 void Bro_Monster::Update()
 {
-	if (_isActive == false)
-		return;
-	Idle();
-	_quad->Update();
-	_transform->Update();
+	if (_isActive==false) 
+		return;	
+
+
 	_transform->GetPos() += _direction * _speed * DELTA_TIME;
+	_transform->Update();
 	_collider->Update();
+	_quad->Update();
 	OffSet();
+
+	Idle();
 }
 
 void Bro_Monster::Render()
@@ -34,7 +37,7 @@ void Bro_Monster::Render()
 
 	_quad->Render();
 	_collider->Render();
-	_resource->Render();
+
 }
 
 void Bro_Monster::SetDirection(Vector2 dir)
@@ -45,7 +48,6 @@ void Bro_Monster::SetDirection(Vector2 dir)
 
 void Bro_Monster::Attack(shared_ptr<Bro_Player> player)
 {
-
 	Vector2 direction = player->GetTransform()->GetWorldPos() - _transform->GetWorldPos();
 	float distance = direction.Length();
 	if (distance > 0.5f)
@@ -110,7 +112,7 @@ void Bro_Monster::Idle()
 	if (_isActive == false)
 		return;
 
-	float offset = rand() % 360;
+	//float offset = rand() % 360;
 	float stretchAmount = 0.05f * sin(2.0f * (DELTA_TIME) * 0.5f);
 	_quad->GetTransform()->GetScale().y -= stretchAmount;
 

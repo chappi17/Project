@@ -20,7 +20,7 @@ public:
 	void SetRight() { _leftright->_data.leftRight = 0; }
 
 	void Idle();
-	void Moving();
+	//void Moving();
 	void Dead();
 
 
@@ -83,9 +83,6 @@ private:
 
 	shared_ptr<Quad> _quad;
 	shared_ptr<Quad> _quad_resource;
-
-	vector<InstanceData> _instanceDataes;  // 생성 위치 모조리 찍어서 그림자 분신술 하는거
-	shared_ptr<VertexBuffer> _instanceBuffer;
 
 	float _speed = 250.0f;
 

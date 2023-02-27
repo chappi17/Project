@@ -16,9 +16,6 @@ public:
 	void Unlock_rail();
 	void Unlock_smg();
 
-	static bool isActive_R;
-	static bool isAcitve_S;
-
 private:
 
 	shared_ptr<Button> _button_G;
@@ -31,7 +28,7 @@ private:
 
 	shared_ptr<Bro_icon> _icon;
 
-	shared_ptr<Bro_Player> _player;
+	shared_ptr<Bro_Player> _player;	
 
 	CallBack _callback;
 };

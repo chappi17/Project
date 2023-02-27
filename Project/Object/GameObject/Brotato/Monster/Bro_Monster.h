@@ -43,9 +43,6 @@ public:
 	bool IsActive() { return _isActive; }
 	void SetEndEvent(CallBack function) { _endEvnet = function; }
 
-
-
-
 private:
 	bool _isActive = false;
 	shared_ptr<Collider> _collider;

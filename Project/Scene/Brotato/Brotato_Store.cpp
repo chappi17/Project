@@ -30,6 +30,23 @@ void Brotato_Store::Render()
 {
 	_menu->Render();
 	_button_Next_Wave->PostRender();
+
+	wstring price = L"500 ";
+	RECT rect1 = { 135,440,660,600 };
+
+	wstring price2 = L"1000 ";
+	RECT rect2 = { 455,440,660,600 };
+
+	wstring price3 = L"800 ";
+	RECT rect3 = { 1195,440,800,1600 };
+
+	DirectWrite::GetInstance()->GetDC()->BeginDraw();
+	DirectWrite::GetInstance()->RenderText(price, rect1,30.0f);
+	DirectWrite::GetInstance()->RenderText(price2, rect2, 30.0f);
+	DirectWrite::GetInstance()->RenderText(price3, rect3, 30.0f);
+
+	DirectWrite::GetInstance()->GetDC()->EndDraw();
+	Device::GetInstance()->Present();
 }
 
 void Brotato_Store::PostRender()

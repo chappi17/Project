@@ -11,15 +11,12 @@ BrotatoScene::BrotatoScene()
 	_player = make_shared<Bro_Player>();
 	CAMERA->SetTarget(_player->GetTransform());
 	CAMERA->SetOffSet({ CENTER_X,CENTER_Y });
-
 	
 	CreateMonsters();
-
 	_player->GetGun()->SetActive(false);
 	_player->GetRailGun()->SetActive(false);
 	_player->GetSMG()->SetActive(false);
 	_bg->Update();
-
 }
 
 BrotatoScene::~BrotatoScene()
@@ -28,7 +25,6 @@ BrotatoScene::~BrotatoScene()
 
 void BrotatoScene::Update()
 {
-
 	if (SCENE->Unlock_Gun() == true)
 	{
 		_player->GetGun()->SetActive(true);
@@ -45,7 +41,7 @@ void BrotatoScene::Update()
 	}
 	_player->Update();
 
-	if (TimeSet_res >= 5)
+	if (TimeSet_res > 10)
 	{
 		CreateMonsters();
 		TimeSet_res = 0;
@@ -92,7 +88,7 @@ void BrotatoScene::Update()
 				auto collider1 = dynamic_pointer_cast<CircleCollider>(monster->GetCollider());
 				auto collider2 = dynamic_pointer_cast<CircleCollider>(monster2->GetCollider());
 
-			if (collider1 && collider2)
+				if (collider1 && collider2)
 				{
 					collider1->Block(collider2);
 				}
@@ -100,13 +96,11 @@ void BrotatoScene::Update()
 		}
 		monster->LeftRight(_player);
 	}
-
-	if (KEY_DOWN(VK_F3))
+	/*	if (KEY_DOWN(VK_F3))
 	{
 		_player->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
 		ChangeScene();
-	}
-	
+	}*/	
 
 	// 20 초 지나면 상점전환
 	TimeSet += DELTA_TIME;
@@ -129,19 +123,21 @@ void BrotatoScene::Render()
 	}
 	_player->Render();
 
+	wstring time = L"시간  " + to_wstring((int)TimeSet);
+	RECT rect2 = { 600,0,660,100 };
+
+	DirectWrite::GetInstance()->GetDC()->BeginDraw();
+	DirectWrite::GetInstance()->RenderText(time, rect2, 30.0f);
+
+	DirectWrite::GetInstance()->GetDC()->EndDraw();
+//	Device::GetInstance()->Present();
+
 }
 
 void BrotatoScene::PostRender()
 {
 	int playerHP = _player->GetHp();
 	int Score = SceneManager::GetInstance()->GetPoints();
-	
-	wstring time = L"TIME : " + to_wstring((int)TimeSet);
-	RECT rect2 = { 100,100,100,100 };
-	RECT rect = { 0,0,100,100 };
-
-	DirectWrite::GetInstance()->GetDC()->BeginDraw();
-	DirectWrite::GetInstance()->RenderText(time,rect);
 
 	ImGui::SliderInt("playerHp", &playerHP, 0, 10);
 	ImGui::SliderInt("Points: ", &Score, 0, 50000);
@@ -151,26 +147,21 @@ void BrotatoScene::CreateMonsters()
 {
 	srand((unsigned int)time(NULL));
 
-	std::vector<float> respawnXPositions;
-	std::vector<float> respawnYPositions;
+	std::vector<float> respawnXPos(10);
+	std::vector<float> respawnYPos(10);
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		float respawnX = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
-		float respawnY = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);
-
-		respawnXPositions.push_back(respawnX);
-		respawnYPositions.push_back(respawnY);
+		respawnXPos[i] = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
+		respawnYPos[i] = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);
 	}
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
-
-		monster->GetTransform()->GetPos() = Vector2{ respawnXPositions[i], respawnYPositions[i] };
+		monster->GetTransform()->GetPos() = Vector2{ respawnXPos[i], respawnYPos[i] };
 		monster->Update();
 		monster->SetActive(true);
-
 		_monsters.push_back(monster);
 	}
 
@@ -192,12 +183,12 @@ void BrotatoScene::CreateMonsters()
 
 void BrotatoScene::Reset()
 {
+	_monsters.clear();
 	_player->GetHp() = 12;
 	TimeSet = 0;
 	_player->GetTransform()->SetPos(Vector2{ CENTER_X,CENTER_Y });
 	_player->SetActive(true);
 
-	_monsters.clear();
 	CreateMonsters();
 }
 

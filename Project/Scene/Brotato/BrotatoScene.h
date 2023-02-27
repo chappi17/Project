@@ -30,17 +30,11 @@ private:
 
 	shared_ptr<Bro_BackGround>			_bg;
 	shared_ptr<Bro_Player>				_player;
-	vector<shared_ptr<Bro_Monster>>		_monsters;	
-
-
-
+	vector<shared_ptr<Bro_Monster>>		_monsters;
 	float _spawnTimer = 0;
 
 	double TimeSet = 0.0f;
 	double TimeSet_res = 0.0f;
-
-	
-
 //	shared_ptr<Bro_Monster> _monster;
 
 };
