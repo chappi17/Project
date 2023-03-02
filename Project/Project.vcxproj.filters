@@ -219,6 +219,9 @@
     <ClInclude Include="Scene\Brotato\First_Scene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\GameObject\Brotato\Monster\Monster_manager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project.cpp">
@@ -384,6 +387,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scene\Brotato\First_Scene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\GameObject\Brotato\Monster\Monster_manager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

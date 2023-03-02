@@ -19,6 +19,10 @@ Instancing_Test::Instancing_Test()
 
 		data.matrix = XMMatrixTranspose(*transform.GetMatrix());
 	}
+	_transform = make_shared<Transform>();
+	_transform->GetPos() = { CENTER_X,CENTER_Y };
+	_transform->SetSRT();
+	_instanceDataes[0].matrix = XMMatrixTranspose((*_transform->GetMatrix()));
 
 	_instanceBuffer = make_shared<VertexBuffer>(_instanceDataes.data(), sizeof(InstanceData), 1, 0, true);
 }

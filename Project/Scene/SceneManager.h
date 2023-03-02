@@ -45,12 +45,17 @@ public:
 	int GetPoints() const { return _points; }
 	int SetPoints(int points) { return _points = points; }
 	void AddPoints(int points) { _points += points; }
+
+	bool GetStage0() { return Stage0; }
+	void SetStage(bool first);
 	
 private:
 	static SceneManager* _instance;
 
 	unordered_map<string, shared_ptr<Scene>> _sceneTable;
 	weak_ptr<Scene> _curScene;
+
+	bool Stage0 = false;
 
 	bool Unlock_R = false;
 	bool Unlock_S = false;

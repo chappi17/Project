@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\GameObject\Brotato\Monster\Monster_manager.h" />
     <ClInclude Include="Scene\Brotato\First_Scene.h" />
     <ClInclude Include="Scene\Brotato\Instancing_Test.h" />
     <ClInclude Include="Object\GameObject\Brotato\UI\Bro_icon.h" />
@@ -221,6 +222,7 @@
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\GameObject\Brotato\Monster\Monster_manager.cpp" />
     <ClCompile Include="Scene\Brotato\First_Scene.cpp" />
     <ClCompile Include="Scene\Brotato\Instancing_Test.cpp" />
     <ClCompile Include="Object\GameObject\Brotato\UI\Bro_icon.cpp" />

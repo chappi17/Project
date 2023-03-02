@@ -30,6 +30,9 @@ void Brotato_Store::Render()
 {
 	_menu->Render();
 	_button_Next_Wave->PostRender();
+	
+	if (SCENE->GetStage0() == false)
+		return;
 
 	wstring price = L"500 ";
 	RECT rect1 = { 135,440,660,600 };

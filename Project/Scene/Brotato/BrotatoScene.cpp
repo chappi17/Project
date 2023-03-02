@@ -1,18 +1,19 @@
 #include "framework.h"
 #include "BrotatoScene.h"
-#include "time.h"
+
 
 BrotatoScene::BrotatoScene()
 {
 	_camera = make_shared<Transform>();
 	_camera->GetPos() = { CENTER_X,CENTER_Y };
+	_monster_manager = make_shared<Monster_manager>();
+	_monster_manager->CreateMonsters();
 
 	_bg = make_shared<Bro_BackGround>();
 	_player = make_shared<Bro_Player>();
 	CAMERA->SetTarget(_player->GetTransform());
-	CAMERA->SetOffSet({ CENTER_X,CENTER_Y });
+	CAMERA->SetOffSet({ CENTER_X,CENTER_Y });	
 	
-	CreateMonsters();
 	_player->GetGun()->SetActive(false);
 	_player->GetRailGun()->SetActive(false);
 	_player->GetSMG()->SetActive(false);
@@ -25,6 +26,11 @@ BrotatoScene::~BrotatoScene()
 
 void BrotatoScene::Update()
 {
+
+	_monster_manager->Update();
+
+
+	
 	if (SCENE->Unlock_Gun() == true)
 	{
 		_player->GetGun()->SetActive(true);
@@ -43,45 +49,45 @@ void BrotatoScene::Update()
 
 	if (TimeSet_res > 10)
 	{
-		CreateMonsters();
+		_monster_manager->CreateMonsters();
 		TimeSet_res = 0;
 	}
 
-	for (auto monster : _monsters)
+
+	if (_player->GetHp() <= 0)
+	{
+		_player->Attack(_monster_manager->_monsters);
+		_player->Dead();
+		_player->SetActive(false);
+	}
+
+	if (_player->GetGun()->IsActive() == true)
+	{
+		_player->Attack(_monster_manager->_monsters);
+		_player->Target(_monster_manager->_monsters);
+		_player->Shot();
+	}
+
+	if (_player->GetRailGun()->IsActive() == true)
+	{
+		_player->Attack_R(_monster_manager->_monsters);
+		_player->Target_R(_monster_manager->_monsters);
+		_player->Shot_R();
+	}
+
+	if (_player->GetSMG()->IsActive() == true)
+	{
+		_player->Attack_SMG(_monster_manager->_monsters);
+		_player->Target_SMG(_monster_manager->_monsters);
+		_player->Shot_SMG();
+	}
+
+	for (auto monster : _monster_manager->_monsters)
 	{
 		monster->Update();
 		monster->Attack(_player);
-		
 
-		if (_player->GetHp() <= 0)
-		{
-			_player->Attack(_monsters);
-			_player->Dead();
-			_player->SetActive(false);
-		}
-
-		if (_player->GetGun()->IsActive() == true)
-		{
-			_player->Attack(_monsters);
-			_player->Target(_monsters);
-			_player->Shot();
-		}
-
-		if (_player->GetRailGun()->IsActive() == true)
-		{
-			_player->Attack_R(_monsters);
-			_player->Target_R(_monsters);
-			_player->Shot_R();
-		}
-
-		if (_player->GetSMG()->IsActive() == true)
-		{
-			_player->Attack_SMG(_monsters);
-			_player->Target_SMG(_monsters);
-			_player->Shot_SMG();
-		}
-
-		for (auto monster2 : _monsters)
+		for (auto monster2 : _monster_manager->_monsters)
 		{
 			if (monster->GetCollider() != monster2->GetCollider() && monster->GetCollider()->IsCollision(monster2->GetCollider()))
 			{
@@ -94,8 +100,10 @@ void BrotatoScene::Update()
 				}
 			}
 		}
-		monster->LeftRight(_player);
+		_monster_manager->LeftRight(_player);
 	}
+
+
 	/*	if (KEY_DOWN(VK_F3))
 	{
 		_player->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
@@ -105,22 +113,22 @@ void BrotatoScene::Update()
 	// 20 초 지나면 상점전환
 	TimeSet += DELTA_TIME;
 	TimeSet_res += DELTA_TIME;
+	SCENE->SetStage(true);
 
 	if (TimeSet >= 20)
 	{
 		_player->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
 		ChangeScene();
 		TimeSet = 0;
+		++_countStage;
 	}
 }
 
 void BrotatoScene::Render()
 {
+
 	_bg->Render();
-	for (auto monster : _monsters)
-	{
-		monster->Render();
-	}
+
 	_player->Render();
 
 	wstring time = L"시간  " + to_wstring((int)TimeSet);
@@ -132,64 +140,28 @@ void BrotatoScene::Render()
 	DirectWrite::GetInstance()->GetDC()->EndDraw();
 //	Device::GetInstance()->Present();
 
+	_monster_manager->Render();
+
 }
 
 void BrotatoScene::PostRender()
 {
 	int playerHP = _player->GetHp();
 	int Score = SceneManager::GetInstance()->GetPoints();
+	int Stage = _countStage;
 
 	ImGui::SliderInt("playerHp", &playerHP, 0, 10);
 	ImGui::SliderInt("Points: ", &Score, 0, 50000);
-}
-
-void BrotatoScene::CreateMonsters()
-{
-	srand((unsigned int)time(NULL));
-
-	std::vector<float> respawnXPos(10);
-	std::vector<float> respawnYPos(10);
-
-	for (int i = 0; i < 10; i++)
-	{
-		respawnXPos[i] = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
-		respawnYPos[i] = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);
-	}
-
-	for (int i = 0; i < 10; i++)
-	{
-		auto monster = make_shared<Bro_Monster>();
-		monster->GetTransform()->GetPos() = Vector2{ respawnXPos[i], respawnYPos[i] };
-		monster->Update();
-		monster->SetActive(true);
-		_monsters.push_back(monster);
-	}
-
-	/*for (int i = 0; i < 5; i++)
-	{
-		auto monster = make_shared<Bro_Monster>();
-		{
-			float RespawnX = monster->GetTransform()->GetPos().x = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
-			float RespawnY = monster->GetTransform()->GetPos().y = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);
-
-			monster->GetTransform()->GetPos() = Vector2{ RespawnX,RespawnY };
-			monster->Update();
-			monster->SetActive(true);
-			_monsters.push_back(monster);
-		}
-	}
-	*/
+	ImGui::SliderInt("Stage", &Stage, 0, 10);
 }
 
 void BrotatoScene::Reset()
 {
-	_monsters.clear();
+	_monster_manager->_monsters.clear();
 	_player->GetHp() = 12;
 	TimeSet = 0;
 	_player->GetTransform()->SetPos(Vector2{ CENTER_X,CENTER_Y });
-	_player->SetActive(true);
-
-	CreateMonsters();
+	_player->SetActive(true);	
 }
 
 void BrotatoScene::ChangeScene()
@@ -206,10 +178,6 @@ void BrotatoScene::FirstScene()
 void BrotatoScene::End_Stage()
 {
 	_player->Dead();
-	for (auto monster : _monsters)
-	{
-		monster->Dead();
-	}
 }
 
 void BrotatoScene::Init()

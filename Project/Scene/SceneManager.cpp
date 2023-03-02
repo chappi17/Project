@@ -72,3 +72,8 @@ void SceneManager::SetUnlock_S(bool isUnlock)
 {
 	Unlock_S = isUnlock;
 }
+
+void SceneManager::SetStage(bool first)
+{
+	Stage0 = first;
+}

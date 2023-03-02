@@ -126,6 +126,7 @@ using namespace DirectX;
 
 #include "Object/GameObject/Brotato/Player/Bro_Player.h"
 #include "Object/GameObject/Brotato/Monster/Bro_Monster.h"
+#include "Object/GameObject/Brotato/Monster/Monster_manager.h"
 
 #include "Object/GameObject/Brotato/UI/Store_menu.h"
 

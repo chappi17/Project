@@ -75,6 +75,8 @@ private:
 
 
 	shared_ptr<Bro_Monster> _target;
+	shared_ptr<Bro_Monster> _target_R;
+	shared_ptr<Bro_Monster> _target_SMG;
 	//	vector< shared_ptr<class Bro_Player_Bullet>> _bullets;
 
 	shared_ptr<Collider> _radious;

@@ -4,11 +4,6 @@ class Bro_Monster
 {
 public:
 
-	struct InstanceData
-	{
-		XMMATRIX matrix;
-	};
-
 	Bro_Monster();
 	~Bro_Monster();
 
@@ -49,7 +44,6 @@ private:
 	shared_ptr<Transform> _transform;
 
 	shared_ptr<Quad> _quad;
-	shared_ptr<Bro_Resource>_resource;
 
 	shared_ptr<LeftRightBuffer> _leftright;	
 
@@ -67,7 +61,5 @@ private:
 	float DMG = 1.0f;
 
 	bool _deadcheck = false;
-
-
 };
 

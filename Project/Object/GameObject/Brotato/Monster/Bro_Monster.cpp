@@ -3,12 +3,11 @@
 
 Bro_Monster::Bro_Monster()
 {
-	CreateMonsters();
 	_transform = make_shared<Transform>();
 	_collider = make_shared<CircleCollider>(25);
-	_quad->GetTransform()->SetParent(_collider->GetTransform());
+	CreateMonsters();
+//	_quad->GetTransform()->SetParent(_collider->GetTransform());
 	_collider->GetTransform()->SetParent(_transform);
-
 }
 
 Bro_Monster::~Bro_Monster()
@@ -19,15 +18,13 @@ void Bro_Monster::Update()
 {
 	if (_isActive==false) 
 		return;	
-
-
 	_transform->GetPos() += _direction * _speed * DELTA_TIME;
 	_transform->Update();
 	_collider->Update();
-	_quad->Update();
+//	_quad->Update();
 	OffSet();
 
-	Idle();
+//	Idle();
 }
 
 void Bro_Monster::Render()
@@ -35,9 +32,8 @@ void Bro_Monster::Render()
 	if (_isActive == false)
 		return;
 
-	_quad->Render();
+//	_quad->Render();
 	_collider->Render();
-
 }
 
 void Bro_Monster::SetDirection(Vector2 dir)
