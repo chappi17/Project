@@ -108,6 +108,8 @@ using namespace DirectX;
 
 // UI
 #include "Framework/Utility/Button.h"
+#include "Framework/Utility/HPBar.h"
+
 
 // Bro_Potato
 #include "Object/GameObject/Brotato/UI/Bro_BackGround.h"
@@ -124,6 +126,7 @@ using namespace DirectX;
 #include "Object/GameObject/Brotato/Player/Player_Guns/Bro_Player_Bullet_SMG.h"
 
 
+#include "Object/GameObject/Brotato/Monster/Bro_Boss.h"
 #include "Object/GameObject/Brotato/Player/Bro_Player.h"
 #include "Object/GameObject/Brotato/Monster/Bro_Monster.h"
 #include "Object/GameObject/Brotato/Monster/Monster_manager.h"

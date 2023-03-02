@@ -125,7 +125,6 @@ void Store_menu::Unlock_smg()
 {
 	if (SCENE->GetPoints() == 0)
 	{
-
 		_icon->Getsmg()->GetTransform()->GetPos() = { CENTER_X - 410 ,CENTER_Y - 300 };
 		SCENE->SetUnlock_S(true);
 		SOUND->Play("Click");

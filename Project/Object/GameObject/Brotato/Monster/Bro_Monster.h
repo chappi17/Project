@@ -27,7 +27,7 @@ public:
 
 
 	void Die();
-	void OffSet();
+
 
 	shared_ptr<Collider> GetCollider() { return _collider; }
 	shared_ptr<Transform> GetTransform() { return _transform; }
@@ -44,6 +44,7 @@ private:
 	shared_ptr<Transform> _transform;
 
 	shared_ptr<Quad> _quad;
+	shared_ptr<Quad> _quad2;
 
 	shared_ptr<LeftRightBuffer> _leftright;	
 

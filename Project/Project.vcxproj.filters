@@ -222,6 +222,12 @@
     <ClInclude Include="Object\GameObject\Brotato\Monster\Monster_manager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Object\GameObject\Brotato\Monster\Bro_Boss.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utility\HPBar.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Project.cpp">
@@ -392,6 +398,12 @@
     <ClCompile Include="Object\GameObject\Brotato\Monster\Monster_manager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Object\GameObject\Brotato\Monster\Bro_Boss.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Utility\HPBar.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Project.rc">
@@ -441,6 +453,9 @@
     <Image Include="Resource\Brotato\Effect\First_Scene.jpg">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\Brotato\UI\HP.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\tutorial.hlsl" />
@@ -453,6 +468,7 @@
     <FxCompile Include="Shaders\ColliderShader\ColliderVertexShader.hlsl" />
     <FxCompile Include="Shaders\InstanceVertexShader.hlsl" />
     <FxCompile Include="Shaders\InstancePixelShader.hlsl" />
+    <FxCompile Include="Shaders\HPBarPixelShader.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Library\FMOD\fmod_vc.lib" />

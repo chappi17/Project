@@ -4,6 +4,11 @@
 
 BrotatoScene::BrotatoScene()
 {
+	_bar = make_shared<HPBar>();
+	_bar->GetTransform()->GetPos() = { 80,CENTER_Y + 300 };
+	_bar->GetTransform()->GetScale().x *= 0.2f;
+	_bar->GetTransform()->GetScale().y *= 0.5f;
+
 	_camera = make_shared<Transform>();
 	_camera->GetPos() = { CENTER_X,CENTER_Y };
 	_monster_manager = make_shared<Monster_manager>();
@@ -25,12 +30,7 @@ BrotatoScene::~BrotatoScene()
 }
 
 void BrotatoScene::Update()
-{
-
-	_monster_manager->Update();
-
-
-	
+{	
 	if (SCENE->Unlock_Gun() == true)
 	{
 		_player->GetGun()->SetActive(true);
@@ -45,7 +45,7 @@ void BrotatoScene::Update()
 	{
 		_player->GetSMG()->SetActive(true);
 	}
-	_player->Update();
+	
 
 	if (TimeSet_res > 10)
 	{
@@ -58,6 +58,9 @@ void BrotatoScene::Update()
 	{
 		_player->Attack(_monster_manager->_monsters);
 		_player->Dead();
+		int playerHP = _player->GetHp();
+
+		_bar->ratio() -=playerHP;
 		_player->SetActive(false);
 	}
 
@@ -82,6 +85,12 @@ void BrotatoScene::Update()
 		_player->Shot_SMG();
 	}
 
+	for (auto boss : _monster_manager->_boss)
+	{
+		boss->Update();
+		boss->Attack(_player);
+	}
+
 	for (auto monster : _monster_manager->_monsters)
 	{
 		monster->Update();
@@ -104,12 +113,6 @@ void BrotatoScene::Update()
 	}
 
 
-	/*	if (KEY_DOWN(VK_F3))
-	{
-		_player->GetTransform()->GetPos() = { CENTER_X,CENTER_Y };
-		ChangeScene();
-	}*/	
-
 	// 20 초 지나면 상점전환
 	TimeSet += DELTA_TIME;
 	TimeSet_res += DELTA_TIME;
@@ -122,11 +125,14 @@ void BrotatoScene::Update()
 		TimeSet = 0;
 		++_countStage;
 	}
+
+	_player->Update();
+	_bar->ratio() = _player->GetHp() / 12.0f;
+	_bar->Update();
 }
 
 void BrotatoScene::Render()
 {
-
 	_bg->Render();
 
 	_player->Render();
@@ -141,18 +147,18 @@ void BrotatoScene::Render()
 //	Device::GetInstance()->Present();
 
 	_monster_manager->Render();
-
 }
 
 void BrotatoScene::PostRender()
 {
+	_bar->Render();
 	int playerHP = _player->GetHp();
 	int Score = SceneManager::GetInstance()->GetPoints();
 	int Stage = _countStage;
 
 	ImGui::SliderInt("playerHp", &playerHP, 0, 10);
 	ImGui::SliderInt("Points: ", &Score, 0, 50000);
-	ImGui::SliderInt("Stage", &Stage, 0, 10);
+	ImGui::SliderInt("Stage", &Stage, 1, 3);
 }
 
 void BrotatoScene::Reset()

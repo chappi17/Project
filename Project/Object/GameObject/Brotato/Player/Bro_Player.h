@@ -32,7 +32,7 @@ public:
 	shared_ptr<Bro_Player_RailGun> GetRailGun() { return _railgun; }
 	shared_ptr<Bro_Player_SMG> GetSMG() { return _smg; }
 
-	shared_ptr<Bro_Player_Bullet> GetBullet() { return _bullet; }
+	vector<shared_ptr<Bro_Player_Bullet>> GetBullet() { return _bullet; }
 	shared_ptr<Collider> GetRadius() { return _radious; }
 	float& GetHp() { return _Hp; }
 
@@ -69,9 +69,9 @@ private:
 	shared_ptr<Transform> _firePos_R;
 	shared_ptr<Transform> _firePos_SMG;
 
-	shared_ptr<class Bro_Player_Bullet > _bullet;
-	shared_ptr<class Bro_player_Bullet_Rail> _railbullet;
-	shared_ptr<class Bro_Player_Bullet_SMG> _smgbullet;
+	vector<shared_ptr<class Bro_Player_Bullet >> _bullet;
+	vector<shared_ptr<class Bro_player_Bullet_Rail>> _railbullet;
+	vector<shared_ptr<class Bro_Player_Bullet_SMG>> _smgbullet;
 
 
 	shared_ptr<Bro_Monster> _target;
@@ -95,8 +95,8 @@ private:
 	float _Hp = 12.0f;
 
 	const float _fireDelay = 1.0f;
-	const float _fireDelay_R = 1.2f;
-	const float _fireDelay_S = 0.3f;
+	const float _fireDelay_R = 2.0f;
+	const float _fireDelay_S = 0.4f;
 	
 	float _fireCheck = 0.0f;
 	float _fireCheck_R = 0.0f;

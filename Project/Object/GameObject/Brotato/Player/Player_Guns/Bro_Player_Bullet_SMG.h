@@ -33,6 +33,6 @@ private:
 	Vector2 _direction = { 0,0 };
 	Vector2 _firedirection = { 0,0 };
 
-	float		_speed = 1000.0f;
+	float		_speed = 2000.0f;
 };
 

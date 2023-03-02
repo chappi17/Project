@@ -29,6 +29,9 @@ private:
 
 	shared_ptr<Bro_BackGround>			_bg;
 	shared_ptr<Bro_Player>				_player;
+	shared_ptr<HPBar> _bar;
+
+
 	shared_ptr<Monster_manager>			_monster_manager;
 	shared_ptr<Bro_Monster>				_bromonster;
 

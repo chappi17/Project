@@ -150,7 +150,25 @@ public:
 	};
 
 	ButtonInfoBuffer()
-	: ConstantBuffer(&_data,sizeof(_data))
+		: ConstantBuffer(&_data, sizeof(_data))
+	{
+
+	}
+
+	Data _data;
+};
+
+class SliderBuffer : public ConstantBuffer
+{
+public:
+	struct Data
+	{
+		float ratio = 1.0f;
+		int padding[3];
+	};
+
+	SliderBuffer()
+		:ConstantBuffer(&_data, sizeof(_data))
 	{
 
 	}
