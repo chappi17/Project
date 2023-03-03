@@ -96,7 +96,7 @@ private:
 
 	const float _fireDelay = 1.0f;
 	const float _fireDelay_R = 2.0f;
-	const float _fireDelay_S = 0.4f;
+	const float _fireDelay_S = 0.2f;
 	
 	float _fireCheck = 0.0f;
 	float _fireCheck_R = 0.0f;

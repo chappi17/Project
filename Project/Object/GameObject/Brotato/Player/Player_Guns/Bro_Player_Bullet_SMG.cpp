@@ -35,7 +35,7 @@ void Bro_Player_Bullet_SMG::Render()
 		return;
 
 	_quad->Render();
-	_collider->Render();
+ 	_collider->Render();
 }
 
 void Bro_Player_Bullet_SMG::SetDirection(Vector2 dir)

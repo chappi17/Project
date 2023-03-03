@@ -17,6 +17,8 @@ public:
 	vector<shared_ptr<Bro_Monster>>		_monsters;
 	vector<shared_ptr<Bro_Boss>>		 _boss;
 
+	int respown = 10;
+
 private:
 	shared_ptr<Quad> _quad;
 	vector<shared_ptr<Transform>> _transform;

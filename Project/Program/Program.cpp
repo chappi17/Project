@@ -4,6 +4,8 @@
 Program::Program()
 {
 	Timer::GetInstance()->SetLockFPS(144);
+	SOUND->Add("BackGround", "Resource/Brotato/Sound/Powerful-Trap-.mp3");
+	Play();
 }
 
 Program::~Program()
@@ -16,7 +18,7 @@ void Program::Update()
 	{
 		Collider::_isDebug = !Collider::_isDebug;
 	}
-
+	
 	Keyboard::GetInstance()->Update();
 	Timer::GetInstance()->Update();
 
@@ -39,6 +41,7 @@ void Program::Render()
 	Camera::GetInstance()->SetCameraWorldBuffer();
 
 	SCENE->PreRender();
+	
 
 	Camera::GetInstance()->SetViewPort();
 	AlphaBlendState->SetState();
@@ -62,4 +65,9 @@ void Program::Render()
 
 	DirectWrite::GetInstance()->GetDC()->EndDraw();
 	Device::GetInstance()->Present();
+}
+
+void Program::Play()
+{
+	SOUND->Play("BackGround");
 }

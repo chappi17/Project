@@ -484,6 +484,10 @@
     <None Include="Library\FMOD\inc\fmod_dsp.cs" />
     <None Include="Library\FMOD\inc\fmod_errors.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resource\Brotato\Sound\Hit_Sound.wav" />
+    <Media Include="Resource\Brotato\Sound\Powerful-Trap-.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

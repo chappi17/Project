@@ -19,13 +19,15 @@ void Monster_manager::CreateMonsters()
 	vector<float> respawnXPos(30);
 	vector<float> respawnYPos(30);
 
-	for (int i = 0; i < 12; i++)
+	
+
+	for (int i = 0; i < respown; i++)
 	{
 		respawnXPos[i] = rand() % ((WIN_WIDTH + 100) - (-100) + 1) + (-100);
 		respawnYPos[i] = rand() % ((WIN_HEIGHT + 260) - (-260) + 1) + (-260);
 	}
 
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < respown; i++)
 	{
 		auto monster = make_shared<Bro_Monster>();
 		monster->GetTransform()->GetPos() = Vector2{ respawnXPos[i], respawnYPos[i] };

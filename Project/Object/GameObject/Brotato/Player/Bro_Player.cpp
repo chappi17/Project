@@ -7,8 +7,8 @@ Bro_Player::Bro_Player()
 	_collider = make_shared<CircleCollider>(25);
 
 	_radious = make_shared<CircleCollider>(300);
-	_radious_R = make_shared<CircleCollider>(380);
-	_radious_SMG = make_shared<CircleCollider>(290);
+	_radious_R = make_shared<CircleCollider>(350);
+	_radious_SMG = make_shared<CircleCollider>(250);
 		
 	_firePos = make_shared<Transform>();
 	_firePos_R = make_shared<Transform>();
@@ -228,12 +228,13 @@ void Bro_Player::Attack(vector<shared_ptr<Bro_Monster>>& monsters)
 			{
 			SOUND->Play("Hit_Sound", 0.5f);
 			monster->GetHp() -= _gun->DMG;
+		
 
 			if (monster->GetHp() < 0)
 			{
 				monster->GetHp() = 0;
 				monster->Die();
-				SceneManager::GetInstance()->AddPoints(100);
+				SceneManager::GetInstance()->AddPoints(200);
 			}
 			monster->Update();
 			bullet->SetActive(false);
@@ -264,7 +265,7 @@ void Bro_Player::Attack_R(vector<shared_ptr<Bro_Monster>>& monsters)
 				{
 					monster->GetHp() = 0;
 					monster->Die();
-					SceneManager::GetInstance()->AddPoints(100);
+					SceneManager::GetInstance()->AddPoints(200);
 				}
 				monster->Update();
 			}
@@ -296,7 +297,7 @@ void Bro_Player::Attack_SMG(vector<shared_ptr<Bro_Monster>>& monsters)
 				{
 					monster->GetHp() = 0;
 					monster->Die();
-					SceneManager::GetInstance()->AddPoints(100);
+					SceneManager::GetInstance()->AddPoints(200);
 				}
 
 			//	monster->Update();
@@ -419,7 +420,7 @@ void Bro_Player::Shot()
 		(*iter)->SetActive(true);
 		(*iter)->GetTransform()->SetPos(_firePos->GetWorldPos());
 		GetGun()->GetQuad()->GetTransform()->SetAngle(angle);
-		GetGun()->GetCollider()->GetTransform()->SetAngle(angle);
+// 		GetGun()->GetCollider()->GetTransform()->SetAngle(angle);
 
 		(*iter)->SetDirection(direction.Normal());
 		(*iter)->GetQuad()->GetTransform()->SetAngle(angle);
@@ -453,7 +454,7 @@ void Bro_Player::Shot_R()
 		(*iter)->GetTransform()->Update();
 		(*iter)->SetActive(true);
 		GetRailGun()->GetQuad()->GetTransform()->SetAngle(angle);
-	//	GetRailGun()->GetCollider()->GetTransform()->SetAngle(angle);
+// 		GetRailGun()->GetCollider()->GetTransform()->SetAngle(angle);
 
 		(*iter)->SetDirection(direction.Normal());
 		(*iter)->GetQuad()->GetTransform()->SetAngle(angle);
@@ -487,7 +488,7 @@ void Bro_Player::Shot_SMG()
 		(*iter)->GetTransform()->Update();
 		(*iter)->SetActive(true);
 		GetSMG()->GetQuad()->GetTransform()->SetAngle(angle);
-	//	GetSMG()->GetCollider()->GetTransform()->SetAngle(angle);
+// 		GetSMG()->GetCollider()->GetTransform()->SetAngle(angle);
 
 		(*iter)->SetDirection(direction.Normal());
 		(*iter)->GetQuad()->GetTransform()->SetAngle(angle);

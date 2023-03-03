@@ -35,7 +35,7 @@ void Bro_Player_Gun::Render()
 	if (IsActive() == false)
 		return;
 
-	_collider->Render();
+// 	_collider->Render();
 	_quad->Render();
 }
 

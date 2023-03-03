@@ -9,6 +9,8 @@ BrotatoScene::BrotatoScene()
 	_bar->GetTransform()->GetScale().x *= 0.2f;
 	_bar->GetTransform()->GetScale().y *= 0.5f;
 
+	_first = make_shared<First_Scene>();
+
 	_camera = make_shared<Transform>();
 	_camera->GetPos() = { CENTER_X,CENTER_Y };
 	_monster_manager = make_shared<Monster_manager>();
@@ -31,6 +33,7 @@ BrotatoScene::~BrotatoScene()
 
 void BrotatoScene::Update()
 {	
+	
 	if (SCENE->Unlock_Gun() == true)
 	{
 		_player->GetGun()->SetActive(true);
@@ -59,8 +62,6 @@ void BrotatoScene::Update()
 		_player->Attack(_monster_manager->_monsters);
 		_player->Dead();
 		int playerHP = _player->GetHp();
-
-		_bar->ratio() -=playerHP;
 		_player->SetActive(false);
 	}
 
@@ -85,11 +86,6 @@ void BrotatoScene::Update()
 		_player->Shot_SMG();
 	}
 
-	for (auto boss : _monster_manager->_boss)
-	{
-		boss->Update();
-		boss->Attack(_player);
-	}
 
 	for (auto monster : _monster_manager->_monsters)
 	{
@@ -112,6 +108,20 @@ void BrotatoScene::Update()
 		_monster_manager->LeftRight(_player);
 	}
 
+	if (KEY_PRESS(VK_F3))
+	{
+		FirstScene();
+		
+	}
+
+	if (_countStage == 4)
+	{
+		for (auto monster : _monster_manager->_monsters)
+		{
+			monster->SetActive(false);
+			Text();
+		}
+	}
 
 	// 20 초 지나면 상점전환
 	TimeSet += DELTA_TIME;
@@ -124,6 +134,7 @@ void BrotatoScene::Update()
 		ChangeScene();
 		TimeSet = 0;
 		++_countStage;
+		_monster_manager->respown += 5;
 	}
 
 	_player->Update();
@@ -136,9 +147,10 @@ void BrotatoScene::Render()
 	_bg->Render();
 
 	_player->Render();
+	int stage = _countStage;
 
-	wstring time = L"시간  " + to_wstring((int)TimeSet);
-	RECT rect2 = { 600,0,660,100 };
+	wstring time = L" 웨이브 "+ to_wstring(stage) + L"    " + to_wstring((int)TimeSet);
+	RECT rect2 = { 600,0,750,100 };
 
 	DirectWrite::GetInstance()->GetDC()->BeginDraw();
 	DirectWrite::GetInstance()->RenderText(time, rect2, 30.0f);
@@ -157,7 +169,7 @@ void BrotatoScene::PostRender()
 	int Stage = _countStage;
 
 	ImGui::SliderInt("playerHp", &playerHP, 0, 10);
-	ImGui::SliderInt("Points: ", &Score, 0, 50000);
+	ImGui::SliderInt("Points: ", &Score, 0, 15000);
 	ImGui::SliderInt("Stage", &Stage, 1, 3);
 }
 
@@ -179,6 +191,8 @@ void BrotatoScene::ChangeScene()
 void BrotatoScene::FirstScene()
 {
 	SCENE->ChangeScene("First_Scene");
+
+
 }
 
 void BrotatoScene::End_Stage()
@@ -186,8 +200,14 @@ void BrotatoScene::End_Stage()
 	_player->Dead();
 }
 
-void BrotatoScene::Init()
+void BrotatoScene::Text()
 {
+	wstring Text = L" 웨이브 종료!";
+	RECT rect2 = { 600,0,750,100 };
+
+	DirectWrite::GetInstance()->GetDC()->BeginDraw();
+	DirectWrite::GetInstance()->RenderText(Text, rect2, 80.0f);
 }
+
 
 

@@ -18,7 +18,8 @@ public:
 	void FirstScene();
 	void End_Stage();
 
-	void Init();
+	void Text();
+
 	shared_ptr<Bro_Player> GetPlayer() { return _player; }
 
 	bool stage0 = false;
@@ -30,6 +31,7 @@ private:
 	shared_ptr<Bro_BackGround>			_bg;
 	shared_ptr<Bro_Player>				_player;
 	shared_ptr<HPBar> _bar;
+	shared_ptr<First_Scene> _first;
 
 
 	shared_ptr<Monster_manager>			_monster_manager;

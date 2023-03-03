@@ -12,6 +12,8 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 
+	void Reset();
+
 private:
 	shared_ptr<Quad> _quad;
 	shared_ptr<Button> _button_Start;

@@ -34,7 +34,7 @@ void Bro_Player_SMG::Render()
 	if (IsActive() == false)
 		return;
 
-	_collider->Render();
+// 	_collider->Render();
 	_quad->Render();
 }
 
